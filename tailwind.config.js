@@ -22,6 +22,9 @@ module.exports = {
 				iorange: "#FC6736",
 				ipink: "#FC36D0",
 			},
+			borderRadius: {
+				iform: '100px'
+			},
 		},
 	},
 	plugins: [require("daisyui")],

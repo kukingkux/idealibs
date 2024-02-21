@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import Link from 'next/link';
+import { useState } from "react";
 
 export default function Landing() {
 	const [open, setOpen] = useState(1);
@@ -68,9 +69,7 @@ export default function Landing() {
 									type="button"
 									className="hidden lg:block rounded-full border-2 border-white bg-transparent py-2.5 mr-3"
 								>
-									<span className="block font-semibold text-sm px-5">
-										Login
-									</span>
+									<Link href="/auth/login" className="block font-semibold text-sm px-5">Login</Link>
 								</button>
 								<button
 									type="button"
@@ -817,6 +816,7 @@ export default function Landing() {
 										<span className="block font-semibold text-sm px-5">
 											Login
 										</span>
+										
 									</button>
 									<button type="button" className="rounded-full bg-white h-10">
 										<span className="block font-semibold text-sm text-black px-5">
