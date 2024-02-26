@@ -21,6 +21,7 @@ module.exports = {
 				i04: "#888888",
 				iorange: "#FC6736",
 				ipink: "#FC36D0",
+				iblue: "#0D6EFD",
 			},
 			borderRadius: {
 				iform: '100px'

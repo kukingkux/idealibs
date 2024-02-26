@@ -94,7 +94,7 @@ export default function Landing() {
 							<p className="text-center font-light text-sm px-8 mb-6">
 								Find various kinds of creative ideas that support your design
 							</p>
-							<button
+							<Link href="/dashboard"
 								type="button"
 								className="rounded-full bg-gradient-to-r from-iorange to-ipink py-2.5 mb-6"
 							>
@@ -113,7 +113,7 @@ export default function Landing() {
 										/>
 									</svg>
 								</span>
-							</button>
+							</Link>
 							<img
 								className="w-full aspect-square"
 								src="/images/Img-LP-Mobile.png"
