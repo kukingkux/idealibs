@@ -1,13 +1,12 @@
 "use client";
 
-import { getServerSession } from "next-auth";
 import { useState } from "react";
 
 import Card from '@/components/masonrygrid';
 import bg from '@/public/images/Img-Hero-Dashboard.png';
 import Link from "next/link";
 
-export default async function Dashboard() {
+export default function Dashboard() {
 	const [open, setOpen] = useState(1);
 	const [active, setActive] = useState(null);
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -16,7 +15,7 @@ export default async function Dashboard() {
 	const handleActive = (value) => setActive(value);
 	const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
-	const session = await getServerSession();
+	const session = ""
 
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
@@ -658,24 +657,60 @@ export default async function Dashboard() {
 
 							<div class="lg:grid grid-cols-2 md:grid-cols-4 gap-4 px-7 hidden">
 								<div class="grid gap-4">
-									<Card src="/images/Img-Image1.png" />
-									<Card src="/images/Img-Image2.png" />
-									<Card src="/images/Img-Image3.png" />
+									<Card
+										src="/images/Img-Image1.png"
+										id="1"
+									/>
+									<Card
+										src="/images/Img-Image2.png"
+										id="2"
+									/>
+									<Card
+										src="/images/Img-Image3.png"
+										id="3"
+									/>
 								</div>
 								<div class="grid gap-4">
-									<Card src="/images/Img-Image5.png" />
-									<Card src="/images/Img-Image6.png" />
-									<Card src="/images/Img-Image4.png" />
+									<Card
+										src="/images/Img-Image5.png"
+										id="5"
+									/>
+									<Card
+										src="/images/Img-Image6.png"
+										id="6"
+									/>
+									<Card
+										src="/images/Img-Image4.png"
+										id="4"
+									/>
 								</div>
 								<div class="grid gap-4">
-									<Card src="/images/Img-Image8.png" />
-									<Card src="/images/Img-Image7.png" />
-									<Card src="/images/Img-Image9.png" />
+									<Card
+										src="/images/Img-Image8.png"
+										id="8"	
+									/>
+									<Card
+										src="/images/Img-Image7.png"
+										id="7"
+									/>
+									<Card
+										src="/images/Img-Image9.png"
+										id="9"
+									/>
 								</div>
 								<div class="grid gap-4">
-									<Card src="/images/Img-Image10.png" />
-									<Card src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"  />
-									<Card src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" />
+									<Card
+										src="/images/Img-Image10.png"
+										id="10"
+									/>
+									<Card
+										src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" 
+										id="11"
+									/>
+									<Card
+										src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+										id="12"
+									/>
 								</div>
 							</div>
 							
