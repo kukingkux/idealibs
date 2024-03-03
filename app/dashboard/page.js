@@ -3,8 +3,9 @@
 import { getServerSession } from "next-auth";
 import { useState } from "react";
 
+import Card from '@/components/masonrygrid';
+import bg from '@/public/images/Img-Hero-Dashboard.png';
 import Link from "next/link";
-import bg from '../../public/images/Img-Hero-Dashboard.png';
 
 export default async function Dashboard() {
 	const [open, setOpen] = useState(1);
@@ -655,50 +656,26 @@ export default async function Dashboard() {
 								</div>
 							</div>
 
-							<div class="lg:grid grid-cols-2 md:grid-cols-4 gap-4 px-7 hidden group/item">
+							<div class="lg:grid grid-cols-2 md:grid-cols-4 gap-4 px-7 hidden">
 								<div class="grid gap-4">
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image11.jpg" />
-									</div>
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image2.png" />
-									</div>
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image3.png" />
-									</div>
+									<Card src="/images/Img-Image1.png" />
+									<Card src="/images/Img-Image2.png" />
+									<Card src="/images/Img-Image3.png" />
 								</div>
 								<div class="grid gap-4">
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image5.png" />
-									</div>
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image4.png" />
-									</div>
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image6.png" />
-									</div>
+									<Card src="/images/Img-Image5.png" />
+									<Card src="/images/Img-Image6.png" />
+									<Card src="/images/Img-Image4.png" />
 								</div>
 								<div class="grid gap-4">
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image8.png" />
-									</div>
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image7.png" />
-									</div>
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image9.png" />
-									</div>
+									<Card src="/images/Img-Image8.png" />
+									<Card src="/images/Img-Image7.png" />
+									<Card src="/images/Img-Image9.png" />
 								</div>
 								<div class="grid gap-4">
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image10.png" />
-									</div>
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" />
-									</div>
-									<div>
-										<img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" />
-									</div>
+									<Card src="/images/Img-Image10.png" />
+									<Card src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"  />
+									<Card src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" />
 								</div>
 							</div>
 							
