@@ -78,9 +78,9 @@ export default function Login() {
                             <input type='password' name="name" placeholder="Confirm your password" className="rounded-r-iform w-full h-14 bg-i03"/>
                         </div>
                     </div>
-                        <button className="flex justify-center items-center rounded-iform w-full h-14 bg-gradient-to-r from-iorange to-ipink mb-4">
+                        <Link href="/dashboard" className="flex justify-center items-center rounded-iform w-full h-14 bg-gradient-to-r from-iorange to-ipink mb-4">
                             Sign up
-                        </button>
+                        </Link>
                     <div className="mt-4 text-center">
                         <p>Do you have account? <Link href="/auth/login" className="bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text font-semibold">Sign in</Link></p>
                     </div>

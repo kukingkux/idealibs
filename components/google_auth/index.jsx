@@ -1,26 +1,13 @@
-import axios from 'axios';
-import { useEffect } from "react";
+
 
 export default function googleAuth() {
-    const fetchData = async () => {
-        try {
-          const response = await axios.get('https://tricky-gown-newt.cyclic.app/auth/google', {
-            headers: {
-              Authorization: '',
-            },
-          });
-          console.log(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-    }
-
-    useEffect(() => {
-        fetchData()
-    }, []) 
+    
 
     return (
-        <button className="flex justify-center items-center rounded-iform w-full h-14 bg-white mb-4 gap-4">
+      <form
+        action='http://idealibs.cyclic.app/auth/google'
+      >
+        <button type='submit' className="flex justify-center items-center rounded-iform w-full h-14 bg-white mb-4 gap-4">
             <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M18.14 9.20443C18.14 8.56625 18.0827 7.95262 17.9764 7.36353H9.5V10.8449H14.3436C14.135 11.9699 13.5009 12.9231 12.5477 13.5613V15.8194H15.4564C17.1582 14.2526 18.14 11.9453 18.14 9.20443Z" fill="#4285F4"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.49976 18C11.9298 18 13.967 17.1941 15.4561 15.8195L12.5475 13.5613C11.7416 14.1013 10.7107 14.4204 9.49976 14.4204C7.15567 14.4204 5.17158 12.8372 4.46385 10.71H1.45703V13.0418C2.93794 15.9831 5.98158 18 9.49976 18Z" fill="#34A853"/>
@@ -29,5 +16,7 @@ export default function googleAuth() {
             </svg>
             <p className="text-i01 font-semibold">Sign in with Google</p>
         </button>
+      </form>
+        
     )
 }

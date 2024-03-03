@@ -1,10 +1,12 @@
 "use client";
 
+import { getServerSession } from "next-auth";
 import { useState } from "react";
 
+import Link from "next/link";
 import bg from '../../public/images/Img-Hero-Dashboard.png';
 
-export default function Dashboard() {
+export default async function Dashboard() {
 	const [open, setOpen] = useState(1);
 	const [active, setActive] = useState(null);
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -12,6 +14,8 @@ export default function Dashboard() {
 	const handleOpen = (value) => setOpen(open === value ? 0 : value);
 	const handleActive = (value) => setActive(value);
 	const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+
+	const session = await getServerSession();
 
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
@@ -253,20 +257,27 @@ export default function Dashboard() {
 											</svg>
 										</label>
 									</div>
-									<div className="flex">
-										<button
-											type="button"
-											className="hidden btn btn-outline rounded-full border-2 font-medium border-white text-white px-7 mr-3 hover:border-white hover:bg-white hover:text-i02 lg:block"
-										>
-											Login
-										</button>
-										<button
-											type="button"
-											className="btn btn-neutral rounded-full border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink hover:bg-transparent px-7"
-										>
-											Register
-										</button>
-									</div>
+									{session ? (
+										<p>{session?.email}</p>
+									) : (
+										<div className="flex">
+											<Link
+												href="/login"
+												type="button"
+												className="hidden btn btn-outline rounded-full border-2 font-medium border-white text-white px-7 mr-3 hover:border-white hover:bg-white hover:text-i02 lg:flex"
+											>
+												Login
+											</Link>
+											<Link
+												href="/register"
+												type="button"
+												className="btn btn-neutral rounded-full border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink hover:bg-transparent px-7"
+											>
+												Register
+											</Link>
+										</div>
+									)}
+									
 								</div>
 							</div>
 							<div
@@ -644,10 +655,10 @@ export default function Dashboard() {
 								</div>
 							</div>
 
-							<div class="lg:grid grid-cols-2 md:grid-cols-4 gap-4 px-7 hidden">
+							<div class="lg:grid grid-cols-2 md:grid-cols-4 gap-4 px-7 hidden group/item">
 								<div class="grid gap-4">
 									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image1.png" />
+										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image11.jpg" />
 									</div>
 									<div>
 										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image2.png" />
@@ -658,10 +669,10 @@ export default function Dashboard() {
 								</div>
 								<div class="grid gap-4">
 									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image4.png" />
+										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image5.png" />
 									</div>
 									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image5.png" />
+										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image4.png" />
 									</div>
 									<div>
 										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image6.png" />
@@ -669,10 +680,10 @@ export default function Dashboard() {
 								</div>
 								<div class="grid gap-4">
 									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image7.png" />
+										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image8.png" />
 									</div>
 									<div>
-										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image8.png" />
+										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image7.png" />
 									</div>
 									<div>
 										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image9.png" />
