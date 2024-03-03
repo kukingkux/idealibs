@@ -35,7 +35,7 @@ export default function Dashboard() {
 									<a href="#" onClick={() => handleActive(1)}>
 										<div
 											aria-selected={active === 1}
-											className="flex rounded-lg text-i04 text-sm py-2.5 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+											className="flex rounded-lg text-i04 text-sm py-3 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 										>
 											<span>
 												<svg
@@ -58,7 +58,7 @@ export default function Dashboard() {
 									<a href="#" onClick={() => handleActive(2)}>
 										<div
 											aria-selected={active === 2}
-											className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+											className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 										>
 											<span>
 												<svg
@@ -80,7 +80,7 @@ export default function Dashboard() {
 									<a href="#" onClick={() => handleActive(3)}>
 										<div
 											aria-selected={active === 3}
-											className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+											className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 										>
 											<span>
 												<svg
@@ -98,7 +98,7 @@ export default function Dashboard() {
 									<a href="#" onClick={() => handleActive(4)}>
 										<div
 											aria-selected={active === 4}
-											className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+											className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 										>
 											<span>
 												<svg
@@ -116,7 +116,7 @@ export default function Dashboard() {
 									<a href="#" onClick={() => handleActive(5)}>
 										<div
 											aria-selected={active === 5}
-											className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+											className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 										>
 											<span>
 												<svg
@@ -134,7 +134,7 @@ export default function Dashboard() {
 									<a href="#" onClick={() => handleActive(6)}>
 										<div
 											aria-selected={active === 6}
-											className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+											className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 										>
 											<span>
 												<svg
@@ -152,7 +152,7 @@ export default function Dashboard() {
 									<a href="#" onClick={() => handleActive(7)}>
 										<div
 											aria-selected={active === 7}
-											className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+											className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -319,13 +319,13 @@ export default function Dashboard() {
 								<div className="flex flex-wrap gap-4 mb-6">
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">All</div>
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Nature</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Technology and Innovation</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Fashion and Lifestyle</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Art and Creativity</div>
+									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">Technology and Innovation</div>
+									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">Fashion and Lifestyle</div>
+									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">Art and Creativity</div>
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">People</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Food and Beverages</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Health and Fitness</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Travel and Destinations</div>
+									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">Food and Beverages</div>
+									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">Health and Fitness</div>
+									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">Travel and Destinations</div>
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Textures</div>
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-16 border">See more category</div>
 								</div>
@@ -644,7 +644,7 @@ export default function Dashboard() {
 								</div>
 							</div>
 
-							<div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-7">
+							<div class="lg:grid grid-cols-2 md:grid-cols-4 gap-4 px-7 hidden">
 								<div class="grid gap-4">
 									<div>
 										<img class="h-auto max-w-full rounded-lg" src="/images/Img-Image1.png" />
