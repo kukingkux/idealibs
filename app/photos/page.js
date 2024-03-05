@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import Card from '@/components/gridmasonry';
-import SideNavigation from "@/components/sidebar";
+import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from '@/public/images/Img-Hero-Dashboard.png';
 
@@ -25,7 +25,7 @@ export default function Dashboard() {
 				<div className="drawer-content flex flex-col items-center justify-center">
                     <div id="content" className="flex container max-w-full">
 						<SideNavigation />
-						<div id="right-content" className="min-h-screen lg:w-3/4">
+						<div id="right-content" className="min-h-screen lg:w-full">
 							<TopNavigation />
 							<div
 								id="header"
@@ -402,7 +402,7 @@ export default function Dashboard() {
 								</div>
 							</div>
 
-							<div className="lg:grid grid-cols-2 md:grid-cols-4 gap-4 px-7 hidden">
+							<div className="md:grid grid-cols-2 md:grid-cols-4 gap-4 px-7 hidden">
 								<div className="grid gap-4">
 									<Card
 										src="/images/Img-Image1.png"
@@ -465,7 +465,28 @@ export default function Dashboard() {
 						
 				</div>
 				</div>
-				
+				<div className="drawer-side">
+					<div className="bg-i02 min-h-screen w-1/2 z-10 px-7">
+						<div className="container py-6">
+							<button className="btn btn-square bg-i03 h-10">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									strokeWidth={2}
+									stroke="currentColor"
+									className="w-7 h-7 text-white"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M6 18 18 6M6 6l12 12"
+									/>
+								</svg>
+							</button>
+						</div>
+						<SideNavigationMobile />
+					</div>
+				</div>
 			</div>
 		</main>
 	);

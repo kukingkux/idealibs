@@ -26,6 +26,9 @@ module.exports = {
 			borderRadius: {
 				iform: '100px'
 			},
+			width: {
+				'sidebar': '430px',
+			},
 		},
 	},
 	plugins: [require("daisyui")],
