@@ -25,7 +25,7 @@ export default function MasonryGrid({src, id}){
                     
             </Link>
             <button onClick={changeColor} 
-                class="absolute z-20 transform-gpu bottom-0 p-3 m-4 space-y-3 text-xl opacity-0 group-hover:opacity-100 transform transition duration-300 ease-in-out bg-slate-200/20 rounded-full hover:bg-i04/100"
+                class="absolute z-20 transform-gpu top-0 right-0 p-4 m-4 space-y-3 text-xl opacity-0 group-hover:opacity-100 transform transition duration-300 ease-in-out bg-slate-200/20 rounded-full hover:bg-i04/100"
             >
 
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

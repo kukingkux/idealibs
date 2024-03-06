@@ -1,6 +1,6 @@
 "use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Landing() {
@@ -19,13 +19,13 @@ export default function Landing() {
 				<div className="drawer-content flex flex-col items-center justify-center">
 					<div
 						id="navbar"
-						className="sticky top-0 container bg-i02 py-6 px-7 z-20"
+						className="sticky top-0 container bg-i02 py-6 px-7 z-20 lg:px-24"
 					>
 						<div className="flex justify-between items-center">
 							<label
 								htmlFor="my-drawer"
 								onClick={toggleDrawer}
-								className="btn btn-square drawer-button border-0 bg-i03 h-10"
+								className="btn btn-square drawer-button border-0 bg-i03 h-10 lg:hidden"
 							>
 								{isDrawerOpen ? (
 									<svg
@@ -57,110 +57,175 @@ export default function Landing() {
 									</svg>
 								)}
 							</label>
-							<div className="ml-14 lg:ml-40">
+							<div className="ml-14 lg:m-0">
 								<img
-									className="h-8 w-7 aspect-square"
+									className="h-8 lg:hidden"
 									src="/images/Logo-Nav-Mobile.png"
 									alt="Idealibs Logo"
 								/>
+								<img
+									className="hidden h-5 lg:block"
+									src="/images/Logo-Nav-Desktop.png"
+									alt="Idealibs Logo"
+								/>
+							</div>
+							<div className="hidden lg:block">
+								<div className="grid grid-flow-col gap-2 ml-28">
+									<a href="#" onClick={() => handleActive(1)}>
+										<div
+											aria-selected={active === 1}
+											className="rounded-full text-white text-sm font-semibold py-2.5 px-5 aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+										>
+											Home
+										</div>
+									</a>
+									<a href="#about" onClick={() => handleActive(2)}>
+										<div
+											aria-selected={active === 2}
+											className="rounded-full text-white text-sm font-semibold py-2.5 px-5 aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+										>
+											About
+										</div>
+									</a>
+									<a href="#features" onClick={() => handleActive(3)}>
+										<div
+											aria-selected={active === 3}
+											className="rounded-full text-white text-sm font-semibold py-2.5 px-5 aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+										>
+											Features
+										</div>
+									</a>
+									<a href="#pricing" onClick={() => handleActive(4)}>
+										<div
+											aria-selected={active === 4}
+											className="rounded-full text-white text-sm font-semibold py-2.5 px-5 aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+										>
+											Pricing
+										</div>
+									</a>
+									<a href="#question" onClick={() => handleActive(5)}>
+										<div
+											aria-selected={active === 5}
+											className="rounded-full text-white text-sm font-semibold py-2.5 px-5 aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+										>
+											Question
+										</div>
+									</a>
+								</div>
 							</div>
 							<div className="flex">
-								<button
+								<Link
+									href="/auth/login"
 									type="button"
-									className="hidden lg:block rounded-full border-2 border-white bg-transparent py-2.5 mr-3"
+									className="hidden items-center btn btn-outline rounded-full border-2 font-medium border-white text-white px-7 mr-3 hover:border-white hover:bg-white hover:text-i02 lg:flex"
 								>
-									<Link href="/auth/login" className="block font-semibold text-sm px-5">Login</Link>
-								</button>
-								<button
+									Login
+								</Link>
+								<Link
+									href="/auth/register"
 									type="button"
-									className="rounded-full bg-gradient-to-r from-iorange to-ipink py-2.5"
+									className="btn btn-neutral rounded-full border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink px-7"
 								>
-									<span className="block font-semibold text-sm px-5">
-										Register
-									</span>
-								</button>
+									Register
+								</Link>
 							</div>
 						</div>
 					</div>
 					<div id="content" className="container">
 						<div
 							id="header"
-							className="flex container flex-col items-center mt-12 px-7"
+							className="flex container flex-col items-center mt-12 px-7 lg:px-24 lg:mt-28"
 						>
-							<p className="text-center font-medium text-xl mb-2">
+							<p className="text-center font-medium text-xl mb-2 lg:text-4xl lg:px-72 lg:mb-4">
 								Idea is Key Unlocking the Door to Infinite Creativity at
 								Idealibs!
 							</p>
-							<p className="text-center font-light text-sm px-8 mb-6">
+							<p className="text-center font-light text-sm px-8 mb-6 lg:text-lg lg:mb-10">
 								Find various kinds of creative ideas that support your design
 							</p>
-							<Link href="/dashboard"
+							<Link
+								href="/photos"
 								type="button"
-								className="rounded-full bg-gradient-to-r from-iorange to-ipink py-2.5 mb-6"
+								className="btn btn-neutral rounded-full border-0 text-white font-medium bg-gradient-to-r from-iorange to-ipink px-7 mb-6 lg:mb-16"
 							>
-								<span className="flex items-center font-medium text-sm px-6">
-									Explore Interesting Ideas
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 20 20"
-										fill="currentColor"
-										className="ml-2 h-6 w-6"
-									>
-										<path
-											fillRule="evenodd"
-											d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z"
-											clipRule="evenodd"
-										/>
-									</svg>
-								</span>
+								Explore Interesting Ideas
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+									className="h-6 w-6"
+								>
+									<path
+										fillRule="evenodd"
+										d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z"
+										clipRule="evenodd"
+									/>
+								</svg>
 							</Link>
 							<img
-								className="w-full aspect-square"
+								className="w-full aspect-square lg:hidden"
 								src="/images/Img-LP-Mobile.png"
+								alt="Idealibs Header Image"
+							/>
+							<img
+								className="hidden w-full lg:block"
+								src="/images/Img-LP-Desktop.png"
 								alt="Idealibs Header Image"
 							/>
 						</div>
 						<div
 							id="about"
-							className="flex container flex-col mt-12 px-7 scroll-mt-32"
+							className="flex container flex-col mt-12 px-7 scroll-mt-32 lg:flex-row lg:px-24 lg:mt-20"
 						>
-							<p className="text-left font-light text-sm mb-4">About us</p>
-							<p className="text-left font-medium text-xl mb-2">
-								The best idea in{" "}
-								<span className="font-bold bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text">
-									Idealibs
-								</span>
-							</p>
-							<p className="text-left font-light text-sm mb-3">
-								Idealibs is a website that makes it easy for designers in the
-								world to find sources that suppport their design needs. There
-								are many sources that are widely used and various eases in
-								accessing a source
-							</p>
-							<div className="flex flex-row justify-between">
-								<div className="flex flex-col">
-									<p className="text-left font-medium text-xl">25.000+</p>
-									<p className="text-left font-light text-sm">Happy user</p>
-								</div>
-								<div className="flex flex-col">
-									<p className="text-left font-bold text-xl bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text">
-										750k
-									</p>
-									<p className="text-left font-semibold text-sm bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text">
-										Design ideas
-									</p>
-								</div>
-								<div className="flex flex-col">
-									<p className="text-left font-medium text-xl">20.000+</p>
-									<p className="text-left font-light text-sm">
-										Designer helped
-									</p>
+							<div className="lg:w-3/5">
+								<p className="text-left font-light text-sm mb-4 lg:text-lg">
+									About us
+								</p>
+							</div>
+							<div>
+								<p className="text-left font-medium text-xl mb-2 lg:text-3xl lg:mb-4">
+									The best idea in{" "}
+									<span className="font-bold bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text">
+										Idealibs
+									</span>
+								</p>
+								<p className="text-left font-light text-sm mb-3 lg:text-lg lg:mb-8">
+									Idealibs is a website that makes it easy for designers in the
+									world to find sources that suppport their design needs. There
+									are many sources that are widely used and various eases in
+									accessing a source
+								</p>
+								<div className="flex flex-row justify-between">
+									<div className="flex flex-col">
+										<p className="text-left font-medium text-xl lg:text-3xl lg:mb-2">
+											25.000+
+										</p>
+										<p className="text-left font-light text-sm lg:text-lg">
+											Happy user
+										</p>
+									</div>
+									<div className="flex flex-col">
+										<p className="text-left font-bold text-xl bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text lg:text-3xl lg:mb-2">
+											750k
+										</p>
+										<p className="text-left font-semibold text-sm bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text lg:text-lg">
+											Design ideas
+										</p>
+									</div>
+									<div className="flex flex-col">
+										<p className="text-left font-medium text-xl lg:text-3xl lg:mb-2">
+											20.000+
+										</p>
+										<p className="text-left font-light text-sm lg:text-lg">
+											Designer helped
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div className="flex container bg-gradient-to-r from-iorange to-ipink items-center mt-12">
-							<div className="p-7">
-								<p className="text-center font-medium text-sm">
+						<div className="flex container bg-gradient-to-r from-iorange to-ipink items-center mt-12 lg:mt-20">
+							<div className="p-7 lg:px-24 lg:py-20">
+								<p className="text-center font-medium text-sm lg:text-3xl lg:px-10">
 									“By combining innovation, learning, and community, Idealibs
 									forms an immersive and dynamic environment for those who want
 									to push the boundaries of their design. Welcome to Idealibs, a
@@ -169,23 +234,23 @@ export default function Landing() {
 								</p>
 							</div>
 						</div>
-						<div className="flex container flex-col px-7 mt-12">
-							<p className="text-center font-medium text-xl mb-2">
+						<div className="flex container flex-col px-7 mt-12 lg:px-24 lg:mt-20">
+							<p className="text-center font-medium text-xl mb-2 lg:text-3xl lg:mb-4">
 								Why choose{" "}
 								<span className="font-bold bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text">
 									Idealibs
 								</span>
 								?
 							</p>
-							<p className="text-center font-light text-sm px-8 mb-6">
+							<p className="text-center font-light text-sm px-8 mb-6 lg:text-lg lg:mb-12">
 								Idealibs comes with a ton of benefits that differentiate it in
 								the world of creative design
 							</p>
-							<div className="grid grid-cols-2 gap-4">
-								<div className="rounded-lg bg-gradient-to-r from-iorange to-ipink p-6">
+							<div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+								<div className="rounded-lg bg-gradient-to-r from-iorange to-ipink p-6 lg:p-5">
 									<div className="flex flex-col">
 										<svg
-											className="mb-6 w-8 h-8"
+											className="mb-6 w-8 h-8 lg:mb-8"
 											viewBox="0 0 40 40"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -215,15 +280,15 @@ export default function Landing() {
 												fill="#FEFEFE"
 											/>
 										</svg>
-										<p className="text-left font-medium">
+										<p className="text-left font-medium lg:text-xl">
 											Limitless Inspiration
 										</p>
 									</div>
 								</div>
-								<div className="rounded-lg border-2 border-i02 bg-i01 p-6">
+								<div className="rounded-lg border-2 border-i02 bg-i01 p-6 lg:p-5">
 									<div className="flex flex-col">
 										<svg
-											className="mb-6 w-8 h-8"
+											className="mb-6 w-8 h-8 lg:mb-8"
 											viewBox="0 0 40 40"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -248,15 +313,15 @@ export default function Landing() {
 												</linearGradient>
 											</defs>
 										</svg>
-										<p className="text-left font-medium">
+										<p className="text-left font-medium lg:text-xl">
 											Interactive Education
 										</p>
 									</div>
 								</div>
-								<div className="rounded-lg border-2 border-i02 bg-i01 p-6">
+								<div className="rounded-lg border-2 border-i02 bg-i01 p-6 lg:p-5">
 									<div className="flex flex-col">
 										<svg
-											className="mb-6 w-8 h-8"
+											className="mb-6 w-8 h-8 lg:mb-8"
 											viewBox="0 0 40 40"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -298,15 +363,15 @@ export default function Landing() {
 												</linearGradient>
 											</defs>
 										</svg>
-										<p className="text-left font-medium">
+										<p className="text-left font-medium lg:text-xl">
 											High-Quality Graphic Library
 										</p>
 									</div>
 								</div>
-								<div className="rounded-lg border-2 border-i02 bg-i01 p-6">
+								<div className="rounded-lg border-2 border-i02 bg-i01 p-6 lg:p-5">
 									<div className="flex flex-col">
 										<svg
-											className="mb-6 w-8 h-8"
+											className="mb-6 w-8 h-8 lg:mb-8"
 											viewBox="0 0 40 40"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -348,15 +413,15 @@ export default function Landing() {
 												</linearGradient>
 											</defs>
 										</svg>
-										<p className="text-left font-medium">
+										<p className="text-left font-medium lg:text-xl">
 											Abundant Free Resources
 										</p>
 									</div>
 								</div>
-								<div className="rounded-lg border-2 border-i02 bg-i01 p-6">
+								<div className="rounded-lg border-2 border-i02 bg-i01 p-6 lg:p-5">
 									<div className="flex flex-col">
 										<svg
-											className="mb-6 w-8 h-8"
+											className="mb-6 w-8 h-8 lg:mb-8"
 											viewBox="0 0 40 40"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -398,15 +463,15 @@ export default function Landing() {
 												</linearGradient>
 											</defs>
 										</svg>
-										<p className="text-left font-medium">
+										<p className="text-left font-medium lg:text-xl">
 											Current News and Trends
 										</p>
 									</div>
 								</div>
-								<div className="rounded-lg border-2 border-i02 bg-i01 p-6">
+								<div className="rounded-lg border-2 border-i02 bg-i01 p-6 lg:p-5">
 									<div className="flex flex-col">
 										<svg
-											className="mb-6 w-8 h-8"
+											className="mb-6 w-8 h-8 lg:mb-8"
 											viewBox="0 0 40 40"
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
@@ -431,7 +496,7 @@ export default function Landing() {
 												</linearGradient>
 											</defs>
 										</svg>
-										<p className="text-left font-medium">
+										<p className="text-left font-medium lg:text-xl">
 											Open and Easy Access
 										</p>
 									</div>
@@ -440,91 +505,133 @@ export default function Landing() {
 						</div>
 						<div
 							id="features"
-							className="flex container flex-col mt-12 px-7 scroll-mt-32"
+							className="flex container flex-col mt-12 px-7 scroll-mt-32 lg:px-24 lg:mt-20"
 						>
-							<p className="text-left font-light text-sm mb-4">Features</p>
-							<p className="text-left font-medium text-xl">
+							<p className="text-left font-light text-sm mb-4 lg:text-lg">
+								Features
+							</p>
+							<p className="text-left font-medium text-xl lg:text-3xl lg:mb-2">
 								A wide variety of interesting libraries on{" "}
 								<span className="font-bold bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text">
 									Idealibs
 								</span>
 							</p>
 							<div className="grid grid-cols-1 divide-y-2 border-b-2 divide-i02 border-i02">
-								<div className="flex flex-col py-5">
-									<p className="text-left font-medium mb-2">Stock Photos</p>
-									<p className="text-left font-light text-sm">
-										Idealibs is a website that makes it easy for designers in
-										the world to find sources that suppport their design needs.
-										There are many sources that are widely used and various
-										eases in accessing a source
-									</p>
+								<div className="flex flex-col py-5 lg:flex-row">
+									<div className="lg:w-1/2">
+										<p className="text-left font-medium mb-2 lg:text-2xl lg:font-semibold">
+											Stock Photos
+										</p>
+									</div>
+									<div>
+										<p className="text-left font-light text-sm lg:text-lg">
+											Idealibs is a website that makes it easy for designers in
+											the world to find sources that suppport their design
+											needs. There are many sources that are widely used and
+											various eases in accessing a source
+										</p>
+									</div>
 								</div>
-								<div className="flex flex-col py-5">
-									<p className="text-left font-medium mb-2">Color Palette</p>
-									<p className="text-left font-light text-sm">
-										Idealibs is a website that makes it easy for designers in
-										the world to find sources that suppport their design needs.
-										There are many sources that are widely used and various
-										eases in accessing a source
-									</p>
+								<div className="flex flex-col py-5 lg:flex-row">
+									<div className="lg:w-1/2">
+										<p className="text-left font-medium mb-2 lg:text-2xl lg:font-semibold">
+											Color Palette
+										</p>
+									</div>
+									<div>
+										<p className="text-left font-light text-sm lg:text-lg">
+											Idealibs is a website that makes it easy for designers in
+											the world to find sources that suppport their design
+											needs. There are many sources that are widely used and
+											various eases in accessing a source
+										</p>
+									</div>
 								</div>
-								<div className="flex flex-col py-5">
-									<p className="text-left font-medium mb-2">Typefaces</p>
-									<p className="text-left font-light text-sm">
-										Idealibs is a website that makes it easy for designers in
-										the world to find sources that suppport their design needs.
-										There are many sources that are widely used and various
-										eases in accessing a source
-									</p>
+								<div className="flex flex-col py-5 lg:flex-row">
+									<div className="lg:w-1/2">
+										<p className="text-left font-medium mb-2 lg:text-2xl lg:font-semibold">
+											Typefaces
+										</p>
+									</div>
+									<div>
+										<p className="text-left font-light text-sm lg:text-lg">
+											Idealibs is a website that makes it easy for designers in
+											the world to find sources that suppport their design
+											needs. There are many sources that are widely used and
+											various eases in accessing a source
+										</p>
+									</div>
 								</div>
-								<div className="flex flex-col py-5">
-									<p className="text-left font-medium mb-2">Textures</p>
-									<p className="text-left font-light text-sm">
-										Idealibs is a website that makes it easy for designers in
-										the world to find sources that suppport their design needs.
-										There are many sources that are widely used and various
-										eases in accessing a source
-									</p>
+								<div className="flex flex-col py-5 lg:flex-row">
+									<div className="lg:w-1/2">
+										<p className="text-left font-medium mb-2 lg:text-2xl lg:font-semibold">
+											Textures
+										</p>
+									</div>
+									<div>
+										<p className="text-left font-light text-sm lg:text-lg">
+											Idealibs is a website that makes it easy for designers in
+											the world to find sources that suppport their design
+											needs. There are many sources that are widely used and
+											various eases in accessing a source
+										</p>
+									</div>
 								</div>
-								<div className="flex flex-col py-5">
-									<p className="text-left font-medium mb-2">
-										Vectors and Graphics
-									</p>
-									<p className="text-left font-light text-sm">
-										Idealibs is a website that makes it easy for designers in
-										the world to find sources that suppport their design needs.
-										There are many sources that are widely used and various
-										eases in accessing a source
-									</p>
+								<div className="flex flex-col py-5 lg:flex-row">
+									<div className="lg:w-1/2">
+										<p className="text-left font-medium mb-2 lg:text-2xl lg:font-semibold">
+											Vectors and Graphics
+										</p>
+									</div>
+									<div>
+										<p className="text-left font-light text-sm lg:text-lg">
+											Idealibs is a website that makes it easy for designers in
+											the world to find sources that suppport their design
+											needs. There are many sources that are widely used and
+											various eases in accessing a source
+										</p>
+									</div>
 								</div>
-								<div className="flex flex-col py-5">
-									<p className="text-left font-medium mb-2">
-										Mockups and Templates
-									</p>
-									<p className="text-left font-light text-sm">
-										Idealibs is a website that makes it easy for designers in
-										the world to find sources that suppport their design needs.
-										There are many sources that are widely used and various
-										eases in accessing a source
-									</p>
+								<div className="flex flex-col py-5 lg:flex-row">
+									<div className="lg:w-1/2">
+										<p className="text-left font-medium mb-2 lg:text-2xl lg:font-semibold">
+											Mockups and Templates
+										</p>
+									</div>
+									<div>
+										<p className="text-left font-light text-sm lg:text-lg">
+											Idealibs is a website that makes it easy for designers in
+											the world to find sources that suppport their design
+											needs. There are many sources that are widely used and
+											various eases in accessing a source
+										</p>
+									</div>
 								</div>
-								<div className="flex flex-col py-5">
-									<p className="text-left font-medium mb-2">Icon Sets</p>
-									<p className="text-left font-light text-sm">
-										Idealibs is a website that makes it easy for designers in
-										the world to find sources that suppport their design needs.
-										There are many sources that are widely used and various
-										eases in accessing a source
-									</p>
+								<div className="flex flex-col py-5 lg:flex-row">
+									<div className="lg:w-1/2">
+										<p className="text-left font-medium mb-2 lg:text-2xl lg:font-semibold">
+											Icon Sets
+										</p>
+									</div>
+									<div>
+										<p className="text-left font-light text-sm lg:text-lg">
+											Idealibs is a website that makes it easy for designers in
+											the world to find sources that suppport their design
+											needs. There are many sources that are widely used and
+											various eases in accessing a source
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
 						<div
 							id="pricing"
-							className="flex container flex-col mt-12 px-7 scroll-mt-32"
+							className="flex container flex-col mt-12 px-7 scroll-mt-32 lg:px-24"
 						>
-							<p className="text-center font-light text-sm mb-4">Pricing</p>
-							<p className="text-center font-medium text-xl mb-4">
+							<p className="text-center font-light text-sm mb-4 lg:text-lg">
+								Pricing
+							</p>
+							<p className="text-center font-medium text-xl mb-4 lg:text-3xl lg:px-96 lg:mb-8">
 								Benefits that can be obtained when subscribing to{" "}
 								<span className="font-bold bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text">
 									Idealibs
@@ -533,17 +640,17 @@ export default function Landing() {
 							<div className="grid grid-cols-1 gap-4">
 								<div className="rounded-lg border-2 border-i02 bg-i01 p-7">
 									<div className="flex flex-col">
-										<p className="text-left font-bold text-xl mb-3">
+										<p className="text-left font-bold text-xl mb-3 lg:text-2xl lg:font-semibold lg:mb-10">
 											Free user
 										</p>
-										<div className="grid grid-cols-1 gap-4">
+										<div className="grid grid-cols-1 gap-4 lg:gap-8">
 											<div className="flex items-center">
 												<div>
 													<svg
 														xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 24 24"
 														fill="currentColor"
-														className="fill-blue-500 h-5 w-5"
+														className="fill-blue-500 h-5 w-5 lg:h-8 lg:w-8"
 													>
 														<path
 															fillRule="evenodd"
@@ -552,7 +659,7 @@ export default function Landing() {
 														/>
 													</svg>
 												</div>
-												<p className="text-left font-light text-sm ml-4">
+												<p className="text-left font-light text-sm ml-4 lg:text-lg lg:ml-6">
 													Access to limited stock photos and design resources
 												</p>
 											</div>
@@ -562,7 +669,7 @@ export default function Landing() {
 														xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 24 24"
 														fill="currentColor"
-														className="fill-blue-500 h-5 w-5"
+														className="fill-blue-500 h-5 w-5 lg:h-8 lg:w-8"
 													>
 														<path
 															fillRule="evenodd"
@@ -571,7 +678,7 @@ export default function Landing() {
 														/>
 													</svg>
 												</div>
-												<p className="text-left font-light text-sm ml-4">
+												<p className="text-left font-light text-sm ml-4 lg:text-lg lg:ml-6">
 													Basic usage of mockups and templates features
 												</p>
 											</div>
@@ -580,17 +687,17 @@ export default function Landing() {
 								</div>
 								<div className="rounded-lg bg-i02 p-7">
 									<div className="flex flex-col">
-										<p className="text-left font-bold text-xl mb-3">
+										<p className="text-left font-bold text-xl mb-3 lg:text-2xl lg:font-semibold lg:mb-10">
 											Premium user
 										</p>
-										<div className="grid grid-cols-1 gap-4 mb-7">
+										<div className="grid grid-cols-1 gap-4 mb-7 lg:gap-8 lg:mb-14">
 											<div className="flex items-center">
 												<div>
 													<svg
 														xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 24 24"
 														fill="currentColor"
-														className="fill-blue-500 h-5 w-5"
+														className="fill-blue-500 h-5 w-5 lg:h-8 lg:w-8"
 													>
 														<path
 															fillRule="evenodd"
@@ -599,7 +706,7 @@ export default function Landing() {
 														/>
 													</svg>
 												</div>
-												<p className="text-left font-light text-sm ml-4">
+												<p className="text-left font-light text-sm ml-4 lg:text-lg lg:ml-6">
 													Full access to extensive high-quality resources
 												</p>
 											</div>
@@ -609,7 +716,7 @@ export default function Landing() {
 														xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 24 24"
 														fill="currentColor"
-														className="fill-blue-500 h-5 w-5"
+														className="fill-blue-500 h-5 w-5 lg:h-8 lg:w-8"
 													>
 														<path
 															fillRule="evenodd"
@@ -618,7 +725,7 @@ export default function Landing() {
 														/>
 													</svg>
 												</div>
-												<p className="text-left font-light text-sm ml-4">
+												<p className="text-left font-light text-sm ml-4 lg:text-lg lg:ml-6">
 													Unlimited mockup and template usage
 												</p>
 											</div>
@@ -628,7 +735,7 @@ export default function Landing() {
 														xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 24 24"
 														fill="currentColor"
-														className="fill-blue-500 h-5 w-5"
+														className="fill-blue-500 h-5 w-5 lg:h-8 lg:w-8"
 													>
 														<path
 															fillRule="evenodd"
@@ -637,7 +744,7 @@ export default function Landing() {
 														/>
 													</svg>
 												</div>
-												<p className="text-left font-light text-sm ml-4">
+												<p className="text-left font-light text-sm ml-4 lg:text-lg lg:ml-6">
 													Priority access to updates and new features
 												</p>
 											</div>
@@ -647,7 +754,7 @@ export default function Landing() {
 														xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 24 24"
 														fill="currentColor"
-														className="fill-blue-500 h-5 w-5"
+														className="fill-blue-500 h-5 w-5 lg:h-8 lg:w-8"
 													>
 														<path
 															fillRule="evenodd"
@@ -656,7 +763,7 @@ export default function Landing() {
 														/>
 													</svg>
 												</div>
-												<p className="text-left font-light text-sm ml-4">
+												<p className="text-left font-light text-sm ml-4 lg:text-lg lg:ml-6">
 													Exclusive participation in premium tutorials
 												</p>
 											</div>
@@ -666,7 +773,7 @@ export default function Landing() {
 														xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 24 24"
 														fill="currentColor"
-														className="fill-blue-500 h-5 w-5"
+														className="fill-blue-500 h-5 w-5 lg:h-8 lg:w-8"
 													>
 														<path
 															fillRule="evenodd"
@@ -675,7 +782,7 @@ export default function Landing() {
 														/>
 													</svg>
 												</div>
-												<p className="text-left font-light text-sm ml-4">
+												<p className="text-left font-light text-sm ml-4 lg:text-lg lg:ml-6">
 													High-resolution downloads and enhanced customer
 													support
 												</p>
@@ -686,7 +793,7 @@ export default function Landing() {
 														xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 24 24"
 														fill="currentColor"
-														className="fill-blue-500 h-5 w-5"
+														className="fill-blue-500 h-5 w-5 lg:h-8 lg:w-8"
 													>
 														<path
 															fillRule="evenodd"
@@ -695,18 +802,16 @@ export default function Landing() {
 														/>
 													</svg>
 												</div>
-												<p className="text-left font-light text-sm ml-4">
+												<p className="text-left font-light text-sm ml-4 lg:text-lg lg:ml-6">
 													Ad-free browsing for a seamless design experience
 												</p>
 											</div>
 										</div>
 										<button
 											type="button"
-											className="rounded-full bg-gradient-to-r from-iorange to-ipink h-10 w-full"
+											className="btn btn-neutral rounded-full border-0 text-white font-medium bg-gradient-to-r from-iorange to-ipink"
 										>
-											<span className="block font-medium text-sm">
-												Explore now
-											</span>
+											Explore now
 										</button>
 									</div>
 								</div>
@@ -714,10 +819,12 @@ export default function Landing() {
 						</div>
 						<div
 							id="question"
-							className="flex container flex-col mt-12 px-7 scroll-mt-32"
+							className="flex container flex-col mt-12 px-7 scroll-mt-32 lg:px-24 lg:mt-20"
 						>
-							<p className="text-center font-light text-sm mb-4">Question</p>
-							<p className="text-center font-medium text-xl mb-4">
+							<p className="text-center font-light text-sm mb-4 lg:text-lg">
+								Question
+							</p>
+							<p className="text-center font-medium text-xl mb-4 lg:text-3xl lg:mb-8">
 								Various{" "}
 								<span className="font-bold bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text">
 									Idealibs
@@ -732,10 +839,10 @@ export default function Landing() {
 										checked={open === 1}
 										onChange={() => handleOpen(1)}
 									/>
-									<div className="collapse-title text-left font-medium text-white">
+									<div className="collapse-title text-left font-medium text-white lg:text-lg">
 										What sets Idealibs apart from other design platforms?
 									</div>
-									<div className="collapse-content font-normal text-i04">
+									<div className="collapse-content font-normal text-i04 lg:text-lg">
 										<p>
 											We're not always in the position that we want to be at.
 											We're constantly growing. We're constantly making
@@ -751,10 +858,10 @@ export default function Landing() {
 										checked={open === 2}
 										onChange={() => handleOpen(2)}
 									/>
-									<div className="collapse-title text-left font-medium text-white">
+									<div className="collapse-title text-left font-medium text-white lg:text-lg">
 										How does Idealibs support the development of design skills?
 									</div>
-									<div className="collapse-content font-normal text-i04">
+									<div className="collapse-content font-normal text-i04 lg:text-lg">
 										<p>
 											We're not always in the position that we want to be at.
 											We're constantly growing. We're constantly making
@@ -770,10 +877,10 @@ export default function Landing() {
 										checked={open === 3}
 										onChange={() => handleOpen(3)}
 									/>
-									<div className="collapse-title text-left font-medium text-white">
+									<div className="collapse-title text-left font-medium text-white lg:text-lg">
 										What are the benefits of being a premium user on Idealibs?
 									</div>
-									<div className="collapse-content font-normal text-i04">
+									<div className="collapse-content font-normal text-i04 lg:text-lg">
 										<p>
 											We're not always in the position that we want to be at.
 											We're constantly growing. We're constantly making
@@ -789,10 +896,10 @@ export default function Landing() {
 										checked={open === 4}
 										onChange={() => handleOpen(4)}
 									/>
-									<div className="collapse-title text-left font-medium text-white">
+									<div className="collapse-title text-left font-medium text-white lg:text-lg">
 										How does Idealibs stay abreast of the latest design trends?
 									</div>
-									<div className="collapse-content font-normal text-i04">
+									<div className="collapse-content font-normal text-i04 lg:text-lg">
 										<p>
 											We're not always in the position that we want to be at.
 											We're constantly growing. We're constantly making
@@ -803,42 +910,42 @@ export default function Landing() {
 								</div>
 							</div>
 						</div>
-						<div className="flex container justify-center bg-gradient-to-r from-iorange to-ipink mt-12">
-							<div className="w-2/4 py-7">
-								<p className="text-center font-medium text-sm mb-4 px-8">
-									Enter Idealibs to get lots of inspiration
-								</p>
-								<div className="flex flex-row justify-center">
+						<div className="flex container justify-center bg-gradient-to-r from-iorange to-ipink mt-12 lg:mt-20">
+							<div className="w-1/2 py-7 lg:px-48 lg:py-20">
+								<div>
+									<p className="text-center font-medium text-sm mb-4 px-8 lg:text-3xl lg:mb-8">
+										Enter Idealibs to get lots of inspiration
+									</p>
+								</div>
+								<div className="flex justify-center">
 									<button
 										type="button"
-										className="rounded-full border-2 border-white bg-transparent h-10 mr-3"
+										className="btn btn-outline rounded-full border-2 font-medium border-white text-white px-7 mr-3 hover:border-white hover:bg-white hover:text-i02"
 									>
-										<span className="block font-semibold text-sm px-5">
-											Login
-										</span>
-										
+										Login
 									</button>
-									<button type="button" className="rounded-full bg-white h-10">
-										<span className="block font-semibold text-sm text-black px-5">
-											Register
-										</span>
+									<button
+										type="button"
+										className="btn btn-neutral rounded-full border-0 font-medium text-black bg-white px-7 hover:bg-white"
+									>
+										Register
 									</button>
 								</div>
 							</div>
 						</div>
 						<div
 							id="footer"
-							className="flex container justify-between items-center bg-white px-7 py-5"
+							className="flex container justify-between items-center bg-white px-7 py-5 lg:px-24 lg:py-8"
 						>
 							<div>
 								<img
-									className="h-3.5"
+									className="h-3.5 lg:h-4"
 									src="/images/Logo-Fot-Mobile.png"
 									alt="Idealibs Footer"
 								/>
 							</div>
-							<div className="h-4">
-								<p className="text-right font-bold text-sm text-black">
+							<div>
+								<p className="text-right font-bold text-sm text-black lg:text-base">
 									&copy;Copyright 2024
 								</p>
 							</div>

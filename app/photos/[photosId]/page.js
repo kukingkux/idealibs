@@ -1,13 +1,15 @@
 "use client";
 
 import Card from "@/components/gridcard";
-import SideNavigation from "@/components/sidebar";
+import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 
 import { useEffect, useState } from "react";
 
 export default function PhotoDetails( {params}  ) {
+
     const [imgTitle, setImgTitle] = useState('')
+
     useEffect(() => {
         if(params.photosId == 1) {
             setImgTitle("The Enchanting Dance of Coconut Trees in the Breeze")
@@ -39,6 +41,8 @@ export default function PhotoDetails( {params}  ) {
         else if ( params.photosId == 10 ) {
             setImgTitle("A Person Sitting on a Couch while Using iPad")
         }
+
+        // setImgBgWidth(ref.current.clientWidth)
     })
 
     return(
@@ -48,7 +52,7 @@ export default function PhotoDetails( {params}  ) {
             <div className="drawer-content flex flex-col items-center justify-center">
                 <div id="content" className="flex container max-w-full">
                     <SideNavigation />
-                    <div id="right-content" className="min-h-screen lg:w-3/4">
+                    <div id="right-content" className="min-h-screen md:w-full">
                         <TopNavigation />
                        
                         <div id="mobile-scrollable" className="">
@@ -92,11 +96,18 @@ export default function PhotoDetails( {params}  ) {
                                     </div>
                                 </div>
                                 <div className="md:flex gap-8">
-                                    <div className="lg:w-3/4">  
-                                        <img
-                                            src={`/images/Img-Image` + params.photosId + `.png`}
-                                            className="w-full rounded-lg overflow-hidden" 
-                                        />
+                                    <div className="lg:w-3/4">
+                                        <div
+                                            className="w-full h-96 aspect-video bg-cover rounded-lg" style={{backgroundImage: `url('/images/Img-Image` + params.photosId + `.png')`}}
+                                        >
+                                            <div className="backdrop-blur-md h-96 rounded-lg flex justify-center">
+                                                <img
+                                                    src={`/images/Img-Image` + params.photosId + `.png`}
+                                                    className="h-full overflow-hidden object-contain"
+                                                />
+                                            </div>
+                                            
+                                        </div>
                                         <div className="flex gap-4 items-center justify-between py-5 mb-5">
                                             <h1 className="font-semibold text-xl">{imgTitle}</h1>
                                         </div>
@@ -203,11 +214,32 @@ export default function PhotoDetails( {params}  ) {
 								</div>
                             </div>
                         </div>
-                 </div>
-                    
+                </div>
+                
                 </div>
             </div>
-            
+            <div className="drawer-side">
+					<div className="bg-i02 min-h-screen w-full md:w-1/2 z-10 px-7">
+						<div className="container py-6">
+							<button className="btn btn-square bg-i03 h-10">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									strokeWidth={2}
+									stroke="currentColor"
+									className="w-7 h-7 text-white"
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M6 18 18 6M6 6l12 12"
+									/>
+								</svg>
+							</button>
+						</div>
+						<SideNavigationMobile />
+					</div>
+				</div>
         </div>
     </main>
     )
