@@ -9,7 +9,7 @@ export function SideNavigation() {
     const container = useRef(null)
 
     useLayoutEffect(() => {
-        setHeight(container.current.clientHeight - ref.current.clientHeight - 50)
+        setHeight(container.current.clientHeight - ref.current.clientHeight - 20)
     }, [])
 
     return (
@@ -162,30 +162,28 @@ export function SideNavigation() {
                     </a>
                 </div>
                 <div>
-                    <div className="flex flex-col gap-10 bg-gradient-to-r from-iorange to-ipink rounded-xl p-5 gap-12">
+                    <div className="flex flex-col gap-4 bg-gradient-to-r from-iorange to-ipink rounded-xl p-4">
                         <div
-                            className="flex align-center mb-4"
+                            className="flex align-center"
                         >
                             <img
-                                className="hidden h-8 lg:block"
+                                className="hidden h-6 lg:block"
                                 src="/images/Logo-IdealibsWhite.png"
                                 alt="Idealibs Logo"
                             />
-
-                            
                         </div>
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-4">
                             <h2
-                                className="font-bold text-xl"
+                                className="font-bold text-xs"
                             >
                                 Upgrade Premium
                             </h2>
                             <p
-                                className="text-md leading-loose"
+                                className="text-xs"
                             >
                             Upgrade premium and get a variety of interesting and high-quality assets
                             </p>
-                            <button className="flex justify-center items-center gap-2 rounded-iform w-full py-5 bg-white text-black font-semibold">
+                            <button className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm">
                                 Upgrade now
                             </button>
                         </div>

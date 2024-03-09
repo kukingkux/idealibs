@@ -1,6 +1,6 @@
 "use client";
 
-import Card from "@/components/gridcard";
+import CardColors from "@/components/cardcolors";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 
@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 export default function PhotoDetails( {params}  ) {
 
     const [imgTitle, setImgTitle] = useState('')
+
+    const [c1, c2, c3, c4] = ["fff", "eee", "aaa", "000"]
 
     useEffect(() => {
         if(params.photosId == 1) {
@@ -95,24 +97,27 @@ export default function PhotoDetails( {params}  ) {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="lg:flex gap-8">
+                                <div className="flex flex-col gap-8">
                                     <div className="lg:w-3/4">
-                                        <div
-                                            className="md:w-full md:h-96 md:aspect-video bg-cover rounded-lg" style={{backgroundImage: `url('/images/Img-Image` + params.photosId + `.png')`}}
-                                        >
-                                            <div className="backdrop-blur-md md:h-96 rounded-lg md:flex justify-center">
-                                                <img
-                                                    src={`/images/Img-Image` + params.photosId + `.png`}
-                                                    className="h-full overflow-hidden object-contain"
-                                                />
-                                            </div>
-                                            
-                                        </div>
-                                        <div className="flex gap-4 items-center justify-between py-5 mb-5">
-                                            <h1 className="font-semibold text-xl">{imgTitle}</h1>
+                                        <div className="w-full h-36 lg:h-96 flex">
+                                            <div
+                                                className="w-full w-1/4"
+                                                style={{backgroundColor: '#'+c1}}
+                                            ></div>
+                                            <div
+                                                className="w-full w-1/4"
+                                                style={{backgroundColor: '#'+c2}}
+                                            ></div>
+                                            <div
+                                                className="w-full w-1/4"
+                                                style={{backgroundColor: '#'+c3}}
+                                            ></div>
+                                            <div
+                                                className="w-full w-1/4"
+                                                style={{backgroundColor: '#'+c4}}
+                                            ></div>
                                         </div>
                                     </div>
-
                                     
                                     <div
                                         className="flex flex-col gap-4 mb-10 lg:w-1/2"
@@ -121,25 +126,16 @@ export default function PhotoDetails( {params}  ) {
                                             <div
                                                 className="flex align-center gap-6 mb-4"
                                             >
-                                                <svg width="27" height="27" viewBox="0 0 27 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M14.4844 3.96875C15.0188 3.64062 15.375 3.04531 15.375 2.375C15.375 1.33906 14.5359 0.5 13.5 0.5C12.4641 0.5 11.625 1.33906 11.625 2.375C11.625 3.05 11.9812 3.64062 12.5156 3.96875L9.82969 9.34063C9.40312 10.1938 8.29688 10.4375 7.55156 9.84219L3.375 6.5C3.60938 6.18594 3.75 5.79688 3.75 5.375C3.75 4.33906 2.91094 3.5 1.875 3.5C0.839062 3.5 0 4.33906 0 5.375C0 6.41094 0.839062 7.25 1.875 7.25C1.88437 7.25 1.89844 7.25 1.90781 7.25L4.05 19.0344C4.30781 20.4594 5.55 21.5 7.00312 21.5H19.9969C21.4453 21.5 22.6875 20.4641 22.95 19.0344L25.0922 7.25C25.1016 7.25 25.1156 7.25 25.125 7.25C26.1609 7.25 27 6.41094 27 5.375C27 4.33906 26.1609 3.5 25.125 3.5C24.0891 3.5 23.25 4.33906 23.25 5.375C23.25 5.79688 23.3906 6.18594 23.625 6.5L19.4484 9.84219C18.7031 10.4375 17.5969 10.1938 17.1703 9.34063L14.4844 3.96875Z" fill="url(#paint0_linear_1027_746)"/>
-                                                    <defs>
-                                                        <linearGradient id="paint0_linear_1027_746" x1="0" y1="21.5" x2="30.5965" y2="11.4573" gradientUnits="userSpaceOnUse">
-                                                        <stop stop-color="#FC6736"/>
-                                                        <stop offset="1" stop-color="#FC36D0"/>
-                                                        </linearGradient>
-                                                    </defs>
-                                                </svg>
                                                 <h2
                                                     className="font-bold text-xl"
                                                 >
-                                                    Premium Item
+                                                    Free Item
                                                 </h2>
                                             </div>
                                             <p
                                                 className="text-md leading-loose"
                                             >
-                                            Unlock unlimited, ad-free, and premium content for an elevated design experience!
+                                            Explore high-quality resources for free and elevate your projects!
                                             </p>
                                         </div>
                                         <div className="bg-i02 flex flex-col gap-4 rounded-lg p-5">
@@ -164,48 +160,101 @@ export default function PhotoDetails( {params}  ) {
                                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M2 7C2 6.44771 2.44772 6 3 6H11C11.5523 6 12 6.44772 12 7V17C12 17.5523 11.5523 18 11 18H3C2.44772 18 2 17.5523 2 17V7ZM4 10.25C4 9.83579 4.33579 9.5 4.75 9.5H9.25C9.66421 9.5 10 9.83579 10 10.25C10 10.6642 9.66421 11 9.25 11H4.75C4.33579 11 4 10.6642 4 10.25ZM4 13.75C4 13.3358 4.33579 13 4.75 13H9.25C9.66421 13 10 13.3358 10 13.75C10 14.1642 9.66421 14.5 9.25 14.5H4.75C4.33579 14.5 4 14.1642 4 13.75Z" fill="#FEFEFE"/>
                                                 </svg>
 
-                                                <p>Photos</p>
+                                                <p>Color</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="lg:w-7/12">
+                                <div className="lg:w-7/12 flex flex-col items-center">
                                     <div 
-                                        className="flex flex-col gap-4 mb-10"
+                                        className="grid grid-cols-2 gap-8 mb-10 w-2/3"
                                     >
-                                        <p className="text-i04">Description</p>
-                                        <p className="tracking-wide text-[#FEFEFE]">
-                                        Immerse yourself in the tranquil beauty of a coconut tree, standing tall against the canvas of a clear blue sky. Its slender trunk reaches for the heavens, adorned with a crown of lush green fronds swaying gracefully in the tropical breeze. Each frond whispers tales of island life and timeless serenity, creating a harmonious symphony with the rustle of leaves. This captivating image transports you to a paradisiacal oasis where the coconut tree reigns as a symbol of relaxation and coastal elegance.
-                                        </p>
+                                        <div className="flex flex-col gap-4 items-center justify-center">
+                                            <div
+                                            className="rounded-full w-24 h-24"
+                                            style={{backgroundColor: '#'+c1}}
+                                            >
+                                            </div>
+                                            <p>#{c1}</p>
+                                        </div>
+                                        <div className="flex flex-col gap-4 items-center justify-center">
+                                            <div
+                                            className="rounded-full w-24 h-24"
+                                            style={{backgroundColor: '#'+c2}}
+                                            >
+                                            </div>
+                                            <p>#{c2}</p>
+                                        </div>
+                                        <div className="flex flex-col gap-4 items-center justify-center">
+                                            <div
+                                            className="rounded-full w-24 h-24"
+                                            style={{backgroundColor: '#'+c3}}
+                                            >
+                                            </div>
+                                            <p>#{c3}</p>
+                                        </div>
+                                        <div className="flex flex-col gap-4 items-center justify-center">
+                                            <div
+                                            className="rounded-full w-24 h-24"
+                                            style={{backgroundColor: '#'+c4}}
+                                            >
+                                            </div>
+                                            <p>#{c4}</p>
+                                        </div>
                                     </div>
                                     <div 
                                         className="flex flex-col gap-4 mb-10"
                                     >
                                         <p className="text-i04">Tag(s)</p>
-                                        <div className="flex flex-wrap gap-4">
-                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Exoticism</div>
-                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Coastal Charm</div>
-                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Verdancy</div>
-                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Destination</div>
-                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Beauty</div>
-                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Myserious</div>
-                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Coconut</div>
+                                        <div className="flex flex-wrap justify-center gap-4">
+                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Purple</div>
+                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Pink</div>
+                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Kids</div>
+                                            <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Happy</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div 
                                     className="flex flex-col gap-4 mb-10"
                                 >
-                                    <p className="text-i04">More Photos</p>
+                                    <p className="text-i04">More Colors</p>
                                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                                        <Card src="/images/Img-Image4.png" />
-                                        <Card src="/images/Img-Image2.png" />
-                                        <Card src="/images/Img-Image3.png" />
-                                        <Card src="/images/Img-Image5.png" />
-                                        <Card src="/images/Img-Image6.png" />
-                                        <Card src="/images/Img-Image7.png" />
-                                        <Card src="/images/Img-Image8.png" />
-                                        <Card src="/images/Img-Image9.png" />
+                                    <CardColors
+											c1="C3E2C2"
+											c2="EAECCC"
+											c3="DBCC95"
+											c4="CD8D7A"
+										/>
+                                        <CardColors
+											c1="B4B4B8"
+											c2="C7C8CC"
+											c3="E3E1D9"
+											c4="F2EFE5"
+										/>
+                                        <CardColors
+											c1="A94438"
+											c2="D24545"
+											c3="E6BAA3"
+											c4="E4DEBE"
+										/>
+                                        <CardColors
+											c1="FAEF9B"
+											c2="F6D776"
+											c3="6DA4AA"
+											c4="647D87"
+										/>
+                                        <CardColors
+											c1="F3F8FF"
+											c2="E26EE5"
+											c3="7E30E1"
+											c4="49108B"
+										/>
+                                        <CardColors
+											c1="527853"
+											c2="F9E8D9"
+											c3="F7B787"
+											c4="EE7214"
+										/>
                                     </div>
                                     
                                 </div>

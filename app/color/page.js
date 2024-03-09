@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import CardColors from "@/components/cardcolors";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from '@/public/images/Img-Hero-Color.png';
@@ -90,60 +91,78 @@ export default function ColorPage() {
 							<div id="mobile-scrollable" className="">
 								<div className="mb-2">
                                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-7 p-7">
-                                        <div
-                                            className="w-full flex flex-col gap-4"
-                                        >
-                                            <div className="w-full h-48 lg:h-96">
-                                                <div
-                                                    className="w-full h-1/4 bg-[#1F2544] rounded-t-lg"
-                                                ></div>
-                                                <div
-                                                    className="w-full h-1/4 bg-[#474F7A]"
-                                                ></div>
-                                                <div
-                                                    className="w-full h-1/4 bg-[#81689D]"
-                                                ></div>
-                                                <div
-                                                    className="w-full h-1/4 bg-[#FFD0EC] rounded-b-lg"
-                                                ></div>
-                                            </div>
-                                            <div
-                                                className="border-2 border-white rounded-iform py-3 px-7 flex justify-between items-center"
-                                            >
-                                                <svg width="24" height="28" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M14.6611 2.76867C15.5783 2.87511 16.25 3.66583 16.25 4.58916V17.5L10 14.375L3.75 17.5V4.58916C3.75 3.66583 4.42173 2.87511 5.3389 2.76867C6.86797 2.59122 8.42333 2.5 10 2.5C11.5767 2.5 13.132 2.59122 14.6611 2.76867Z" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                                <p>Save</p>
-                                                <div className="w-1/6 lg:w-1/12"></div>
-                                            </div>
-                                        </div>
-                                        <div
-                                            className="w-full flex flex-col gap-4"
-                                        >
-                                            <div className="w-full h-48 lg:h-96">
-                                                <div
-                                                    className="w-full h-1/4 bg-[#1F2544] rounded-t-lg"
-                                                ></div>
-                                                <div
-                                                    className="w-full h-1/4 bg-[#474F7A]"
-                                                ></div>
-                                                <div
-                                                    className="w-full h-1/4 bg-[#81689D]"
-                                                ></div>
-                                                <div
-                                                    className="w-full h-1/4 bg-[#FFD0EC] rounded-b-lg"
-                                                ></div>
-                                            </div>
-                                            <div
-                                                className="border-2 border-white rounded-iform py-3 px-7 flex justify-between items-center"
-                                            >
-                                                <svg width="24" height="28" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M14.6611 2.76867C15.5783 2.87511 16.25 3.66583 16.25 4.58916V17.5L10 14.375L3.75 17.5V4.58916C3.75 3.66583 4.42173 2.87511 5.3389 2.76867C6.86797 2.59122 8.42333 2.5 10 2.5C11.5767 2.5 13.132 2.59122 14.6611 2.76867Z" stroke="#FEFEFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                                <p>Save</p>
-                                                <div className="w-1/6 lg:w-1/12"></div>
-                                            </div>
-                                        </div>
+                                        <CardColors
+											c1="1f2544"
+											c2="474f7a"
+											c3="81689d"
+											c4="ffd0ec"
+										/>
+                                        <CardColors
+											c1="C3E2C2"
+											c2="EAECCC"
+											c3="DBCC95"
+											c4="CD8D7A"
+										/>
+                                        <CardColors
+											c1="B4B4B8"
+											c2="C7C8CC"
+											c3="E3E1D9"
+											c4="F2EFE5"
+										/>
+                                        <CardColors
+											c1="A94438"
+											c2="D24545"
+											c3="E6BAA3"
+											c4="E4DEBE"
+										/>
+                                        <CardColors
+											c1="FAEF9B"
+											c2="F6D776"
+											c3="6DA4AA"
+											c4="647D87"
+										/>
+                                        <CardColors
+											c1="F3F8FF"
+											c2="E26EE5"
+											c3="7E30E1"
+											c4="49108B"
+										/>
+                                        <CardColors
+											c1="527853"
+											c2="F9E8D9"
+											c3="F7B787"
+											c4="EE7214"
+										/>
+                                        <CardColors
+											c1="7ED7C1"
+											c2="F0DBAF"
+											c3="DC8686"
+											c4="B06161"
+										/>
+                                        <CardColors
+											c1="FAEF9B"
+											c2="F6D776"
+											c3="6DA4AA"
+											c4="647D87"
+										/>
+                                        <CardColors
+											c1="F3F8FF"
+											c2="E26EE5"
+											c3="7E30E1"
+											c4="49108B"
+										/>
+                                        <CardColors
+											c1="527853"
+											c2="F9E8D9"
+											c3="F7B787"
+											c4="EE7214"
+										/>
+                                        <CardColors
+											c1="7ED7C1"
+											c2="F0DBAF"
+											c3="DC8686"
+											c4="B06161"
+										/>
                                     </div>
 								</div>
 							</div>
