@@ -10,7 +10,7 @@ export default function TopNavigation() {
     return (
         <div
             id="navbar"
-            className="sticky top-0 container bg-i02 py-6 px-7 z-50 lg:px-10"
+            className="sticky top-0 bg-i02 py-6 px-7 z-50 lg:px-10"
         >
             <div className="flex justify-between items-center">
                 <label

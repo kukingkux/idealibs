@@ -98,8 +98,8 @@ export default function PhotoDetails( {params}  ) {
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-8">
-                                    <div className="lg:w-3/4">
-                                        <div className="w-full h-36 lg:h-96 flex">
+                                    <div className="lg:w-full">
+                                        <div className="w-full h-36 lg:h-44 flex">
                                             <div
                                                 className="w-full w-1/4"
                                                 style={{backgroundColor: '#'+c1}}
@@ -120,9 +120,9 @@ export default function PhotoDetails( {params}  ) {
                                     </div>
                                     
                                     <div
-                                        className="flex flex-col gap-4 mb-10 lg:w-1/2"
+                                        className="flex flex-col md:flex-row gap-4 mb-10 lg:w-full"
                                     >
-                                        <div className="bg-i02 rounded-lg p-5">
+                                        <div className="bg-i02 rounded-lg p-5 lg:w-full">
                                             <div
                                                 className="flex align-center gap-6 mb-4"
                                             >
@@ -138,7 +138,7 @@ export default function PhotoDetails( {params}  ) {
                                             Explore high-quality resources for free and elevate your projects!
                                             </p>
                                         </div>
-                                        <div className="bg-i02 flex flex-col gap-4 rounded-lg p-5">
+                                        <div className="bg-i02 flex flex-col gap-4 rounded-lg p-5 lg:w-full">
                                             <h2
                                                 className="font-bold text-xl"
                                             >
@@ -165,9 +165,9 @@ export default function PhotoDetails( {params}  ) {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="lg:w-7/12 flex flex-col items-center">
+                                <div className="lg:w-full flex flex-col items-center">
                                     <div 
-                                        className="grid grid-cols-2 gap-8 mb-10 w-2/3"
+                                        className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-0 mb-10 w-2/3 lg:w-7/12"
                                     >
                                         <div className="flex flex-col gap-4 items-center justify-center">
                                             <div
@@ -205,7 +205,7 @@ export default function PhotoDetails( {params}  ) {
                                     <div 
                                         className="flex flex-col gap-4 mb-10"
                                     >
-                                        <p className="text-i04">Tag(s)</p>
+                                        <p className="text-i04 md:hidden">Tag(s)</p>
                                         <div className="flex flex-wrap justify-center gap-4">
                                             <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Purple</div>
                                             <div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">Pink</div>
@@ -217,7 +217,7 @@ export default function PhotoDetails( {params}  ) {
                                 <div 
                                     className="flex flex-col gap-4 mb-10"
                                 >
-                                    <p className="text-i04">More Colors</p>
+                                    <p className="text-[#fefefe] md:text-center">More Colors</p>
                                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                                     <CardColors
 											c1="C3E2C2"
@@ -259,7 +259,7 @@ export default function PhotoDetails( {params}  ) {
                                     
                                 </div>
                                 <div className="flex flex-wrap justify-center gap-4 mb-6">
-									<a href="#" className="font-bold rounded-iform py-4 px-8 border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink hover:bg-transparent">See more photos</a>
+									<a href="#" className="font-bold rounded-iform py-4 px-8 border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink hover:bg-transparent">See more colors</a>
 								</div>
                             </div>
                         </div>
