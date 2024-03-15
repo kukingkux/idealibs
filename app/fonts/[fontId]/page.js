@@ -18,7 +18,6 @@ export default function PhotoDetails( {params}  ) {
                     <SideNavigation />
                     <div id="right-content" className="min-h-screen md:w-full">
                         <TopNavigation />
-                       
                         <div id="mobile-scrollable" className="">
                             <div className="px-7">
                                 <div className="flex justify-between items-center mt-7 mb-12">
@@ -115,20 +114,20 @@ export default function PhotoDetails( {params}  ) {
                                         className="flex flex-col gap-4 mb-10"
                                     >
                                         <p className="text-i04">Details</p>
-                                        <table className="text-left">
+                                        <table className="text-left h-96">
                                             <tr className="p-5">
                                                 <th>Font name</th>
                                                 <td>Plus Jakarta Sans</td>
                                             </tr>
-                                            <tr>
+                                            <tr className="border-y-2 border-i02">
                                                 <th>Author</th>
                                                 <td>Tokotype</td>
                                             </tr>
-                                            <tr>
+                                            <tr className="border-y-2 border-i02">
                                                 <th>Category</th>
                                                 <td>Sans</td>
                                             </tr>
-                                            <tr>
+                                            <tr className="border-y-2 border-i02">
                                                 <th>Release Date</th>
                                                 <td>23 May 2022</td>
                                             </tr>
