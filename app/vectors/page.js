@@ -5,9 +5,9 @@ import { useState } from "react";
 import CardColors from "@/components/cardcolors";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
-import bg from '@/public/images/Img-Hero-Color.png';
+import bg from '@/public/images/Img-Hero-Vector.png';
 
-export default function ColorPage() {
+export default function VectorPage() {
 	const [open, setOpen] = useState(1);
 	const [active, setActive] = useState(null);
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function ColorPage() {
 								className="flex container flex-col items-center p-7"
 							>
 								<div className="md:inline-block  w-full">
-									<div className="flex flex-col justify-between p-4 lg:p-8 bg-cover rounded-lg " style={{backgroundImage: `url(${bg.src})`}}>
+									<div className="flex flex-col justify-between p-4 lg:p-8 bg-cover rounded-lg" style={{backgroundImage: `url(${bg.src})`}}>
 										<img
 										className="w-24 "
 										src="/images/Logo-Nav-Desktop.png"
@@ -40,7 +40,7 @@ export default function ColorPage() {
 										/>
 										<div>
 											<p className="font-medium lg:font-semibold text-lg lg:text-2xl pt-32 lg:pt-20 mb-2">An ideal library of ideas to develop your creative mind.</p>
-											<p className="font-regular text-sm pe-72  hidden lg:block">Immerse yourself in a kaleidoscope of possibilities with our extensive collection of vibrant color palettes. From bold hues to subtle tones, Idealibs offers a diverse palette playground to elevate your design journey.</p>
+											<p className="font-regular text-sm pe-96  hidden lg:block">Use vectors of the best quality that can support your design.</p>
 										</div>
 										
 									</div>

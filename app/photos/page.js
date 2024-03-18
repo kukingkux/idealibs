@@ -39,7 +39,7 @@ export default function Dashboard() {
 										alt="Img-Login"
 										/>
 										<div>
-											<p className="font-medium lg:font-semibold text-lg lg:text-2xl pt-32 lg:pt-28 pe-24 mb-2">An ideal library of ideas to develop your creative mind.</p>
+											<p className="font-medium lg:font-semibold text-lg lg:text-2xl pt-32 lg:pt-20 pe-24 mb-2">An ideal library of ideas to develop your creative mind.</p>
 											<p className="font-regular text-sm pe-12 hidden lg:block">Enjoy Full Access to Premium Resources, Unlimited Mockups, and an Unforgettable Design Experience. Become a Featured Designer and Experience Creative Freedom with Idealibs Premium!"</p>
 										</div>
 										

@@ -40,7 +40,7 @@ export default function ColorPage() {
 										alt="Img-Login"
 										/>
 										<div>
-											<p className="font-medium lg:font-semibold text-lg lg:text-2xl pt-32 lg:pt-28 mb-2">When words are beautiful, fonts are what create the magic!</p>
+											<p className="font-medium lg:font-semibold text-lg lg:text-2xl pt-32 lg:pt-20 mb-2">When words are beautiful, fonts are what create the magic!</p>
 											<p className="font-regular text-sm pe-96  hidden lg:block">Discover the beauty and uniqueness in every letter with our inspiring font collection. From classic to modern styles, we provide a wide selection of fonts that can enhance the appearance of your design.</p>
 										</div>
 										

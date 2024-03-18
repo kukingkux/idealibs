@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 
 export function SideNavigation() {
@@ -27,7 +28,7 @@ export function SideNavigation() {
             </div>
             <div className="flex flex-col justify-between mt-3"  style={{height}}>
                 <div className="grid grid-cols-1 gap-3">
-                    <a href="#" onClick={() => handleActive(1)}>
+                    <Link href="#" onClick={() => handleActive(1)}>
                         <div
                             aria-selected={active === 1}
                             className="flex rounded-lg text-i04 text-sm py-3 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -48,9 +49,9 @@ export function SideNavigation() {
                             </span>
                             Home
                         </div>
-                    </a>
+                    </Link>
                     <div className="text-i04 text-sm py-1">Assets</div>
-                    <a href="#" onClick={() => handleActive(2)}>
+                    <Link href="/photos" onClick={() => handleActive(2)}>
                         <div
                             aria-selected={active === 2}
                             className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -71,8 +72,8 @@ export function SideNavigation() {
                             </span>
                             Photos
                         </div>
-                    </a>
-                    <a href="#" onClick={() => handleActive(3)}>
+                    </Link>
+                    <Link href="/colors" onClick={() => handleActive(3)}>
                         <div
                             aria-selected={active === 3}
                             className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -89,8 +90,8 @@ export function SideNavigation() {
                             </span>
                             Colors Palette
                         </div>
-                    </a>
-                    <a href="#" onClick={() => handleActive(4)}>
+                    </Link>
+                    <Link href="/fonts" onClick={() => handleActive(4)}>
                         <div
                             aria-selected={active === 4}
                             className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -107,8 +108,8 @@ export function SideNavigation() {
                             </span>
                             Fonts
                         </div>
-                    </a>
-                    <a href="#" onClick={() => handleActive(5)}>
+                    </Link>
+                    <Link href="/vectors" onClick={() => handleActive(5)}>
                         <div
                             aria-selected={active === 5}
                             className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -125,8 +126,8 @@ export function SideNavigation() {
                             </span>
                             Vectors
                         </div>
-                    </a>
-                    <a href="#" onClick={() => handleActive(6)}>
+                    </Link>
+                    <Link href="/mockups" onClick={() => handleActive(6)}>
                         <div
                             aria-selected={active === 6}
                             className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -143,8 +144,8 @@ export function SideNavigation() {
                             </span>
                             Mockups
                         </div>
-                    </a>
-                    <a href="#" onClick={() => handleActive(7)}>
+                    </Link>
+                    <Link href="/icons" onClick={() => handleActive(7)}>
                         <div
                             aria-selected={active === 7}
                             className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -159,7 +160,7 @@ export function SideNavigation() {
                             </svg>
                             Icons
                         </div>
-                    </a>
+                    </Link>
                 </div>
                 <div>
                     <div className="flex flex-col gap-4 bg-gradient-to-r from-iorange to-ipink rounded-xl p-4">
@@ -201,7 +202,7 @@ export function SideNavigationMobile() {
 	const handleActive = (value) => setActive(value);
     return (
         <div className="grid grid-cols-1 gap-3 pt-3">
-            <a href="#" onClick={() => handleActive(1)}>
+            <Link href="#" onClick={() => handleActive(1)}>
                 <div
                     aria-selected={active === 1}
                     className="flex rounded-lg text-i04 text-sm py-2.5 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -222,9 +223,9 @@ export function SideNavigationMobile() {
                     </span>
                     Home
                 </div>
-            </a>
+            </Link>
             <div className="text-i04 text-sm py-1">Assets</div>
-            <a href="#" onClick={() => handleActive(2)}>
+            <Link href="/photos" onClick={() => handleActive(2)}>
                 <div
                     aria-selected={active === 2}
                     className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -245,8 +246,8 @@ export function SideNavigationMobile() {
                     </span>
                     Photos
                 </div>
-            </a>
-            <a href="#" onClick={() => handleActive(3)}>
+            </Link>
+            <Link href="/colors" onClick={() => handleActive(3)}>
                 <div
                     aria-selected={active === 3}
                     className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -263,8 +264,8 @@ export function SideNavigationMobile() {
                     </span>
                     Colors Palette
                 </div>
-            </a>
-            <a href="#" onClick={() => handleActive(4)}>
+            </Link>
+            <Link href="/fonts" onClick={() => handleActive(4)}>
                 <div
                     aria-selected={active === 4}
                     className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -281,8 +282,8 @@ export function SideNavigationMobile() {
                     </span>
                     Fonts
                 </div>
-            </a>
-            <a href="#" onClick={() => handleActive(5)}>
+            </Link>
+            <Link href="/vectors" onClick={() => handleActive(5)}>
                 <div
                     aria-selected={active === 5}
                     className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -299,8 +300,8 @@ export function SideNavigationMobile() {
                     </span>
                     Vectors
                 </div>
-            </a>
-            <a href="#" onClick={() => handleActive(6)}>
+            </Link>
+            <Link href="/mockups" onClick={() => handleActive(6)}>
                 <div
                     aria-selected={active === 6}
                     className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -317,8 +318,8 @@ export function SideNavigationMobile() {
                     </span>
                     Mockups
                 </div>
-            </a>
-            <a href="#" onClick={() => handleActive(7)}>
+            </Link>
+            <Link href="/icons" onClick={() => handleActive(7)}>
                 <div
                     aria-selected={active === 7}
                     className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
@@ -333,7 +334,7 @@ export function SideNavigationMobile() {
                     </svg>
                     Icons
                 </div>
-            </a>
+            </Link>
         </div>
     )
 }
