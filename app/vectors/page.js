@@ -7,7 +7,7 @@ import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Vector.png";
 
-export default function VectorPage() {
+export default function VectorsPage() {
 	const [open, setOpen] = useState(1);
 	const [active, setActive] = useState(null);
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -34,7 +34,10 @@ export default function VectorPage() {
 								<div className="md:inline-block  w-full">
 									<div
 										className="flex flex-col justify-between p-4 lg:p-8 bg-cover rounded-lg"
-										style={{ backgroundImage: `url(${bg.src})` }}
+										style={{
+											backgroundImage: `url(${bg.src})`,
+											backgroundPosition: "center",
+										}}
 									>
 										<img
 											className="w-24 "
@@ -43,7 +46,7 @@ export default function VectorPage() {
 										/>
 										<div>
 											<p className="font-medium lg:font-semibold text-lg lg:text-2xl pt-32 lg:pt-20 mb-2">
-												An ideal library of ideas to develop your creative mind.
+												Find vectors with the best quality
 											</p>
 											<p className="font-regular text-sm pe-96  hidden lg:block">
 												Use vectors of the best quality that can support your
@@ -116,7 +119,7 @@ export default function VectorPage() {
 												fill="#FEFEFE"
 											/>
 										</svg>
-										Upload Color
+										Upload Vector
 									</button>
 									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold">
 										<svg
@@ -133,7 +136,7 @@ export default function VectorPage() {
 												fill="#FEFEFE"
 											/>
 										</svg>
-										AI Image
+										AI Vector
 									</button>
 								</div>
 								<div className="flex flex-wrap gap-4 mb-6">
@@ -141,31 +144,22 @@ export default function VectorPage() {
 										All
 									</div>
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-										Pastel
+										Popular
 									</div>
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Blue
+										New
 									</div>
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Brown
+										Animal
 									</div>
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Retro
+										Man
 									</div>
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-										Neon
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Light
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Dark
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-										Vintage
+										Transportation
 									</div>
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-16 border">
-										See more tags
+										See more category
 									</div>
 								</div>
 							</div>

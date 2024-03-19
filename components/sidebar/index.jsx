@@ -20,9 +20,9 @@ export function SideNavigation() {
 							/>
 						</div>
 						<div className="grid grid-cols-1 gap-3">
-							<Link href="/dashboard">
+							<Link href="/home">
 								<div
-									aria-selected={pathname == "/dashboard"}
+									aria-selected={pathname.startsWith("/home")}
 									className="flex rounded-lg text-i04 text-sm py-3 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 								>
 									<span>
@@ -45,7 +45,7 @@ export function SideNavigation() {
 							<div className="text-i04 text-sm py-1">Assets</div>
 							<Link href="/photos">
 								<div
-									aria-selected={pathname == "/photos"}
+									aria-selected={pathname.startsWith("/photos")}
 									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 								>
 									<span>
@@ -67,7 +67,7 @@ export function SideNavigation() {
 							</Link>
 							<Link href="/colors">
 								<div
-									aria-selected={pathname == "/colors"}
+									aria-selected={pathname.startsWith("/colors")}
 									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 								>
 									<span>
@@ -85,7 +85,7 @@ export function SideNavigation() {
 							</Link>
 							<Link href="/fonts">
 								<div
-									aria-selected={pathname == "/fonts"}
+									aria-selected={pathname.startsWith("/fonts")}
 									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 								>
 									<span>
@@ -103,7 +103,7 @@ export function SideNavigation() {
 							</Link>
 							<Link href="/vectors">
 								<div
-									aria-selected={pathname == "/vectors"}
+									aria-selected={pathname.startsWith("/vectors")}
 									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 								>
 									<span>
@@ -121,7 +121,7 @@ export function SideNavigation() {
 							</Link>
 							<Link href="/mockups">
 								<div
-									aria-selected={pathname == "/mockups"}
+									aria-selected={pathname.startsWith("/mockups")}
 									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 								>
 									<span>
@@ -139,7 +139,7 @@ export function SideNavigation() {
 							</Link>
 							<Link href="/icons">
 								<div
-									aria-selected={pathname == "/icons"}
+									aria-selected={pathname.startsWith("/icons")}
 									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 								>
 									<svg
@@ -187,9 +187,9 @@ export function SideNavigationMobile() {
 
 	return (
 		<div className="grid grid-cols-1 gap-3 pt-3">
-			<Link href="/dashboard">
+			<Link href="/home">
 				<div
-					aria-selected={pathname == "/dashboard"}
+					aria-selected={pathname.startsWith("/home")}
 					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 				>
 					<span>
@@ -212,7 +212,7 @@ export function SideNavigationMobile() {
 			<div className="text-i04 text-sm py-1">Assets</div>
 			<Link href="/photos">
 				<div
-					aria-selected={pathname == "/photos"}
+					aria-selected={pathname.startsWith("/photos")}
 					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 				>
 					<span>
@@ -234,7 +234,7 @@ export function SideNavigationMobile() {
 			</Link>
 			<Link href="/colors">
 				<div
-					aria-selected={pathname == "/colors"}
+					aria-selected={pathname.startsWith("/colors")}
 					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 				>
 					<span>
@@ -252,7 +252,7 @@ export function SideNavigationMobile() {
 			</Link>
 			<Link href="/fonts">
 				<div
-					aria-selected={pathname == "/fonts"}
+					aria-selected={pathname.startsWith("/fonts")}
 					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 				>
 					<span>
@@ -270,7 +270,7 @@ export function SideNavigationMobile() {
 			</Link>
 			<Link href="/vectors">
 				<div
-					aria-selected={pathname == "/vectors"}
+					aria-selected={pathname.startsWith("/vectors")}
 					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 				>
 					<span>
@@ -288,7 +288,7 @@ export function SideNavigationMobile() {
 			</Link>
 			<Link href="/mockups">
 				<div
-					aria-selected={pathname == "/mockups"}
+					aria-selected={pathname.startsWith("/mockups")}
 					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 				>
 					<span>
@@ -306,7 +306,7 @@ export function SideNavigationMobile() {
 			</Link>
 			<Link href="/icons">
 				<div
-					aria-selected={pathname == "/icons"}
+					aria-selected={pathname.startsWith("/icons")}
 					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
 				>
 					<svg

@@ -21,30 +21,30 @@ export default function CardColors({ c1, c2, c3, c4, id }) {
                     return <p key={index}>{data}</p>
                 })}
             </div> */}
-			<div className="w-full h-48 lg:h-96">
-				<div
-					className="w-full h-1/4 rounded-t-lg"
-					style={{ backgroundColor: "#" + c1 }}
-				></div>
-				<div
-					className="w-full h-1/4"
-					style={{ backgroundColor: "#" + c2 }}
-				></div>
-				<div
-					className="w-full h-1/4"
-					style={{ backgroundColor: "#" + c3 }}
-				></div>
-				<div
-					className="w-full h-1/4 rounded-b-lg"
-					style={{ backgroundColor: "#" + c4 }}
-				></div>
-				<Link
-					href={{
-						pathname: `/color/${id}`,
-					}}
-					className="rounded-lg z-10 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute bg-[radial-gradient(120.40%_180.55%_at_50.76%_60.29%,rgba(255,255,255,0.00)_0%,rgba(0,0,0,1)_100%)] inset-x-0 pt-30 text-white flex items-end"
-				></Link>
-			</div>
+			<Link
+				href={{
+					pathname: `/colors/${id}`,
+				}}
+			>
+				<div className="w-full h-48 lg:h-96">
+					<div
+						className="w-full h-1/4 rounded-t-lg"
+						style={{ backgroundColor: "#" + c1 }}
+					></div>
+					<div
+						className="w-full h-1/4"
+						style={{ backgroundColor: "#" + c2 }}
+					></div>
+					<div
+						className="w-full h-1/4"
+						style={{ backgroundColor: "#" + c3 }}
+					></div>
+					<div
+						className="w-full h-1/4 rounded-b-lg"
+						style={{ backgroundColor: "#" + c4 }}
+					></div>
+				</div>
+			</Link>
 			<div className="border-2 border-white rounded-iform py-3 px-7 flex justify-between items-center">
 				<svg
 					width="24"

@@ -5,7 +5,7 @@ import { useState } from "react";
 import Card from "@/components/gridmasonry";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
-import bg from "@/public/images/Img-Hero-Dashboard.png";
+import bg from "@/public/images/Img-Hero-Photo.png";
 
 export default function PhotosPage() {
 	const [open, setOpen] = useState(1);
@@ -34,7 +34,10 @@ export default function PhotosPage() {
 								<div className="md:inline-block  w-full">
 									<div
 										className="flex flex-col justify-between p-4 lg:p-8 bg-cover rounded-lg "
-										style={{ backgroundImage: `url(${bg.src})` }}
+										style={{
+											backgroundImage: `url(${bg.src})`,
+											backgroundPosition: "center",
+										}}
 									>
 										<img
 											className="w-24 "
@@ -43,7 +46,7 @@ export default function PhotosPage() {
 										/>
 										<div>
 											<p className="font-medium lg:font-semibold text-lg lg:text-2xl pt-32 lg:pt-20 pe-24 mb-2">
-												An ideal library of ideas to develop your creative mind.
+												An ideal library of ideas to develop your creative mind
 											</p>
 											<p className="font-regular text-sm pe-12 hidden lg:block">
 												Enjoy Full Access to Premium Resources, Unlimited
