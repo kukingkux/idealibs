@@ -5,9 +5,9 @@ import { useState } from "react";
 import CardColors from "@/components/cardcolors";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
-import bg from "@/public/images/Img-Hero-Vector.png";
+import bg from "@/public/images/Img-Hero-Color.png";
 
-export default function VectorPage() {
+export default function ColorsPage() {
 	const [open, setOpen] = useState(1);
 	const [active, setActive] = useState(null);
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -33,7 +33,7 @@ export default function VectorPage() {
 							>
 								<div className="md:inline-block  w-full">
 									<div
-										className="flex flex-col justify-between p-4 lg:p-8 bg-cover rounded-lg"
+										className="flex flex-col justify-between p-4 lg:p-8 bg-cover rounded-lg "
 										style={{ backgroundImage: `url(${bg.src})` }}
 									>
 										<img
@@ -45,9 +45,11 @@ export default function VectorPage() {
 											<p className="font-medium lg:font-semibold text-lg lg:text-2xl pt-32 lg:pt-20 mb-2">
 												An ideal library of ideas to develop your creative mind.
 											</p>
-											<p className="font-regular text-sm pe-96  hidden lg:block">
-												Use vectors of the best quality that can support your
-												design.
+											<p className="font-regular text-sm pe-72  hidden lg:block">
+												Immerse yourself in a kaleidoscope of possibilities with
+												our extensive collection of vibrant color palettes. From
+												bold hues to subtle tones, Idealibs offers a diverse
+												palette playground to elevate your design journey.
 											</p>
 										</div>
 									</div>
@@ -137,7 +139,7 @@ export default function VectorPage() {
 									</button>
 								</div>
 								<div className="flex flex-wrap gap-4 mb-6">
-									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
+									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
 										All
 									</div>
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
