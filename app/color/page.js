@@ -96,72 +96,84 @@ export default function ColorPage() {
 											c2="474f7a"
 											c3="81689d"
 											c4="ffd0ec"
+											id="1"
 										/>
                                         <CardColors
 											c1="C3E2C2"
 											c2="EAECCC"
 											c3="DBCC95"
 											c4="CD8D7A"
+											id="2"
 										/>
                                         <CardColors
 											c1="B4B4B8"
 											c2="C7C8CC"
 											c3="E3E1D9"
 											c4="F2EFE5"
+											id="3"
 										/>
                                         <CardColors
 											c1="A94438"
 											c2="D24545"
 											c3="E6BAA3"
 											c4="E4DEBE"
+											id="4"
 										/>
                                         <CardColors
 											c1="FAEF9B"
 											c2="F6D776"
 											c3="6DA4AA"
 											c4="647D87"
+											id="5"
 										/>
                                         <CardColors
 											c1="F3F8FF"
 											c2="E26EE5"
 											c3="7E30E1"
 											c4="49108B"
+											id="6"
 										/>
                                         <CardColors
 											c1="527853"
 											c2="F9E8D9"
 											c3="F7B787"
 											c4="EE7214"
+											id="7"
 										/>
                                         <CardColors
 											c1="7ED7C1"
 											c2="F0DBAF"
 											c3="DC8686"
 											c4="B06161"
+											id="8"
 										/>
                                         <CardColors
 											c1="FAEF9B"
 											c2="F6D776"
 											c3="6DA4AA"
 											c4="647D87"
+											id="9"
 										/>
                                         <CardColors
 											c1="F3F8FF"
 											c2="E26EE5"
 											c3="7E30E1"
 											c4="49108B"
+											id="10"
 										/>
                                         <CardColors
 											c1="527853"
 											c2="F9E8D9"
 											c3="F7B787"
 											c4="EE7214"
+											id="10"
 										/>
                                         <CardColors
 											c1="7ED7C1"
 											c2="F0DBAF"
 											c3="DC8686"
 											c4="B06161"
+											id="11"
 										/>
                                     </div>
 								</div>
