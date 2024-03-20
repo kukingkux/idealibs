@@ -20,7 +20,7 @@ export default function ColorDetails({ params }) {
 		} else if (params.photosId == 3) {
 			setImgTitle("Sea Anemone");
 		} else if (params.photosId == 4) {
-			setImgTitle("Swimmer's Wearing Swimming Goggles");
+			setImgTitle("Swimmer&apos;s Wearing Swimming Goggles");
 		} else if (params.photosId == 5) {
 			setImgTitle("A Frog Peeking out of the Water");
 		} else if (params.photosId == 6) {

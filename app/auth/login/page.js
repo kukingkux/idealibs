@@ -146,7 +146,7 @@ export default function Login() {
 					<GoogleAuth />
 					<div className="mt-4 text-center">
 						<p>
-							Don't have an account?{" "}
+							Don&apos;t have an account?{" "}
 							<Link
 								href="/auth/register"
 								className="bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text font-semibold"

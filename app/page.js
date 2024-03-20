@@ -844,10 +844,10 @@ export default function Landing() {
 									</div>
 									<div className="collapse-content font-normal text-i04 lg:text-lg">
 										<p>
-											We're not always in the position that we want to be at.
-											We're constantly growing. We're constantly making
-											mistakes. We're constantly trying to express ourselves and
-											actualize our dreams.
+											We&apos;re not always in the position that we want to be
+											at. We&apos;re constantly growing. We&apos;re constantly
+											making mistakes. We&apos;re constantly trying to express
+											ourselves and actualize our dreams.
 										</p>
 									</div>
 								</div>
@@ -863,10 +863,10 @@ export default function Landing() {
 									</div>
 									<div className="collapse-content font-normal text-i04 lg:text-lg">
 										<p>
-											We're not always in the position that we want to be at.
-											We're constantly growing. We're constantly making
-											mistakes. We're constantly trying to express ourselves and
-											actualize our dreams.
+											We&apos;re not always in the position that we want to be
+											at. We&apos;re constantly growing. We&apos;re constantly
+											making mistakes. We&apos;re constantly trying to express
+											ourselves and actualize our dreams.
 										</p>
 									</div>
 								</div>
@@ -882,10 +882,10 @@ export default function Landing() {
 									</div>
 									<div className="collapse-content font-normal text-i04 lg:text-lg">
 										<p>
-											We're not always in the position that we want to be at.
-											We're constantly growing. We're constantly making
-											mistakes. We're constantly trying to express ourselves and
-											actualize our dreams.
+											We&apos;re not always in the position that we want to be
+											at. We&apos;re constantly growing. We&apos;re constantly
+											making mistakes. We&apos;re constantly trying to express
+											ourselves and actualize our dreams.
 										</p>
 									</div>
 								</div>
@@ -901,10 +901,10 @@ export default function Landing() {
 									</div>
 									<div className="collapse-content font-normal text-i04 lg:text-lg">
 										<p>
-											We're not always in the position that we want to be at.
-											We're constantly growing. We're constantly making
-											mistakes. We're constantly trying to express ourselves and
-											actualize our dreams.
+											We&apos;re not always in the position that we want to be
+											at. We&apos;re constantly growing. We&apos;re constantly
+											making mistakes. We&apos;re constantly trying to express
+											ourselves and actualize our dreams.
 										</p>
 									</div>
 								</div>

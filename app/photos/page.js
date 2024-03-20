@@ -42,7 +42,7 @@ export default function PhotosPage() {
 												Enjoy Full Access to Premium Resources, Unlimited
 												Mockups, and an Unforgettable Design Experience. Become
 												a Featured Designer and Experience Creative Freedom with
-												Idealibs Premium!"
+												Idealibs Premium!
 											</p>
 										</div>
 									</div>
