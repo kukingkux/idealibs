@@ -1,13 +1,35 @@
 "use client";
 
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import Card from "@/components/gridmasonry";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Photo.png";
+import axiosInstance from "../axios";
 
 export default function PhotosPage() {
+	const [data, setData] = useState([]);
+	const [isLoading, setLoading] = useState(true);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await axiosInstance.get("/files");
+				setData(res.data.data);
+				setLoading(false);
+			} catch (err) {
+				console.error("Error fetching data:", err);
+			}
+		};
+		fetchData();
+	}, []);
+
+	// useEffect(() => {
+	// 	if (data.length) {
+	// 		console.log(data);
+	// 	}
+	// }, [data]);
+
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
 			<div className="drawer" id="sidebar">
@@ -411,17 +433,17 @@ export default function PhotosPage() {
 								</div>
 							</div>
 
-							<div className="md:block columns-3 gap-5 px-7 hidden">
-								<Card src="/images/Img-Image1.png" id="1" />
-								<Card src="/images/Img-Image2.png" id="2" />
-								<Card src="/images/Img-Image3.png" id="3" />
-								<Card src="/images/Img-Image5.png" id="5" />
-								<Card src="/images/Img-Image6.png" id="6" />
-								<Card src="/images/Img-Image4.png" id="4" />
-								<Card src="/images/Img-Image8.png" id="8" />
-								<Card src="/images/Img-Image7.png" id="7" />
-								<Card src="/images/Img-Image9.png" id="9" />
-							</div>
+							{isLoading ? (
+								<div className="flex justify-center mt-4">
+									<span className="loading loading-infinity loading-lg"></span>
+								</div>
+							) : (
+								<div className="md:block columns-3 gap-5 px-7 hidden">
+									{data.map((item) => (
+										<Card src={item.file_path} id={item.id} key={item.id} />
+									))}
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
