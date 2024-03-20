@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export default function MasonryGrid({ src, id }) {
+export default function MasonryGrid({ src, path }) {
 	const [color, setColor] = useState("none");
 
 	const changeColor = () => {
@@ -16,13 +16,13 @@ export default function MasonryGrid({ src, id }) {
 		<div className="overflow-hidden cursor-pointer rounded-xl relative group">
 			<Link
 				href={{
-					pathname: `/photos/${id}`,
+					pathname: `${path}`,
 				}}
-				className="rounded-lg z-10 h-full opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute bg-[radial-gradient(120.40%_180.55%_at_50.76%_60.29%,rgba(255,255,255,0.00)_0%,rgba(0,0,0,1)_100%)] inset-x-0 pt-30 text-white flex items-end"
+				className="rounded-lg z-10 h-full opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute bg-[radial-gradient(120.40%_180.55%_at_50.76%_60.29%,rgba(255,255,255,0.00)_0%,rgba(0,0,0,1)_100%)] inset-x-0 pt-30 text-white flex items-end my-3"
 			></Link>
 			<button
 				onClick={changeColor}
-				className="absolute z-20 top-0 right-0 p-4 m-4 space-y-3 text-xl opacity-0 group-hover:opacity-100 transform transition duration-300 ease-in-out bg-slate-200/20 rounded-full hover:bg-i04/100"
+				className="absolute z-20 top-0 right-0 p-4 m-4 mt-7 space-y-3 text-xl opacity-0 group-hover:opacity-100 transform transition duration-300 ease-in-out bg-slate-200/20 rounded-full hover:bg-i04/100"
 			>
 				<svg
 					width="20"
@@ -41,7 +41,7 @@ export default function MasonryGrid({ src, id }) {
 					/>
 				</svg>
 			</button>
-			<img alt="" className="h-auto max-w-full rounded-lg my-3" src={src} />
+			<img alt="" className="h-auto w-full rounded-lg my-3" src={src} />
 		</div>
 	);
 }

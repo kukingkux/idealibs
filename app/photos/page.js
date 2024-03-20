@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Card from "@/components/gridmasonry";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
@@ -14,7 +15,7 @@ export default function PhotosPage() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const res = await axiosInstance.get("/files");
+				const res = await axiosInstance.get("/files?category_id=1");
 				setData(res.data.data);
 				setLoading(false);
 			} catch (err) {
@@ -191,256 +192,89 @@ export default function PhotosPage() {
 							</div>
 
 							<div id="mobile-scrollable" className="block md:hidden">
-								<div className="mb-2">
-									<div className="flex gap-4 items-center p-7">
-										<img
-											src="/images/Img-Profile.png"
-											className="rounded-full w-12 h-12"
-										></img>
-										<p>Khananta</p>
+								{isLoading ? (
+									<div className="flex justify-center mt-4 md:hidden">
+										<span className="loading loading-infinity loading-lg"></span>
 									</div>
+								) : (
+									<div>
+										{data.map((item) => (
+											<div className="mb-2" key={item.id}>
+												<div className="flex gap-4 items-center p-7">
+													<img
+														src="/images/Img-Profile.png"
+														className="rounded-full w-12 h-12"
+													></img>
+													<p>Khananta</p>
+												</div>
 
-									<img
-										src="/images/Img-Image1.png"
-										className="w-full bg-i04"
-									></img>
+												<Link href={`/photos/${item.id}`}>
+													<img src={item.file_path} className="w-full bg-i04" />
+												</Link>
 
-									<div className="flex gap-4 items-center justify-between p-7">
-										<div className="flex items-center justify-center bg-i02 w-12 h-12 rounded-full">
-											<svg
-												width="24"
-												height="24"
-												viewBox="0 0 20 20"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M14.6611 2.76867C15.5783 2.87511 16.25 3.66583 16.25 4.58916V17.5L10 14.375L3.75 17.5V4.58916C3.75 3.66583 4.42173 2.87511 5.3389 2.76867C6.86797 2.59122 8.42333 2.5 10 2.5C11.5767 2.5 13.132 2.59122 14.6611 2.76867Z"
-													stroke="#FEFEFE"
-													strokeWidth="1.5"
-													strokeLinecap="round"
-													strokeLinejoin="round"
-												/>
-											</svg>
-										</div>
-										<div className="flex gap-2 bg-i02 py-3 px-8 rounded-iform">
-											<svg
-												width="28"
-												height="28"
-												viewBox="0 0 24 24"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													fillRule="evenodd"
-													clipRule="evenodd"
-													d="M5.47812 5.55887C5.67178 4.92948 6.25329 4.5 6.91179 4.5H9C9.41421 4.5 9.75 4.16421 9.75 3.75C9.75 3.33579 9.41421 3 9 3H6.91179C5.59478 3 4.43177 3.85897 4.04446 5.11774L1.63266 12.9561C1.54472 13.2419 1.5 13.5393 1.5 13.8383V18C1.5 19.6569 2.84315 21 4.5 21H19.5C21.1569 21 22.5 19.6569 22.5 18V13.8383C22.5 13.5393 22.4553 13.2419 22.3673 12.9561L19.9555 5.11774C19.5682 3.85897 18.4052 3 17.0882 3H15C14.5858 3 14.25 3.33579 14.25 3.75C14.25 4.16421 14.5858 4.5 15 4.5H17.0882C17.7467 4.5 18.3282 4.92948 18.5219 5.55887L20.7345 12.75H17.8906C16.7543 12.75 15.7155 13.392 15.2073 14.4084L14.9511 14.9208C14.697 15.429 14.1776 15.75 13.6094 15.75H10.3906C9.82242 15.75 9.30302 15.429 9.04894 14.9208L8.79271 14.4084C8.28453 13.392 7.24574 12.75 6.10942 12.75H3.26547L5.47812 5.55887Z"
-													fill="#FEFEFE"
-												/>
-												<path
-													fillRule="evenodd"
-													clipRule="evenodd"
-													d="M12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V9.43934L14.4697 7.71967C14.7626 7.42678 15.2374 7.42678 15.5303 7.71967C15.8232 8.01256 15.8232 8.48744 15.5303 8.78033L12.5303 11.7803C12.2374 12.0732 11.7626 12.0732 11.4697 11.7803L8.46967 8.78033C8.17678 8.48744 8.17678 8.01256 8.46967 7.71967C8.76256 7.42678 9.23744 7.42678 9.53033 7.71967L11.25 9.43934V3C11.25 2.58579 11.5858 2.25 12 2.25Z"
-													fill="#FEFEFE"
-												/>
-											</svg>
-											Download
-										</div>
+												<div className="flex gap-4 items-center justify-between p-7">
+													<div className="flex items-center justify-center bg-i02 w-12 h-12 rounded-full">
+														<svg
+															width="24"
+															height="24"
+															viewBox="0 0 20 20"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path
+																d="M14.6611 2.76867C15.5783 2.87511 16.25 3.66583 16.25 4.58916V17.5L10 14.375L3.75 17.5V4.58916C3.75 3.66583 4.42173 2.87511 5.3389 2.76867C6.86797 2.59122 8.42333 2.5 10 2.5C11.5767 2.5 13.132 2.59122 14.6611 2.76867Z"
+																stroke="#FEFEFE"
+																strokeWidth="1.5"
+																strokeLinecap="round"
+																strokeLinejoin="round"
+															/>
+														</svg>
+													</div>
+													<div className="flex gap-2 bg-i02 py-3 px-8 rounded-iform">
+														<svg
+															width="28"
+															height="28"
+															viewBox="0 0 24 24"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path
+																fillRule="evenodd"
+																clipRule="evenodd"
+																d="M5.47812 5.55887C5.67178 4.92948 6.25329 4.5 6.91179 4.5H9C9.41421 4.5 9.75 4.16421 9.75 3.75C9.75 3.33579 9.41421 3 9 3H6.91179C5.59478 3 4.43177 3.85897 4.04446 5.11774L1.63266 12.9561C1.54472 13.2419 1.5 13.5393 1.5 13.8383V18C1.5 19.6569 2.84315 21 4.5 21H19.5C21.1569 21 22.5 19.6569 22.5 18V13.8383C22.5 13.5393 22.4553 13.2419 22.3673 12.9561L19.9555 5.11774C19.5682 3.85897 18.4052 3 17.0882 3H15C14.5858 3 14.25 3.33579 14.25 3.75C14.25 4.16421 14.5858 4.5 15 4.5H17.0882C17.7467 4.5 18.3282 4.92948 18.5219 5.55887L20.7345 12.75H17.8906C16.7543 12.75 15.7155 13.392 15.2073 14.4084L14.9511 14.9208C14.697 15.429 14.1776 15.75 13.6094 15.75H10.3906C9.82242 15.75 9.30302 15.429 9.04894 14.9208L8.79271 14.4084C8.28453 13.392 7.24574 12.75 6.10942 12.75H3.26547L5.47812 5.55887Z"
+																fill="#FEFEFE"
+															/>
+															<path
+																fillRule="evenodd"
+																clipRule="evenodd"
+																d="M12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V9.43934L14.4697 7.71967C14.7626 7.42678 15.2374 7.42678 15.5303 7.71967C15.8232 8.01256 15.8232 8.48744 15.5303 8.78033L12.5303 11.7803C12.2374 12.0732 11.7626 12.0732 11.4697 11.7803L8.46967 8.78033C8.17678 8.48744 8.17678 8.01256 8.46967 7.71967C8.76256 7.42678 9.23744 7.42678 9.53033 7.71967L11.25 9.43934V3C11.25 2.58579 11.5858 2.25 12 2.25Z"
+																fill="#FEFEFE"
+															/>
+														</svg>
+														Download
+													</div>
+												</div>
+												<div className="px-7 py-3">
+													<div className="w-full bg-i03 h-1 rounded-lg"></div>
+												</div>
+											</div>
+										))}
 									</div>
-									<div className="px-7 py-3">
-										<div className="w-full bg-i03 h-1 rounded-lg"></div>
-									</div>
-								</div>
-								<div className="mb-2">
-									<div className="flex gap-4 items-center p-7">
-										<img
-											src="/images/Img-Profile.png"
-											className="rounded-full w-12 h-12"
-										></img>
-										<p>Khananta</p>
-									</div>
-
-									<img
-										src="/images/Img-Image2.png"
-										className="w-full bg-i04"
-									></img>
-
-									<div className="flex gap-4 items-center justify-between p-7">
-										<div className="flex items-center justify-center bg-i02 w-12 h-12 rounded-full">
-											<svg
-												width="24"
-												height="24"
-												viewBox="0 0 20 20"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M14.6611 2.76867C15.5783 2.87511 16.25 3.66583 16.25 4.58916V17.5L10 14.375L3.75 17.5V4.58916C3.75 3.66583 4.42173 2.87511 5.3389 2.76867C6.86797 2.59122 8.42333 2.5 10 2.5C11.5767 2.5 13.132 2.59122 14.6611 2.76867Z"
-													stroke="#FEFEFE"
-													strokeWidth="1.5"
-													strokeLinecap="round"
-													strokeLinejoin="round"
-												/>
-											</svg>
-										</div>
-										<div className="flex gap-2 bg-i02 py-3 px-8 rounded-iform">
-											<svg
-												width="28"
-												height="28"
-												viewBox="0 0 24 24"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													fillRule="evenodd"
-													clipRule="evenodd"
-													d="M5.47812 5.55887C5.67178 4.92948 6.25329 4.5 6.91179 4.5H9C9.41421 4.5 9.75 4.16421 9.75 3.75C9.75 3.33579 9.41421 3 9 3H6.91179C5.59478 3 4.43177 3.85897 4.04446 5.11774L1.63266 12.9561C1.54472 13.2419 1.5 13.5393 1.5 13.8383V18C1.5 19.6569 2.84315 21 4.5 21H19.5C21.1569 21 22.5 19.6569 22.5 18V13.8383C22.5 13.5393 22.4553 13.2419 22.3673 12.9561L19.9555 5.11774C19.5682 3.85897 18.4052 3 17.0882 3H15C14.5858 3 14.25 3.33579 14.25 3.75C14.25 4.16421 14.5858 4.5 15 4.5H17.0882C17.7467 4.5 18.3282 4.92948 18.5219 5.55887L20.7345 12.75H17.8906C16.7543 12.75 15.7155 13.392 15.2073 14.4084L14.9511 14.9208C14.697 15.429 14.1776 15.75 13.6094 15.75H10.3906C9.82242 15.75 9.30302 15.429 9.04894 14.9208L8.79271 14.4084C8.28453 13.392 7.24574 12.75 6.10942 12.75H3.26547L5.47812 5.55887Z"
-													fill="#FEFEFE"
-												/>
-												<path
-													fillRule="evenodd"
-													clipRule="evenodd"
-													d="M12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V9.43934L14.4697 7.71967C14.7626 7.42678 15.2374 7.42678 15.5303 7.71967C15.8232 8.01256 15.8232 8.48744 15.5303 8.78033L12.5303 11.7803C12.2374 12.0732 11.7626 12.0732 11.4697 11.7803L8.46967 8.78033C8.17678 8.48744 8.17678 8.01256 8.46967 7.71967C8.76256 7.42678 9.23744 7.42678 9.53033 7.71967L11.25 9.43934V3C11.25 2.58579 11.5858 2.25 12 2.25Z"
-													fill="#FEFEFE"
-												/>
-											</svg>
-											Download
-										</div>
-									</div>
-									<div className="px-7 py-3">
-										<div className="w-full bg-i03 h-1 rounded-lg"></div>
-									</div>
-								</div>
-								<div className="mb-2">
-									<div className="flex gap-4 items-center p-7">
-										<img
-											src="/images/Img-Profile.png"
-											className="rounded-full w-12 h-12"
-										></img>
-										<p>Khananta</p>
-									</div>
-
-									<img
-										src="/images/Img-Image3.png"
-										className="w-full bg-i04"
-									></img>
-
-									<div className="flex gap-4 items-center justify-between p-7">
-										<div className="flex items-center justify-center bg-i02 w-12 h-12 rounded-full">
-											<svg
-												width="24"
-												height="24"
-												viewBox="0 0 20 20"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M14.6611 2.76867C15.5783 2.87511 16.25 3.66583 16.25 4.58916V17.5L10 14.375L3.75 17.5V4.58916C3.75 3.66583 4.42173 2.87511 5.3389 2.76867C6.86797 2.59122 8.42333 2.5 10 2.5C11.5767 2.5 13.132 2.59122 14.6611 2.76867Z"
-													stroke="#FEFEFE"
-													strokeWidth="1.5"
-													strokeLinecap="round"
-													strokeLinejoin="round"
-												/>
-											</svg>
-										</div>
-										<div className="flex gap-2 bg-i02 py-3 px-8 rounded-iform">
-											<svg
-												width="28"
-												height="28"
-												viewBox="0 0 24 24"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													fillRule="evenodd"
-													clipRule="evenodd"
-													d="M5.47812 5.55887C5.67178 4.92948 6.25329 4.5 6.91179 4.5H9C9.41421 4.5 9.75 4.16421 9.75 3.75C9.75 3.33579 9.41421 3 9 3H6.91179C5.59478 3 4.43177 3.85897 4.04446 5.11774L1.63266 12.9561C1.54472 13.2419 1.5 13.5393 1.5 13.8383V18C1.5 19.6569 2.84315 21 4.5 21H19.5C21.1569 21 22.5 19.6569 22.5 18V13.8383C22.5 13.5393 22.4553 13.2419 22.3673 12.9561L19.9555 5.11774C19.5682 3.85897 18.4052 3 17.0882 3H15C14.5858 3 14.25 3.33579 14.25 3.75C14.25 4.16421 14.5858 4.5 15 4.5H17.0882C17.7467 4.5 18.3282 4.92948 18.5219 5.55887L20.7345 12.75H17.8906C16.7543 12.75 15.7155 13.392 15.2073 14.4084L14.9511 14.9208C14.697 15.429 14.1776 15.75 13.6094 15.75H10.3906C9.82242 15.75 9.30302 15.429 9.04894 14.9208L8.79271 14.4084C8.28453 13.392 7.24574 12.75 6.10942 12.75H3.26547L5.47812 5.55887Z"
-													fill="#FEFEFE"
-												/>
-												<path
-													fillRule="evenodd"
-													clipRule="evenodd"
-													d="M12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V9.43934L14.4697 7.71967C14.7626 7.42678 15.2374 7.42678 15.5303 7.71967C15.8232 8.01256 15.8232 8.48744 15.5303 8.78033L12.5303 11.7803C12.2374 12.0732 11.7626 12.0732 11.4697 11.7803L8.46967 8.78033C8.17678 8.48744 8.17678 8.01256 8.46967 7.71967C8.76256 7.42678 9.23744 7.42678 9.53033 7.71967L11.25 9.43934V3C11.25 2.58579 11.5858 2.25 12 2.25Z"
-													fill="#FEFEFE"
-												/>
-											</svg>
-											Download
-										</div>
-									</div>
-									<div className="px-7 py-3">
-										<div className="w-full bg-i03 h-1 rounded-lg"></div>
-									</div>
-								</div>
-								<div className="mb-2">
-									<div className="flex gap-4 items-center p-7">
-										<img
-											src="/images/Img-Profile.png"
-											className="rounded-full w-12 h-12"
-										></img>
-										<p>Khananta</p>
-									</div>
-
-									<img
-										src="/images/Img-Image4.png"
-										className="w-full bg-i04"
-									></img>
-
-									<div className="flex gap-4 items-center justify-between p-7">
-										<div className="flex items-center justify-center bg-i02 w-12 h-12 rounded-full">
-											<svg
-												width="24"
-												height="24"
-												viewBox="0 0 20 20"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													d="M14.6611 2.76867C15.5783 2.87511 16.25 3.66583 16.25 4.58916V17.5L10 14.375L3.75 17.5V4.58916C3.75 3.66583 4.42173 2.87511 5.3389 2.76867C6.86797 2.59122 8.42333 2.5 10 2.5C11.5767 2.5 13.132 2.59122 14.6611 2.76867Z"
-													stroke="#FEFEFE"
-													strokeWidth="1.5"
-													strokeLinecap="round"
-													strokeLinejoin="round"
-												/>
-											</svg>
-										</div>
-										<div className="flex gap-2 bg-i02 py-3 px-8 rounded-iform">
-											<svg
-												width="28"
-												height="28"
-												viewBox="0 0 24 24"
-												fill="none"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<path
-													fillRule="evenodd"
-													clipRule="evenodd"
-													d="M5.47812 5.55887C5.67178 4.92948 6.25329 4.5 6.91179 4.5H9C9.41421 4.5 9.75 4.16421 9.75 3.75C9.75 3.33579 9.41421 3 9 3H6.91179C5.59478 3 4.43177 3.85897 4.04446 5.11774L1.63266 12.9561C1.54472 13.2419 1.5 13.5393 1.5 13.8383V18C1.5 19.6569 2.84315 21 4.5 21H19.5C21.1569 21 22.5 19.6569 22.5 18V13.8383C22.5 13.5393 22.4553 13.2419 22.3673 12.9561L19.9555 5.11774C19.5682 3.85897 18.4052 3 17.0882 3H15C14.5858 3 14.25 3.33579 14.25 3.75C14.25 4.16421 14.5858 4.5 15 4.5H17.0882C17.7467 4.5 18.3282 4.92948 18.5219 5.55887L20.7345 12.75H17.8906C16.7543 12.75 15.7155 13.392 15.2073 14.4084L14.9511 14.9208C14.697 15.429 14.1776 15.75 13.6094 15.75H10.3906C9.82242 15.75 9.30302 15.429 9.04894 14.9208L8.79271 14.4084C8.28453 13.392 7.24574 12.75 6.10942 12.75H3.26547L5.47812 5.55887Z"
-													fill="#FEFEFE"
-												/>
-												<path
-													fillRule="evenodd"
-													clipRule="evenodd"
-													d="M12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V9.43934L14.4697 7.71967C14.7626 7.42678 15.2374 7.42678 15.5303 7.71967C15.8232 8.01256 15.8232 8.48744 15.5303 8.78033L12.5303 11.7803C12.2374 12.0732 11.7626 12.0732 11.4697 11.7803L8.46967 8.78033C8.17678 8.48744 8.17678 8.01256 8.46967 7.71967C8.76256 7.42678 9.23744 7.42678 9.53033 7.71967L11.25 9.43934V3C11.25 2.58579 11.5858 2.25 12 2.25Z"
-													fill="#FEFEFE"
-												/>
-											</svg>
-											Download
-										</div>
-									</div>
-									<div className="px-7 py-3">
-										<div className="w-full bg-i03 h-1 rounded-lg"></div>
-									</div>
-								</div>
+								)}
 							</div>
 
 							{isLoading ? (
-								<div className="flex justify-center mt-4">
+								<div className="hidden justify-center mt-4 md:flex">
 									<span className="loading loading-infinity loading-lg"></span>
 								</div>
 							) : (
 								<div className="md:block columns-3 gap-5 px-7 hidden">
 									{data.map((item) => (
-										<Card src={item.file_path} id={item.id} key={item.id} />
+										<Card
+											src={item.file_path}
+											path={`/photos/${item.id}`}
+											key={item.id}
+										/>
 									))}
 								</div>
 							)}

@@ -114,10 +114,10 @@ export default function Payment() {
 							className="w-full bg-i03 focus:outline-none"
 						/>
 					</div>
-					<div className="flex items-center px-4 gap-4 rounded-lg w-full h-14 bg-i03 border border-i04 mb-3">
+					<div className="flex relative items-center px-4 gap-4 rounded-lg w-full h-14 bg-i03 border border-i04 mb-3">
 						<input
 							type="text"
-							name="name"
+							name="exdate"
 							onFocus={(e) => (e.target.type = "date")}
 							onBlur={(e) => (e.target.type = "text")}
 							placeholder="Expire date"

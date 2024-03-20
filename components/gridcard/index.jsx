@@ -11,7 +11,7 @@ export default function MasonryGrid({ src, id }) {
 			></Link>
 			<img
 				alt=""
-				className="h-auto max-w-full rounded-lg object-cover aspect-square"
+				className="h-auto w-full rounded-lg object-cover aspect-square"
 				src={src}
 			/>
 		</div>
