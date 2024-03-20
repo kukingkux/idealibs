@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import CardColors from "@/components/cardcolors";
+import CardIcon from "@/components/cardicons";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Icon.png";
@@ -150,81 +150,16 @@ export default function IconsPage() {
 							</div>
 
 							<div id="mobile-scrollable" className="">
-								<div className="mb-2">
-									<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-7 p-7">
-										<CardColors
-											c1="1f2544"
-											c2="474f7a"
-											c3="81689d"
-											c4="ffd0ec"
-										/>
-										<CardColors
-											c1="C3E2C2"
-											c2="EAECCC"
-											c3="DBCC95"
-											c4="CD8D7A"
-										/>
-										<CardColors
-											c1="B4B4B8"
-											c2="C7C8CC"
-											c3="E3E1D9"
-											c4="F2EFE5"
-										/>
-										<CardColors
-											c1="A94438"
-											c2="D24545"
-											c3="E6BAA3"
-											c4="E4DEBE"
-										/>
-										<CardColors
-											c1="FAEF9B"
-											c2="F6D776"
-											c3="6DA4AA"
-											c4="647D87"
-										/>
-										<CardColors
-											c1="F3F8FF"
-											c2="E26EE5"
-											c3="7E30E1"
-											c4="49108B"
-										/>
-										<CardColors
-											c1="527853"
-											c2="F9E8D9"
-											c3="F7B787"
-											c4="EE7214"
-										/>
-										<CardColors
-											c1="7ED7C1"
-											c2="F0DBAF"
-											c3="DC8686"
-											c4="B06161"
-										/>
-										<CardColors
-											c1="FAEF9B"
-											c2="F6D776"
-											c3="6DA4AA"
-											c4="647D87"
-										/>
-										<CardColors
-											c1="F3F8FF"
-											c2="E26EE5"
-											c3="7E30E1"
-											c4="49108B"
-										/>
-										<CardColors
-											c1="527853"
-											c2="F9E8D9"
-											c3="F7B787"
-											c4="EE7214"
-										/>
-										<CardColors
-											c1="7ED7C1"
-											c2="F0DBAF"
-											c3="DC8686"
-											c4="B06161"
-										/>
-									</div>
+								<div className="md:grid grid-cols-4 gap-4 px-7 hidden">
+									<CardIcon src="/images/Img-Image1.png" id="1" />
+									<CardIcon src="/images/Img-Image2.png" id="2" />
+									<CardIcon src="/images/Img-Image3.png" id="3" />
+									<CardIcon src="/images/Img-Image5.png" id="5" />
+									<CardIcon src="/images/Img-Image6.png" id="6" />
+									<CardIcon src="/images/Img-Image4.png" id="4" />
+									<CardIcon src="/images/Img-Image8.png" id="8" />
+									<CardIcon src="/images/Img-Image7.png" id="7" />
+									<CardIcon src="/images/Img-Image9.png" id="9" />
 								</div>
 							</div>
 						</div>

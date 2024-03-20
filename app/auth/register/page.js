@@ -45,7 +45,7 @@ export default function Login() {
 					</div>
 					<div className="mb-4">
 						<p className="mb-2">Username</p>
-						<div className="flex items-center ps-6 gap-4 rounded-iform w-full h-14 bg-i03">
+						<div className="flex items-center ps-6 gap-4 rounded-lg w-full h-14 bg-i03 border border-i04">
 							<svg
 								width="24"
 								height="24"
@@ -71,13 +71,13 @@ export default function Login() {
 								type="text"
 								name="name"
 								placeholder="Enter your username"
-								className="rounded-r-iform w-full h-14 bg-i03"
+								className="w-full bg-i03 focus:outline-none"
 							/>
 						</div>
 					</div>
 					<div className="mb-4">
 						<p className="mb-2">Email</p>
-						<div className="flex items-center ps-6 gap-4 rounded-iform w-full h-14 bg-i03">
+						<div className="flex items-center ps-6 gap-4 rounded-lg w-full h-14 bg-i03 border border-i04">
 							<svg
 								width="24"
 								height="24"
@@ -102,13 +102,13 @@ export default function Login() {
 								type="text"
 								name="name"
 								placeholder="Enter your email"
-								className="rounded-r-iform w-full h-14 bg-i03"
+								className="w-full bg-i03 focus:outline-none"
 							/>
 						</div>
 					</div>
 					<div className="mb-4">
-						<p>Password</p>
-						<div className="flex items-center ps-6 gap-4 rounded-iform w-full h-14 bg-i03">
+						<p className="mb-2">Password</p>
+						<div className="flex items-center ps-6 gap-4 rounded-lg w-full h-14 bg-i03 border border-i04">
 							<svg
 								width="20"
 								height="20"
@@ -127,13 +127,13 @@ export default function Login() {
 								type="password"
 								name="name"
 								placeholder="Enter your password"
-								className="rounded-r-iform w-full h-14 bg-i03"
+								className="w-full bg-i03 focus:outline-none"
 							/>
 						</div>
 					</div>
 					<div className="mb-4">
-						<p>Password</p>
-						<div className="flex items-center ps-6 gap-4 rounded-iform w-full h-14 bg-i03">
+						<p className="mb-2">Confirm Password</p>
+						<div className="flex items-center ps-6 gap-4 rounded-lg w-full h-14 bg-i03 border border-i04">
 							<svg
 								width="20"
 								height="20"
@@ -152,13 +152,13 @@ export default function Login() {
 								type="password"
 								name="name"
 								placeholder="Confirm your password"
-								className="rounded-r-iform w-full h-14 bg-i03"
+								className="w-full bg-i03 focus:outline-none"
 							/>
 						</div>
 					</div>
 					<Link
-						href="/dashboard"
-						className="flex justify-center items-center rounded-iform w-full h-14 bg-gradient-to-r from-iorange to-ipink mb-4"
+						href="/home"
+						className="flex justify-center items-center rounded-iform w-full h-14 bg-gradient-to-r from-iorange to-ipink my-4"
 					>
 						Sign up
 					</Link>

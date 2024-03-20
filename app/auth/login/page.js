@@ -30,7 +30,7 @@ export default function Login() {
 			Cookies.set("accessToken", data);
 			console.log(data);
 
-			router.push("/dashboard");
+			router.push("/home");
 		}
 	};
 
@@ -73,7 +73,7 @@ export default function Login() {
 						</div>
 						<div className="mb-6">
 							<p className="mb-2">Email or Username</p>
-							<div className="flex items-center ps-6 gap-4 rounded-iform w-full h-14 bg-i03">
+							<div className="flex items-center ps-6 gap-4 rounded-lg w-full h-14 bg-i03 border border-i04">
 								<svg
 									width="24"
 									height="24"
@@ -100,13 +100,13 @@ export default function Login() {
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
 									placeholder="Enter your email/username"
-									className="rounded-r-iform w-full h-14 bg-i03"
+									className="w-full bg-i03 focus:outline-none"
 								/>
 							</div>
 						</div>
 						<div className="mb-2">
-							<p>Password</p>
-							<div className="flex items-center ps-6 gap-4 rounded-iform w-full h-14 bg-i03">
+							<p className="mb-2">Password</p>
+							<div className="flex items-center ps-6 gap-4 rounded-lg w-full h-14 bg-i03 border border-i04">
 								<svg
 									width="20"
 									height="20"
@@ -127,7 +127,7 @@ export default function Login() {
 									value={password}
 									onChange={(e) => setPassword(e.target.value)}
 									placeholder="Enter your password"
-									className="rounded-r-iform w-full h-14 bg-i03"
+									className="w-full bg-i03 focus:outline-none"
 								/>
 							</div>
 						</div>

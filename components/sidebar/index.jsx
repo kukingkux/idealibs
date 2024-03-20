@@ -170,9 +170,12 @@ export function SideNavigation() {
 									Upgrade premium and get a variety of interesting and
 									high-quality assets
 								</p>
-								<button className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm">
+								<Link
+									href="/payment"
+									className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm"
+								>
 									Upgrade now
-								</button>
+								</Link>
 							</div>
 						</div>
 					</div>
