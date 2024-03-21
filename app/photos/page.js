@@ -44,7 +44,7 @@ export default function PhotosPage() {
 								id="header"
 								className="flex container flex-col items-center p-7"
 							>
-								<div className="md:inline-block  w-full">
+								<div className="md:inline-block w-full">
 									<div
 										className="flex flex-col justify-between p-4 lg:p-8 bg-cover rounded-lg "
 										style={{
