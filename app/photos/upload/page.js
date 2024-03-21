@@ -1,29 +1,63 @@
 "use client";
 
-import Card from "@/components/gridmasonry";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
-import bg from "@/public/images/Img-Hero-Photo.png";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import axiosInstance from "../axios";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import axiosInstance from "../../axios";
 
 export default function UploadPhotoPage() {
+
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+    const [preview, setPreview] = useState(null)
+
 	const [data, setData] = useState([]);
 	const [isLoading, setLoading] = useState(true);
 
-	useEffect(() => {
+    const filePickerRef = useRef(null);
+    const router = useRouter()
+
+    const previewFile = (e) => {
+        const reader = new FileReader()
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            reader.readAsDataURL(selectedFile)
+        }
+
+        reader.onload = (readerEvent) => {
+            setPreview(readerEvent.target.result)
+        }
+    }
+
+    const handleSubmit = async (e) => {
+
+        const res = axiosInstance.post("/files/photos",
+            {
+                title: title,
+                description: description,
+                thumbnailpath: preview
+            }
+        )
+
+        if (res.status == 200) {
+            router.push('/photos')
+        }
+        
+    }
+
+    useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const res = await axiosInstance.get("/files?category_id=1");
-				setData(res.data.data);
 				setLoading(false);
 			} catch (err) {
 				console.error("Error fetching data:", err);
 			}
 		};
 		fetchData();
-	}, []);
+	});
+
 
 	// useEffect(() => {
 	// 	if (data.length) {
@@ -32,257 +66,152 @@ export default function UploadPhotoPage() {
 	// }, [data]);
 
 	return (
-		<main className="flex min-h-screen flex-col bg-i01">
+        <main className="flex min-h-screen flex-col bg-i01">
 			<div className="drawer" id="sidebar">
 				<input id="my-drawer" type="checkbox" className="drawer-toggle" />
 				<div className="drawer-content flex flex-col items-center justify-center">
 					<div id="content" className="flex container max-w-full">
 						<SideNavigation />
-						<div id="right-content" className="min-h-screen lg:w-full">
+						<div id="right-content" className="min-h-screen w-full">
 							<TopNavigation />
-							<div
-								id="header"
-								className="flex container flex-col items-center p-7"
-							>
-								<div className="md:inline-block w-full">
-									<div
-										className="flex flex-col justify-between p-4 lg:p-8 bg-cover rounded-lg "
-										style={{
-											backgroundImage: `url(${bg.src})`,
-											backgroundPosition: "center",
-										}}
-									>
-										<img
-											className="w-24 "
-											src="/images/Logo-Nav-Desktop.png"
-											alt="Img-Login"
-										/>
-										<div>
-											<p className="font-medium lg:font-semibold text-lg lg:text-2xl pt-32 lg:pt-20 pe-24 mb-2">
-												An ideal library of ideas to develop your creative mind
-											</p>
-											<p className="font-regular text-sm pe-12 hidden lg:block">
-												Enjoy Full Access to Premium Resources, Unlimited
-												Mockups, and an Unforgettable Design Experience. Become
-												a Featured Designer and Experience Creative Freedom with
-												Idealibs Premium!
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div id="mainmenu" className="px-7">
-								<div className="mb-6 block lg:hidden">
-									<div className="flex items-center justify-between px-6 gap-4 rounded-iform w-full h-16 bg-i03">
-										<svg
-											width="30"
-											height="30"
-											viewBox="0 0 24 24"
-											fill="none"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path
-												fillRule="evenodd"
-												clipRule="evenodd"
-												d="M3.75195 10.5815C3.75195 6.70046 6.90995 3.54346 10.791 3.54346C14.671 3.54346 17.829 6.70046 17.829 10.5815C17.829 14.4625 14.671 17.6205 10.791 17.6205C6.90995 17.6205 3.75195 14.4625 3.75195 10.5815ZM22.247 21.0405L17.648 16.4535C19.004 14.8725 19.829 12.8235 19.829 10.5815C19.829 5.59846 15.774 1.54346 10.791 1.54346C5.80695 1.54346 1.75195 5.59846 1.75195 10.5815C1.75195 15.5655 5.80695 19.6205 10.791 19.6205C12.813 19.6205 14.676 18.9445 16.183 17.8175L20.835 22.4565L22.247 21.0405Z"
-												fill="#FEFEFE"
-											/>
-										</svg>
-										<input
-											type="text"
-											name="name"
-											placeholder="Find all your design needs"
-											className="w-full h-14 bg-i03"
-										/>
-										<svg
-											width="30"
-											height="30"
-											viewBox="0 0 24 24"
-											fill="none"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path
-												d="M6 13.5L6 3.75M6 13.5C6.82843 13.5 7.5 14.1716 7.5 15C7.5 15.8284 6.82843 16.5 6 16.5M6 13.5C5.17157 13.5 4.5 14.1716 4.5 15C4.5 15.8284 5.17157 16.5 6 16.5M6 20.25L6 16.5M18 13.5V3.75M18 13.5C18.8284 13.5 19.5 14.1716 19.5 15C19.5 15.8284 18.8284 16.5 18 16.5M18 13.5C17.1716 13.5 16.5 14.1716 16.5 15C16.5 15.8284 17.1716 16.5 18 16.5M18 20.25L18 16.5M12 7.5V3.75M12 7.5C12.8284 7.5 13.5 8.17157 13.5 9C13.5 9.82843 12.8284 10.5 12 10.5M12 7.5C11.1716 7.5 10.5 8.17157 10.5 9C10.5 9.82843 11.1716 10.5 12 10.5M12 20.25V10.5"
-												stroke="white"
-												strokeWidth="1.5"
-												strokeLinecap="round"
-												strokeLinejoin="round"
-											/>
-										</svg>
-									</div>
-								</div>
-								<div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
-										<svg
-											width="25"
-											height="24"
-											viewBox="0 0 25 24"
-											fill="none"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path
-												fillRule="evenodd"
-												clipRule="evenodd"
-												d="M13.25 10.8303V17.0903H11.75V10.8303H2.75V22.3503H22.25V10.8303H13.25Z"
-												fill="#FEFEFE"
-											/>
-											<path
-												fillRule="evenodd"
-												clipRule="evenodd"
-												d="M13.25 6.0289C14.24 7.0739 15.621 7.7499 17.1 7.7499H17.85V6.2499H17.1C15.085 6.2499 13.25 4.4169 13.25 2.4039V1.6499H11.75V2.4039C11.75 4.4169 9.92003 6.2499 7.91003 6.2499H7.16003V7.7499H7.91003C9.38503 7.7499 10.762 7.0759 11.75 6.0319L11.75 10.8303H13.25L13.25 6.0289Z"
-												fill="#FEFEFE"
-											/>
-										</svg>
-										Upload Image
-									</button>
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold">
-										<svg
-											width="24"
-											height="24"
-											viewBox="0 0 25 24"
-											fill="none"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path
-												fillRule="evenodd"
-												clipRule="evenodd"
-												d="M21.9236 11.5315C17.7756 9.9975 14.5116 6.7335 12.9686 2.5765L12.4996 1.3125L12.0306 2.5765C10.4876 6.7335 7.22462 9.9975 3.07562 11.5315L1.80762 12.0005L3.07562 12.4685C7.22462 14.0025 10.4876 17.2665 12.0306 21.4245L12.4996 22.6875L12.9686 21.4245C14.5116 17.2665 17.7756 14.0025 21.9236 12.4685L23.1926 12.0005L21.9236 11.5315Z"
-												fill="#FEFEFE"
-											/>
-										</svg>
-										AI Image
-									</button>
-								</div>
-								<div className="flex flex-wrap gap-4 mb-6">
-									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
-										All
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-										Nature
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Technology and Innovation
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Fashion and Lifestyle
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Art and Creativity
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-										People
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Food and Beverages
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Health and Fitness
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Travel and Destinations
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-										Textures
-									</div>
-									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-16 border">
-										See more category
-									</div>
-								</div>
-							</div>
-
-							<div id="mobile-scrollable" className="block md:hidden">
-								{isLoading ? (
-									<div className="flex justify-center mt-4 md:hidden">
-										<span className="loading loading-infinity loading-lg"></span>
-									</div>
-								) : (
-									<div>
-										{data.map((item) => (
-											<div className="mb-2" key={item.id}>
-												<div className="flex gap-4 items-center p-7">
-													<img
-														src="/images/Img-Profile.png"
-														className="rounded-full w-12 h-12"
-													></img>
-													<p>Khananta</p>
-												</div>
-
-												<Link href={`/photos/${item.id}`}>
-													<img src={item.file_path} className="w-full bg-i04" />
-												</Link>
-
-												<div className="flex gap-4 items-center justify-between p-7">
-													<div className="flex items-center justify-center bg-i02 w-12 h-12 rounded-full">
-														<svg
-															width="24"
-															height="24"
-															viewBox="0 0 20 20"
-															fill="none"
-															xmlns="http://www.w3.org/2000/svg"
-														>
-															<path
-																d="M14.6611 2.76867C15.5783 2.87511 16.25 3.66583 16.25 4.58916V17.5L10 14.375L3.75 17.5V4.58916C3.75 3.66583 4.42173 2.87511 5.3389 2.76867C6.86797 2.59122 8.42333 2.5 10 2.5C11.5767 2.5 13.132 2.59122 14.6611 2.76867Z"
-																stroke="#FEFEFE"
-																strokeWidth="1.5"
-																strokeLinecap="round"
-																strokeLinejoin="round"
-															/>
-														</svg>
-													</div>
-													<div className="flex gap-2 bg-i02 py-3 px-8 rounded-iform">
-														<svg
-															width="28"
-															height="28"
-															viewBox="0 0 24 24"
-															fill="none"
-															xmlns="http://www.w3.org/2000/svg"
-														>
-															<path
-																fillRule="evenodd"
-																clipRule="evenodd"
-																d="M5.47812 5.55887C5.67178 4.92948 6.25329 4.5 6.91179 4.5H9C9.41421 4.5 9.75 4.16421 9.75 3.75C9.75 3.33579 9.41421 3 9 3H6.91179C5.59478 3 4.43177 3.85897 4.04446 5.11774L1.63266 12.9561C1.54472 13.2419 1.5 13.5393 1.5 13.8383V18C1.5 19.6569 2.84315 21 4.5 21H19.5C21.1569 21 22.5 19.6569 22.5 18V13.8383C22.5 13.5393 22.4553 13.2419 22.3673 12.9561L19.9555 5.11774C19.5682 3.85897 18.4052 3 17.0882 3H15C14.5858 3 14.25 3.33579 14.25 3.75C14.25 4.16421 14.5858 4.5 15 4.5H17.0882C17.7467 4.5 18.3282 4.92948 18.5219 5.55887L20.7345 12.75H17.8906C16.7543 12.75 15.7155 13.392 15.2073 14.4084L14.9511 14.9208C14.697 15.429 14.1776 15.75 13.6094 15.75H10.3906C9.82242 15.75 9.30302 15.429 9.04894 14.9208L8.79271 14.4084C8.28453 13.392 7.24574 12.75 6.10942 12.75H3.26547L5.47812 5.55887Z"
-																fill="#FEFEFE"
-															/>
-															<path
-																fillRule="evenodd"
-																clipRule="evenodd"
-																d="M12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V9.43934L14.4697 7.71967C14.7626 7.42678 15.2374 7.42678 15.5303 7.71967C15.8232 8.01256 15.8232 8.48744 15.5303 8.78033L12.5303 11.7803C12.2374 12.0732 11.7626 12.0732 11.4697 11.7803L8.46967 8.78033C8.17678 8.48744 8.17678 8.01256 8.46967 7.71967C8.76256 7.42678 9.23744 7.42678 9.53033 7.71967L11.25 9.43934V3C11.25 2.58579 11.5858 2.25 12 2.25Z"
-																fill="#FEFEFE"
-															/>
-														</svg>
-														Download
-													</div>
-												</div>
-												<div className="px-7 py-3">
-													<div className="w-full bg-i03 h-1 rounded-lg"></div>
-												</div>
-											</div>
-										))}
-									</div>
-								)}
-							</div>
-
 							{isLoading ? (
-								<div className="hidden justify-center mt-4 md:flex">
+								<div className="flex justify-center items-center h-screen">
 									<span className="loading loading-infinity loading-lg"></span>
 								</div>
 							) : (
-								<div className="md:block columns-4 gap-4 px-7 hidden">
-									{data.map((item) => (
-										<Card
-											src={item.file_path}
-											path={`/photos/${item.id}`}
-											key={item.id}
-										/>
-									))}
-								</div>
+								<div id="mainmenu" className="p-7 flex flex-col">
+                                <div className="flex gap-8 items-center">
+                                    <button
+                                        className="bg-i02 p-3 rounded-full"
+                                        onClick={() => {
+                                            router.back();
+                                        }}
+                                    >
+                                        <svg
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 20 20"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                fillRule="evenodd"
+                                                clipRule="evenodd"
+                                                d="M18 10C18 10.4142 17.6642 10.75 17.25 10.75L4.6599 10.75L6.76034 12.7004C7.06387 12.9823 7.08145 13.4568 6.79959 13.7603C6.51774 14.0639 6.04319 14.0815 5.73966 13.7996L2.23966 10.5496C2.08684 10.4077 2 10.2086 2 10C2 9.79145 2.08684 9.59232 2.23966 9.45041L5.73966 6.20041C6.04319 5.91856 6.51774 5.93613 6.79959 6.23966C7.08145 6.5432 7.06387 7.01775 6.76034 7.2996L4.6599 9.25L17.25 9.25C17.6642 9.25 18 9.58579 18 10Z"
+                                                fill="#FEFEFE"
+                                            />
+                                        </svg>
+                                    </button>
+                                    <div className="flex gap-4 items-center">
+                                        <p>Upload a photo</p>
+                                    </div>
+                                </div>
+
+                                <form action={handleSubmit}>
+                                    <div className="flex flex-col gap-6 md:gap-20">
+                                        <div className="flex flex-col md:flex-row gap-6 mt-8">
+                                            <div className="flex flex-col gap-2">
+                                                <p>Preview</p>
+                                                <button
+                                                    className="flex flex-col flex-nowrap items-center gap-4 bg-i03 font-semibold text-lg underline rounded-lg cursor-pointer py-24 px-36"
+                                                    onClick={() => filePickerRef.current.click()}
+                                                >
+                                                    {preview != null && <img src={preview} alt="" />}
+                                                    {preview != null || <><svg width="100" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.125 3.5H21C25.8325 3.5 29.75 7.41751 29.75 12.25V16.625C29.75 19.0412 31.7088 21 34.125 21H38.5C43.3325 21 47.25 24.9175 47.25 29.75V48.125C47.25 50.5412 45.2912 52.5 42.875 52.5H13.125C10.7088 52.5 8.75 50.5412 8.75 48.125V7.875C8.75 5.45875 10.7088 3.5 13.125 3.5ZM29.2374 26.7626C28.9092 26.4344 28.4641 26.25 28 26.25C27.5359 26.25 27.0908 26.4344 26.7626 26.7626L19.7626 33.7626C19.0791 34.446 19.0791 35.554 19.7626 36.2374C20.446 36.9209 21.554 36.9209 22.2374 36.2374L26.25 32.2249L26.25 42C26.25 42.9665 27.0335 43.75 28 43.75C28.9665 43.75 29.75 42.9665 29.75 42L29.75 32.2249L33.7626 36.2374C34.446 36.9209 35.554 36.9209 36.2374 36.2374C36.9209 35.554 36.9209 34.446 36.2374 33.7626L29.2374 26.7626Z" fill="url(#paint0_linear_1315_21774)"/>
+                                                        <path d="M33.25 12.25C33.25 9.18621 32.1252 6.38512 30.2661 4.23711C38.197 6.30881 44.4412 12.553 46.5129 20.4839C44.3649 18.6248 41.5638 17.5 38.5 17.5H34.125C33.6418 17.5 33.25 17.1082 33.25 16.625V12.25Z" fill="url(#paint1_linear_1315_21774)"/>
+                                                        <defs>
+                                                        <linearGradient id="paint0_linear_1315_21774" x1="8.75" y1="52.5" x2="55.2094" y2="43.1809" gradientUnits="userSpaceOnUse">
+                                                        <stop stop-color="#FC6736"/>
+                                                        <stop offset="1" stop-color="#FC36D0"/>
+                                                        </linearGradient>
+                                                        <linearGradient id="paint1_linear_1315_21774" x1="8.75" y1="52.5" x2="55.2094" y2="43.1809" gradientUnits="userSpaceOnUse">
+                                                        <stop stop-color="#FC6736"/>
+                                                        <stop offset="1" stop-color="#FC36D0"/>
+                                                        </linearGradient>
+                                                        </defs>
+                                                    </svg>
+                                                    <p>Select a file</p>
+                                                    </>}
+                                                    <input
+                                                        ref={filePickerRef}
+                                                        type="file"
+                                                        onChange={previewFile}
+                                                        hidden
+                                                    />
+                                                    
+                                                </button>
+                                                <p>Supported filetype: JPG, JPEG, PNG</p>
+                                            </div>
+                                            
+                                            <div className="flex flex-col gap-6 w-full">
+                                                <div>
+                                                    <p className="mb-2">Title</p>
+                                                    <input
+                                                        name="title"
+                                                        type="text"
+                                                        value={title}
+                                                        onChange={(e) => setTitle(e.target.value)}
+                                                        placeholder="Title"
+                                                        className="w-full bg-i02 focus:outline-none rounded-lg border border-i04 p-4"
+                                                        required
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <p className="mb-2">Description</p>
+                                                    <textarea
+                                                        name="description"
+                                                        type="text"
+                                                        value={description}
+                                                        onChange={(e) => setDescription(e.target.value)}
+                                                        placeholder="Description"
+                                                        className="w-full bg-i02 focus:outline-none rounded-lg border border-i04 p-4"
+                                                        rows="5"
+                                                        required
+                                                    >
+                                                    </textarea>
+                                                </div>
+                                                <div>
+                                                    <p className="mb-2">Tag</p>
+                                                    <select className="w-full bg-i03 focus:outline-none rounded-lg border border-i03 p-4">
+                                                        <option selected>
+                                                            Tags
+                                                        </option>
+                                                        <option>
+                                                            Tags
+                                                        </option>
+                                                        <option>
+                                                            Tags
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div className="flex w-full gap-4 justify-end">
+                                            <Link
+                                                href="/photos"
+                                                type="button"
+                                                className="grow md:grow-0 flex items-center justify-center bg-i03 rounded-full font-medium border-white text-white mr-3 hover:border-white hover:bg-white hover:text-i02 md:flex p-6 md:px-12 md:py-4"
+                                            >
+                                                Cancel
+                                            </Link>
+                                            <button
+                                                type="submit"
+                                                className="grow md:grow-0 flex items-center justify-center rounded-full border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink hover:bg-transparent p-6 md:px-12 md:py-4"
+                                            >
+                                                Upload
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
 							)}
 						</div>
 					</div>
 				</div>
 				<div className="drawer-side">
-					<div className="bg-i02 min-h-screen w-1/2 z-10 px-7">
+					<div className="bg-i02 min-h-screen w-full md:w-1/2 z-10 px-7">
 						<div className="container py-6">
 							<button className="btn btn-square bg-i03 h-10">
 								<svg

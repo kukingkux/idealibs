@@ -149,10 +149,10 @@ export default function PhotoDetails() {
 														backgroundImage: `url('${data.file_path}')`,
 													}}
 												>
-													<div className="backdrop-blur-md md:h-24 rounded-lg md:flex justify-center">
+													<div className="backdrop-blur-md md:h-96 rounded-lg md:flex justify-center">
 														<img
 															src={`${data.file_path}`}
-															className="h-full overflow-hidden object-contain"
+															className="w-full h-full overflow-hidden object-contain"
 														/>
 													</div>
 												</div>
