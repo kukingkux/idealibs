@@ -807,12 +807,12 @@ export default function Landing() {
 												</p>
 											</div>
 										</div>
-										<button
-											type="button"
+										<Link
+											href="/home"
 											className="btn btn-neutral rounded-full border-0 text-white font-medium bg-gradient-to-r from-iorange to-ipink"
 										>
 											Explore now
-										</button>
+										</Link>
 									</div>
 								</div>
 							</div>
@@ -918,18 +918,18 @@ export default function Landing() {
 									</p>
 								</div>
 								<div className="flex justify-center">
-									<button
-										type="button"
+									<Link
+										href="/auth/login"
 										className="btn btn-outline rounded-full border-2 font-medium border-white text-white px-7 mr-3 hover:border-white hover:bg-white hover:text-i02"
 									>
 										Login
-									</button>
-									<button
-										type="button"
+									</Link>
+									<Link
+										href="/auth/register"
 										className="btn btn-neutral rounded-full border-0 font-medium text-black bg-white px-7 hover:bg-white"
 									>
 										Register
-									</button>
+									</Link>
 								</div>
 							</div>
 						</div>

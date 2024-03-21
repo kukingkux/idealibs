@@ -1,11 +1,10 @@
 "use client";
 
 import GoogleAuth from "@/components/google_auth/index";
-import Cookies from "js-cookie";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
+import axiosInstance from "@/app/axios";
 import bg from "../../../public/images/Img-Login.png";
 
 export default function Login() {
@@ -17,19 +16,16 @@ export default function Login() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const response = await fetch("https://idealibs.cyclic.app/users/signin", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ email, password }),
-		});
+		const res = await axiosInstance.post(
+			"https://idealibs.cyclic.app/users/signin",
+			{
+				email: email,
+				password: password,
+			}
+		);
 
-		if (response.ok) {
-			const data = await response.json();
-			Cookies.set("accessToken", data);
-			console.log(data);
-
+		if (res.status == 200) {
+			localStorage.setItem("token", JSON.stringify(res.data.accessToken));
 			router.push("/home");
 		}
 	};
@@ -95,12 +91,12 @@ export default function Login() {
 									/>
 								</svg>
 								<input
-									type="text"
-									name="name"
+									type="email"
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
 									placeholder="Enter your email/username"
 									className="w-full bg-i03 focus:outline-none"
+									required
 								/>
 							</div>
 						</div>
@@ -123,11 +119,11 @@ export default function Login() {
 								</svg>
 								<input
 									type="password"
-									name="name"
 									value={password}
 									onChange={(e) => setPassword(e.target.value)}
 									placeholder="Enter your password"
 									className="w-full bg-i03 focus:outline-none"
+									required
 								/>
 							</div>
 						</div>

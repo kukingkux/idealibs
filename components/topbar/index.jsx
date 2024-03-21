@@ -1,19 +1,30 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function TopNavigation() {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const [session, setSession] = useState(null);
 	const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
-	const session = "";
+	const router = useRouter();
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		router.push("/");
+	};
+
+	useEffect(() => {
+		const token = JSON.parse(localStorage.getItem("token"));
+		setSession(token);
+	}, []);
 
 	return (
-		<div id="navbar" className="sticky top-0 bg-i02 py-6 px-7 z-50 lg:px-10">
+		<div id="navbar" className="sticky top-0 bg-i02 py-6 px-7 z-50 md:px-10">
 			<div className="flex justify-between items-center">
 				<label
 					htmlFor="my-drawer"
 					onClick={toggleDrawer}
-					className="btn btn-square drawer-button border-0 bg-i03 h-10 lg:hidden"
+					className="btn btn-square drawer-button border-0 bg-i03 h-10 md:hidden"
 				>
 					{isDrawerOpen ? (
 						<svg
@@ -45,14 +56,14 @@ export default function TopNavigation() {
 						</svg>
 					)}
 				</label>
-				<div className="ml-14 lg:hidden">
+				<div className="md:hidden">
 					<img
-						className="h-8 lg:hidden"
+						className="h-8 md:hidden"
 						src="/images/Logo-Nav-Mobile.png"
 						alt="Idealibs Logo"
 					/>
 				</div>
-				<div className="hidden lg:block lg:w-full lg:mr-48">
+				<div className="hidden md:block md:w-1/2 md:mr-48">
 					<label className="input flex items-center gap-2 rounded-full bg-i03 px-5">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -90,13 +101,25 @@ export default function TopNavigation() {
 					</label>
 				</div>
 				{session ? (
-					<p>{session?.email}</p>
+					<div className="flex items-center">
+						<button
+							type="button"
+							onClick={handleLogout}
+							className="hidden btn btn-outline rounded-full border-2 font-medium border-white text-white px-7 mr-3 hover:border-white hover:bg-white hover:text-i02 md:flex"
+						>
+							Logout
+						</button>
+						<img
+							src="/images/Img-Profile.png"
+							className="rounded-full w-10 h-10"
+						/>
+					</div>
 				) : (
 					<div className="flex">
 						<Link
 							href="/auth/login"
 							type="button"
-							className="hidden btn btn-outline rounded-full border-2 font-medium border-white text-white px-7 mr-3 hover:border-white hover:bg-white hover:text-i02 lg:flex"
+							className="hidden btn btn-outline rounded-full border-2 font-medium border-white text-white px-7 mr-3 hover:border-white hover:bg-white hover:text-i02 md:flex"
 						>
 							Login
 						</Link>

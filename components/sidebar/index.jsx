@@ -1,9 +1,16 @@
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 export function SideNavigation() {
+	const [session, setSession] = useState(null);
+
 	const pathname = usePathname();
 
+	useEffect(() => {
+		const token = JSON.parse(localStorage.getItem("token"));
+		setSession(token);
+	}, []);
 	return (
 		<div
 			id="left-content"
@@ -170,12 +177,21 @@ export function SideNavigation() {
 									Upgrade premium and get a variety of interesting and
 									high-quality assets
 								</p>
-								<Link
-									href="/payment"
-									className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm"
-								>
-									Upgrade now
-								</Link>
+								{session ? (
+									<Link
+										href="/premium"
+										className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm"
+									>
+										Upgrade now
+									</Link>
+								) : (
+									<Link
+										href="/auth/login"
+										className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm"
+									>
+										Upgrade now
+									</Link>
+								)}
 							</div>
 						</div>
 					</div>
