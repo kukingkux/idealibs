@@ -8,16 +8,6 @@ import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Icon.png";
 
 export default function IconsPage() {
-	const [open, setOpen] = useState(1);
-	const [active, setActive] = useState(null);
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
-	const handleOpen = (value) => setOpen(open === value ? 0 : value);
-	const handleActive = (value) => setActive(value);
-	const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
-
-	const session = "";
-
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
 			<div className="drawer" id="sidebar">

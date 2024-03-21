@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import SearchInput from "../searchInput";
 
 export default function TopNavigation() {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -63,7 +64,8 @@ export default function TopNavigation() {
 						alt="Idealibs Logo"
 					/>
 				</div>
-				<div className="hidden md:block md:w-1/2 md:mr-48">
+				<SearchInput />
+				{/* <div className="hidden md:block md:w-1/2 md:mr-48">
 					<label className="input flex items-center gap-2 rounded-full bg-i03 px-5">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +101,7 @@ export default function TopNavigation() {
 							/>
 						</svg>
 					</label>
-				</div>
+				</div> */}
 				{session ? (
 					<div className="flex items-center">
 						<button

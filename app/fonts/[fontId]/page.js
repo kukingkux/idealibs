@@ -7,6 +7,10 @@ import TopNavigation from "@/components/topbar";
 import { useRouter } from "next/navigation";
 
 export default function FontDetails({ params }) {
+	let string = params.fontId;
+	let familyParse = string
+		.replace(/-/g, " ")
+		.replace(/\b\w/g, (c) => c.toUpperCase());
 	const router = useRouter();
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
@@ -111,12 +115,21 @@ export default function FontDetails({ params }) {
 										</div>
 									</div>
 									<div className="flex flex-col gap-4 mb-10 lg:w-full">
-										<CardFont
+										<div className="flex flex-col justify-between rounded-lg p-7 bg-i02">
+											<div className="flex gap-10 items-center text-sm">
+												<p className="">Sans Serif</p>
+												<p className="">16 Styles</p>
+											</div>
+											<div className="mt-20">
+												<h1 className="text-3xl lg:text-6xl">{familyParse}</h1>
+											</div>
+										</div>
+										{/* <CardFont
 											cardBg="i02"
 											ratio="none"
 											fontSize="6xl"
 											svgClass={`hidden`}
-										/>
+										/> */}
 										<div className="flex md:flex-row flex-col gap-4">
 											<div className="bg-i02 rounded-lg p-5 w-full">
 												<div className="flex align-center gap-6 mb-4">
@@ -180,11 +193,11 @@ export default function FontDetails({ params }) {
 												<tbody>
 													<tr className="p-5">
 														<th>Font name</th>
-														<td>Plus Jakarta Sans</td>
+														<td>{familyParse}</td>
 													</tr>
 													<tr className="border-y-2 border-i02">
 														<th>Author</th>
-														<td>Tokotype</td>
+														<td>Google Font</td>
 													</tr>
 													<tr className="border-y-2 border-i02">
 														<th>Category</th>

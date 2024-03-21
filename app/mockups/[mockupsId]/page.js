@@ -239,7 +239,7 @@ export default function MockupDetails() {
 															/>
 														</svg>
 
-														<p>Photos</p>
+														<p>Mockups</p>
 													</div>
 												</div>
 											</div>
@@ -279,7 +279,7 @@ export default function MockupDetails() {
 											</div>
 										</div>
 										<div className="flex flex-col gap-4 mb-10">
-											<p className="text-i04">More Photos</p>
+											<p className="text-i04">More Mockups</p>
 											<div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
 												{data2.map((item) => (
 													<Card
@@ -292,10 +292,10 @@ export default function MockupDetails() {
 										</div>
 										<div className="flex flex-wrap justify-center gap-4 mb-6">
 											<Link
-												href="/photos"
+												href="/mockups"
 												className="rounded-iform py-4 px-8 border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink hover:bg-transparent"
 											>
-												See more photos
+												See more mockups
 											</Link>
 										</div>
 									</div>
