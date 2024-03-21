@@ -268,7 +268,7 @@ export default function PhotosPage() {
 									<span className="loading loading-infinity loading-lg"></span>
 								</div>
 							) : (
-								<div className="md:block columns-4 gap-5 px-7 hidden">
+								<div className="md:block columns-4 gap-4 px-7 hidden">
 									{data.map((item) => (
 										<Card
 											src={item.file_path}
