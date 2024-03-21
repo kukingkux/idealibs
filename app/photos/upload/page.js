@@ -1,48 +1,29 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import Card from "@/components/gridmasonry";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Photo.png";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import axiosInstance from "../axios";
 
-export default function PhotosPage() {
+export default function UploadPhotoPage() {
 	const [data, setData] = useState([]);
 	const [isLoading, setLoading] = useState(true);
 
-	const searchParams = useSearchParams();
-
 	useEffect(() => {
-		if (searchParams.get("search") != null) {
-			setLoading(true);
-			const fetchData = async () => {
-				try {
-					const res = await axiosInstance.get(
-						"/files?category_id=1&search=" + searchParams.get("search")
-					);
-					setData(res.data.data);
-					setLoading(false);
-				} catch (err) {
-					console.error("Error fetching data:", err);
-				}
-			};
-			fetchData();
-		} else {
-			const fetchData = async () => {
-				try {
-					const res = await axiosInstance.get("/files?category_id=1");
-					setData(res.data.data);
-					setLoading(false);
-				} catch (err) {
-					console.error("Error fetching data:", err);
-				}
-			};
-			fetchData();
-		}
-	}, [searchParams]);
+		const fetchData = async () => {
+			try {
+				const res = await axiosInstance.get("/files?category_id=1");
+				setData(res.data.data);
+				setLoading(false);
+			} catch (err) {
+				console.error("Error fetching data:", err);
+			}
+		};
+		fetchData();
+	}, []);
 
 	// useEffect(() => {
 	// 	if (data.length) {

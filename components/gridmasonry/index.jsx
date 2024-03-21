@@ -18,7 +18,7 @@ export default function MasonryGrid({ src, path }) {
 				href={{
 					pathname: `${path}`,
 				}}
-				className="rounded-lg z-10 h-full opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute bg-[radial-gradient(120.40%_180.55%_at_50.76%_60.29%,rgba(255,255,255,0.00)_0%,rgba(0,0,0,1)_100%)] inset-x-0 pt-30 text-white flex items-end my-3"
+				className="rounded-lg z-10 h-full opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute bg-[radial-gradient(120.40%_180.55%_at_50.76%_60.29%,rgba(255,255,255,0.00)_0%,rgba(0,0,0,1)_100%)] inset-x-0 pt-30 text-white flex items-end my-4"
 			></Link>
 			<button
 				onClick={changeColor}
@@ -41,7 +41,7 @@ export default function MasonryGrid({ src, path }) {
 					/>
 				</svg>
 			</button>
-			<img alt="" className="h-auto w-full rounded-lg my-3" src={src} />
+			<img alt="" className="h-auto w-full rounded-lg mt-4" src={src} />
 		</div>
 	);
 }

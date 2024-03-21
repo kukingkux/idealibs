@@ -1,12 +1,12 @@
 "use client";
 
+import axiosInstance from "@/app/axios";
 import Card from "@/components/gridcard";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
-import { useRouter, useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import axiosInstance from "@/app/axios";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function PhotoDetails() {
 	const router = useRouter();
@@ -144,12 +144,12 @@ export default function PhotoDetails() {
 										<div className="lg:flex gap-8">
 											<div className="lg:w-3/4">
 												<div
-													className="md:w-full md:h-96 md:aspect-video bg-cover rounded-lg"
+													className="md:h-96 md:aspect-video bg-cover rounded-lg"
 													style={{
-														backgroundImage: `${data.file_path}`,
+														backgroundImage: `url('${data.file_path}')`,
 													}}
 												>
-													<div className="backdrop-blur-md md:h-96 rounded-lg md:flex justify-center">
+													<div className="backdrop-blur-md md:h-24 rounded-lg md:flex justify-center">
 														<img
 															src={`${data.file_path}`}
 															className="h-full overflow-hidden object-contain"
