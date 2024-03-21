@@ -224,7 +224,7 @@ export default function PhotosPage() {
 														src="/images/Img-Profile.png"
 														className="rounded-full w-12 h-12"
 													></img>
-													<p>Khananta</p>
+													<p className="font-medium text-lg">{item.username}</p>
 												</div>
 
 												<Link href={`/photos/${item.id}`}>

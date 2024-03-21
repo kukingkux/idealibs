@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Card from "@/components/gridmasonry";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
@@ -12,18 +13,36 @@ export default function MockupsPage() {
 	const [data, setData] = useState([]);
 	const [isLoading, setLoading] = useState(true);
 
+	const searchParams = useSearchParams();
+
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const res = await axiosInstance.get("/files?category_id=5");
-				setData(res.data.data);
-				setLoading(false);
-			} catch (err) {
-				console.error("Error fetching data:", err);
-			}
-		};
-		fetchData();
-	}, []);
+		if (searchParams.get("search") != null) {
+			setLoading(true);
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get(
+						"/files?category_id=5&search=" + searchParams.get("search")
+					);
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		} else {
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get("/files?category_id=5");
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		}
+	}, [searchParams]);
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
 			<div className="drawer" id="sidebar">
@@ -161,7 +180,7 @@ export default function MockupsPage() {
 														src="/images/Img-Profile.png"
 														className="rounded-full w-12 h-12"
 													></img>
-													<p>Khananta</p>
+													<p className="font-medium text-lg">{item.username}</p>
 												</div>
 
 												<Link href={`/mockups/${item.id}`}>

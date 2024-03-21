@@ -1,26 +1,8 @@
 import Link from "next/link";
 
 export default function CardColors({ c1, c2, c3, c4, id }) {
-	// const data = [
-	//     {
-	//         id: 1,
-	//         hex: "#1F2544 #474F7A #81689D #FFD0EC"
-	//     },
-	// ]
-
-	// const split = data.filter((item) => item.id === 1 )
-
-	// const datasplit = split[0].hex.split(" ")
-
-	// return console.log(datasplit)
-
 	return (
 		<div className="w-full flex flex-col gap-4 mb-6">
-			{/* <div>
-                {split.map((data, index) => {
-                    return <p key={index}>{data}</p>
-                })}
-            </div> */}
 			<Link
 				href={{
 					pathname: `/colors/${id}`,
@@ -29,19 +11,13 @@ export default function CardColors({ c1, c2, c3, c4, id }) {
 				<div className="w-full h-48 lg:h-96">
 					<div
 						className="w-full h-1/4 rounded-t-lg"
-						style={{ backgroundColor: "#" + c1 }}
+						style={{ backgroundColor: c1 }}
 					></div>
-					<div
-						className="w-full h-1/4"
-						style={{ backgroundColor: "#" + c2 }}
-					></div>
-					<div
-						className="w-full h-1/4"
-						style={{ backgroundColor: "#" + c3 }}
-					></div>
+					<div className="w-full h-1/4" style={{ backgroundColor: c2 }}></div>
+					<div className="w-full h-1/4" style={{ backgroundColor: c3 }}></div>
 					<div
 						className="w-full h-1/4 rounded-b-lg"
-						style={{ backgroundColor: "#" + c4 }}
+						style={{ backgroundColor: c4 }}
 					></div>
 				</div>
 			</Link>

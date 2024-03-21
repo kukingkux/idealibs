@@ -1,14 +1,14 @@
 "use client";
 
-import CardColors from "@/components/cardcolors";
+import axiosInstance from "@/app/axios";
+import CardIcon from "@/components/cardicons";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
-import { useRouter, useParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import axiosInstance from "@/app/axios";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function ColorDetails() {
+export default function IconDetails() {
 	const router = useRouter();
 	const params = useParams();
 	const [data, setData] = useState({});
@@ -18,8 +18,8 @@ export default function ColorDetails() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const res = await axiosInstance.get("/files/colors/" + params.colorId);
-				const res2 = await axiosInstance.get("/files/colors");
+				const res = await axiosInstance.get("/files/icons/" + params.iconsId);
+				const res2 = await axiosInstance.get("/files/icons");
 				setData(res.data.data);
 				setData2(res2.data.data);
 				setLoading(false);
@@ -30,6 +30,10 @@ export default function ColorDetails() {
 		fetchData();
 	}, []);
 
+	// useEffect(() => {
+	// 	console.log()
+	// }, []);
+
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
 			<div className="drawer" id="sidebar">
@@ -37,7 +41,7 @@ export default function ColorDetails() {
 				<div className="drawer-content flex flex-col items-center justify-center">
 					<div id="content" className="flex container max-w-full">
 						<SideNavigation />
-						<div id="right-content" className="min-h-screen md:w-full">
+						<div id="right-content" className="min-h-screen w-full">
 							<TopNavigation />
 							{isLoading ? (
 								<div className="flex justify-center items-center h-screen">
@@ -137,39 +141,64 @@ export default function ColorDetails() {
 												</div>
 											</div>
 										</div>
-										<div className="flex flex-col gap-8">
-											<div className="lg:w-full">
-												<div className="w-full h-36 lg:h-44 flex">
-													<div
-														className="w-1/4"
-														style={{ backgroundColor: data.hex[0] }}
-													></div>
-													<div
-														className="w-1/4"
-														style={{ backgroundColor: data.hex[1] }}
-													></div>
-													<div
-														className="w-1/4"
-														style={{ backgroundColor: data.hex[2] }}
-													></div>
-													<div
-														className="w-1/4"
-														style={{ backgroundColor: data.hex[3] }}
-													></div>
+										<div className="lg:flex gap-8">
+											<div className="lg:w-3/4">
+												<div
+													className="md:h-96 md:aspect-video bg-cover rounded-lg"
+													style={{
+														backgroundImage: `url('${data.file_path}')`,
+													}}
+												>
+													<div className="backdrop-blur-md md:h-24 rounded-lg md:flex justify-center">
+														<img
+															src={`${data.file_path}`}
+															className="h-full overflow-hidden object-contain"
+														/>
+													</div>
+												</div>
+												<div className="flex gap-4 items-center justify-between py-5 mb-5">
+													<h1 className="font-semibold text-xl">
+														{data.title}
+													</h1>
 												</div>
 											</div>
 
-											<div className="flex flex-col md:flex-row gap-4 mb-10 lg:w-full">
-												<div className="bg-i02 rounded-lg p-5 lg:w-full">
+											<div className="flex flex-col gap-4 mb-10 lg:w-1/2">
+												<div className="bg-i02 rounded-lg p-5">
 													<div className="flex align-center gap-6 mb-4">
-														<h2 className="font-bold text-xl">Free Item</h2>
+														<svg
+															width="27"
+															height="27"
+															viewBox="0 0 27 22"
+															fill="none"
+															xmlns="http://www.w3.org/2000/svg"
+														>
+															<path
+																d="M14.4844 3.96875C15.0188 3.64062 15.375 3.04531 15.375 2.375C15.375 1.33906 14.5359 0.5 13.5 0.5C12.4641 0.5 11.625 1.33906 11.625 2.375C11.625 3.05 11.9812 3.64062 12.5156 3.96875L9.82969 9.34063C9.40312 10.1938 8.29688 10.4375 7.55156 9.84219L3.375 6.5C3.60938 6.18594 3.75 5.79688 3.75 5.375C3.75 4.33906 2.91094 3.5 1.875 3.5C0.839062 3.5 0 4.33906 0 5.375C0 6.41094 0.839062 7.25 1.875 7.25C1.88437 7.25 1.89844 7.25 1.90781 7.25L4.05 19.0344C4.30781 20.4594 5.55 21.5 7.00312 21.5H19.9969C21.4453 21.5 22.6875 20.4641 22.95 19.0344L25.0922 7.25C25.1016 7.25 25.1156 7.25 25.125 7.25C26.1609 7.25 27 6.41094 27 5.375C27 4.33906 26.1609 3.5 25.125 3.5C24.0891 3.5 23.25 4.33906 23.25 5.375C23.25 5.79688 23.3906 6.18594 23.625 6.5L19.4484 9.84219C18.7031 10.4375 17.5969 10.1938 17.1703 9.34063L14.4844 3.96875Z"
+																fill="url(#paint0_linear_1027_746)"
+															/>
+															<defs>
+																<linearGradient
+																	id="paint0_linear_1027_746"
+																	x1="0"
+																	y1="21.5"
+																	x2="30.5965"
+																	y2="11.4573"
+																	gradientUnits="userSpaceOnUse"
+																>
+																	<stop stopColor="#FC6736" />
+																	<stop offset="1" stopColor="#FC36D0" />
+																</linearGradient>
+															</defs>
+														</svg>
+														<h2 className="font-bold text-xl">Premium Item</h2>
 													</div>
 													<p className="text-md leading-loose">
-														Explore high-quality resources for free and elevate
-														your projects!
+														Unlock unlimited, ad-free, and premium content for
+														an elevated design experience!
 													</p>
 												</div>
-												<div className="bg-i02 flex flex-col gap-4 rounded-lg p-5 lg:w-full">
+												<div className="bg-i02 flex flex-col gap-4 rounded-lg p-5">
 													<h2 className="font-bold text-xl">Time</h2>
 													<div className="flex align-center gap-6">
 														<svg
@@ -210,71 +239,51 @@ export default function ColorDetails() {
 															/>
 														</svg>
 
-														<p>Color Palette</p>
+														<p>svg</p>
 													</div>
 												</div>
 											</div>
 										</div>
-										<div className="lg:w-full flex flex-col items-center">
-											<div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-0 mb-10 w-2/3 lg:w-7/12">
-												<div className="flex flex-col gap-4 items-center justify-center">
-													<div
-														className="rounded-full w-24 h-24"
-														style={{ backgroundColor: data.hex[0] }}
-													></div>
-													<p>{data.hex[0]}</p>
-												</div>
-												<div className="flex flex-col gap-4 items-center justify-center">
-													<div
-														className="rounded-full w-24 h-24"
-														style={{ backgroundColor: data.hex[1] }}
-													></div>
-													<p>{data.hex[1]}</p>
-												</div>
-												<div className="flex flex-col gap-4 items-center justify-center">
-													<div
-														className="rounded-full w-24 h-24"
-														style={{ backgroundColor: data.hex[2] }}
-													></div>
-													<p>{data.hex[2]}</p>
-												</div>
-												<div className="flex flex-col gap-4 items-center justify-center">
-													<div
-														className="rounded-full w-24 h-24"
-														style={{ backgroundColor: data.hex[3] }}
-													></div>
-													<p>{data.hex[3]}</p>
-												</div>
+										<div className="lg:w-7/12">
+											<div className="flex flex-col gap-4 mb-10">
+												<p className="text-i04">Description</p>
+												<p className="tracking-wide text-[#FEFEFE]">
+													{data.description}
+												</p>
 											</div>
 											<div className="flex flex-col gap-4 mb-10">
-												<p className="text-i04 md:hidden">Tag(s)</p>
-												<div className="flex flex-wrap justify-center gap-4">
+												<p className="text-i04">Tag(s)</p>
+												<div className="flex flex-wrap gap-4">
 													<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-														Purple
+														Exoticism
 													</div>
 													<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-														Pink
+														Coastal Charm
 													</div>
 													<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-														Kids
+														Verdancy
 													</div>
 													<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-														Happy
+														Destination
+													</div>
+													<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
+														Beauty
+													</div>
+													<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
+														Myserious
+													</div>
+													<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
+														Coconut
 													</div>
 												</div>
 											</div>
 										</div>
 										<div className="flex flex-col gap-4 mb-10">
-											<p className="text-[#fefefe] md:text-center">
-												More Colors
-											</p>
-											<div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+											<p className="text-i04">More Icons</p>
+											<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
 												{data2.map((item) => (
-													<CardColors
-														c1={item.hex[0]}
-														c2={item.hex[1]}
-														c3={item.hex[2]}
-														c4={item.hex[3]}
+													<CardIcon
+														src={item.file_path}
 														id={item.id}
 														key={item.id}
 													/>
@@ -283,10 +292,10 @@ export default function ColorDetails() {
 										</div>
 										<div className="flex flex-wrap justify-center gap-4 mb-6">
 											<Link
-												href="/colors"
+												href="/icons"
 												className="rounded-iform py-4 px-8 border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink hover:bg-transparent"
 											>
-												See more colors
+												See more icons
 											</Link>
 										</div>
 									</div>

@@ -1,13 +1,48 @@
 "use client";
 
-import { useState } from "react";
-
+import Link from "next/link";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import CardIcon from "@/components/cardicons";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Icon.png";
+import axiosInstance from "../axios";
 
 export default function IconsPage() {
+	const [data, setData] = useState([]);
+	const [isLoading, setLoading] = useState(true);
+
+	const searchParams = useSearchParams();
+
+	useEffect(() => {
+		if (searchParams.get("search") != null) {
+			setLoading(true);
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get(
+						"/files/icons?search=" + searchParams.get("search")
+					);
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		} else {
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get("/files/icons");
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		}
+	}, [searchParams]);
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
 			<div className="drawer" id="sidebar">
@@ -140,17 +175,21 @@ export default function IconsPage() {
 							</div>
 
 							<div id="mobile-scrollable" className="">
-								<div className="md:grid grid-cols-4 gap-4 px-7 hidden">
-									<CardIcon src="/images/Img-Image1.png" id="1" />
-									<CardIcon src="/images/Img-Image2.png" id="2" />
-									<CardIcon src="/images/Img-Image3.png" id="3" />
-									<CardIcon src="/images/Img-Image5.png" id="5" />
-									<CardIcon src="/images/Img-Image6.png" id="6" />
-									<CardIcon src="/images/Img-Image4.png" id="4" />
-									<CardIcon src="/images/Img-Image8.png" id="8" />
-									<CardIcon src="/images/Img-Image7.png" id="7" />
-									<CardIcon src="/images/Img-Image9.png" id="9" />
-								</div>
+								{isLoading ? (
+									<div className="hidden justify-center mt-4 md:flex">
+										<span className="loading loading-infinity loading-lg"></span>
+									</div>
+								) : (
+									<div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-7">
+										{data.map((item) => (
+											<CardIcon
+												src={item.file_path}
+												id={item.id}
+												key={item.id}
+											/>
+										))}
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

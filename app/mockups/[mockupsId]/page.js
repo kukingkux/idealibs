@@ -28,7 +28,7 @@ export default function MockupDetails() {
 			}
 		};
 		fetchData();
-	});
+	}, []);
 
 	// useEffect(() => {
 	// 	console.log()
@@ -78,7 +78,7 @@ export default function MockupDetails() {
 														src="/images/Img-Profile.png"
 														className="rounded-full w-12 h-12"
 													></img>
-													<p>Khananta</p>
+													<p className="font-medium text-lg">{data.username}</p>
 												</div>
 											</div>
 											<div className="flex gap-2">
@@ -117,7 +117,7 @@ export default function MockupDetails() {
 														/>
 													</svg>
 												</div>
-												<div className="flex gap-2 bg-i02 p-3 rounded-full">
+												<div className="flex items-center justify-center bg-i02 w-12 h-12 rounded-full">
 													<svg
 														width="28"
 														height="28"
@@ -215,7 +215,7 @@ export default function MockupDetails() {
 																fill="#FEFEFE"
 															/>
 														</svg>
-														<p>February 25, 2024</p>
+														<p>{data.created_at}</p>
 													</div>
 													<div className="flex align-center gap-6">
 														<svg
@@ -239,7 +239,7 @@ export default function MockupDetails() {
 															/>
 														</svg>
 
-														<p>Mockups</p>
+														<p>{data.file_type}</p>
 													</div>
 												</div>
 											</div>

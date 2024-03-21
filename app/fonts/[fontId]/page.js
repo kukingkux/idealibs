@@ -1,7 +1,6 @@
 "use client";
 
 import Alphabet from "@/components/alphabet";
-import CardFont from "@/components/cardfonts";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import { useRouter } from "next/navigation";
@@ -90,7 +89,7 @@ export default function FontDetails({ params }) {
 													/>
 												</svg>
 											</div>
-											<div className="flex gap-2 bg-i02 p-3 rounded-full">
+											<div className="flex items-center justify-center bg-i02 w-12 h-12 rounded-full">
 												<svg
 													width="28"
 													height="28"
@@ -181,7 +180,7 @@ export default function FontDetails({ params }) {
 														/>
 													</svg>
 
-													<p>Fonts</p>
+													<p>ttf</p>
 												</div>
 											</div>
 										</div>

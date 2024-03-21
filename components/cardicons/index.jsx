@@ -41,7 +41,7 @@ export default function CardIcon({ src, id }) {
 					/>
 				</svg>
 			</button>
-			<img alt="" className="w-full aspect-[4/3] rounded-lg" src={src} />
+			<img alt="" className="w-full aspect-video rounded-lg" src={src} />
 		</div>
 	);
 }
