@@ -41,7 +41,7 @@ export default function MasonryGrid({ src, path }) {
 					/>
 				</svg>
 			</button>
-			<img alt="" className="h-auto w-full rounded-lg my-3" src={src} />
+			<img alt="" className="h-auto w-full rounded-lg mt-3" src={src} />
 		</div>
 	);
 }
