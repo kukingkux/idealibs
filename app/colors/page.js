@@ -7,6 +7,8 @@ import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Color.png";
 
+import Link from "next/link";
+
 export default function ColorsPage() {
 	const [open, setOpen] = useState(1);
 	const [active, setActive] = useState(null);
@@ -97,7 +99,7 @@ export default function ColorsPage() {
 									</div>
 								</div>
 								<div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
+									<Link href="/colors/upload" className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
 										<svg
 											width="25"
 											height="24"
@@ -119,7 +121,7 @@ export default function ColorsPage() {
 											/>
 										</svg>
 										Upload Color
-									</button>
+									</Link>
 									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold">
 										<svg
 											width="24"

@@ -113,7 +113,7 @@ export default function PhotosPage() {
 									</div>
 								</div>
 								<div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
+									<Link href="photos/upload" className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
 										<svg
 											width="25"
 											height="24"
@@ -135,7 +135,7 @@ export default function PhotosPage() {
 											/>
 										</svg>
 										Upload Image
-									</button>
+									</Link>
 									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold">
 										<svg
 											width="24"

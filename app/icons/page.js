@@ -7,6 +7,8 @@ import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Icon.png";
 
+import Link from "next/link";
+
 export default function IconsPage() {
 	const [open, setOpen] = useState(1);
 	const [active, setActive] = useState(null);
@@ -97,7 +99,7 @@ export default function IconsPage() {
 									</div>
 								</div>
 								<div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
+									<Link href="icons/upload" className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
 										<svg
 											width="25"
 											height="24"
@@ -119,7 +121,7 @@ export default function IconsPage() {
 											/>
 										</svg>
 										Upload Icon
-									</button>
+									</Link>
 								</div>
 								<div className="flex flex-wrap gap-4 mb-6">
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">

@@ -103,7 +103,7 @@ export default function UploadPhotoPage() {
                                         </svg>
                                     </button>
                                     <div className="flex gap-4 items-center">
-                                        <p>Upload a photo</p>
+                                        <p>Upload an icon</p>
                                     </div>
                                 </div>
 
@@ -137,12 +137,12 @@ export default function UploadPhotoPage() {
                                                         ref={filePickerRef}
                                                         type="file"
                                                         onChange={previewFile}
-                                                        accept=".jpg,.jpeg,.png"
+                                                        accept=".svg"
                                                         hidden
                                                     />
                                                     
                                                 </button>
-                                                <p>Supported filetype: .jpg, .jpeg, .png</p>
+                                                <p>Supported filetype: .svg</p>
                                             </div>
                                             
                                             <div className="flex flex-col gap-6 w-full">
