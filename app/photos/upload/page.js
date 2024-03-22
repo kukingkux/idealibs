@@ -22,6 +22,7 @@ export default function UploadPhotoPage() {
     const previewFile = (e) => {
         const reader = new FileReader()
         const selectedFile = e.target.files[0];
+        console.log(selectedFile)
         if (selectedFile) {
             reader.readAsDataURL(selectedFile)
         }
@@ -29,11 +30,13 @@ export default function UploadPhotoPage() {
         reader.onload = (readerEvent) => {
             setPreview(readerEvent.target.result)
         }
+
+        setData(selectedFile)
     }
 
     const handleSubmit = async (e) => {
 
-        const res = axiosInstance.post("/files/photos",
+        const res = axiosInstance.post("/files/photos/1",
             {
                 title: title,
                 description: description,
@@ -45,6 +48,10 @@ export default function UploadPhotoPage() {
             router.push('/photos')
         }
         
+    }
+
+    const handleSubmitImage = (e) => {
+        //  = e.target.files[0]
     }
 
     useEffect(() => {
@@ -136,7 +143,7 @@ export default function UploadPhotoPage() {
                                                     <input
                                                         ref={filePickerRef}
                                                         type="file"
-                                                        onChange={previewFile}
+                                                        onChange={(e) => previewFile(e)}
                                                         accept=".jpg,.jpeg,.png"
                                                         hidden
                                                     />

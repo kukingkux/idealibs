@@ -1,5 +1,6 @@
 "use client";
 
+import axiosInstance from "@/app/axios";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import Link from "next/link";
@@ -51,18 +52,17 @@ export default function UploadPhotoPage() {
     }
 
     const handleSubmit = async (e) => {
+        console.log(colors)
+        const res = axiosInstance.post("/files/colors/1",
+            {
+                hex: colors
+            }
+        )
 
-        // const res = axiosInstance.post("/files/photos",
-        //     {
-        //         title: title,
-        //         description: description,
-        //         thumbnailpath: preview
-        //     }
-        // )
-
-        // if (res.status == 200) {
-        //     router.push('/photos')
-        // }
+        if (res.status == 200) {
+            // router.push('/color')
+            console.log(res)
+        }
         
     }
 
