@@ -25,7 +25,7 @@ export default function Login() {
 		);
 
 		if (res.status == 200) {
-			localStorage.setItem("token", JSON.stringify(res.data.accessToken));
+			localStorage.setItem("token", JSON.stringify(res.data));
 			router.push("/home");
 		}
 	};

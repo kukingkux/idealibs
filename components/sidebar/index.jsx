@@ -171,28 +171,44 @@ export function SideNavigation() {
 									alt="Idealibs Logo"
 								/>
 							</div>
-							<div className="flex flex-col gap-4">
-								<h2 className="font-bold text-xs">Upgrade Premium</h2>
-								<p className="text-xs">
-									Upgrade premium and get a variety of interesting and
-									high-quality assets
-								</p>
-								{session ? (
-									<Link
-										href="/premium"
-										className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm"
-									>
-										Upgrade now
-									</Link>
+							{session ? (
+								session.role == 1 ? (
+									<div className="flex flex-col gap-4">
+										<h2 className="font-bold text-xs">Upgrade Premium</h2>
+										<p className="text-xs">
+											Upgrade premium and get a variety of interesting and
+											high-quality assets
+										</p>
+										<Link
+											href="/premium"
+											className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm"
+										>
+											Upgrade now
+										</Link>
+									</div>
 								) : (
+									<div className="">
+										<h2 className="font-medium text-sm mb-2 mt-8">Premium</h2>
+										<p className="text-xs">
+											Enjoy the premium features provided
+										</p>
+									</div>
+								)
+							) : (
+								<div className="flex flex-col gap-4">
+									<h2 className="font-bold text-xs">Upgrade Premium</h2>
+									<p className="text-xs">
+										Upgrade premium and get a variety of interesting and
+										high-quality assets
+									</p>
 									<Link
 										href="/auth/login"
 										className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm"
 									>
 										Upgrade now
 									</Link>
-								)}
-							</div>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
