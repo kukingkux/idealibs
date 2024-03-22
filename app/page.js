@@ -144,7 +144,7 @@ export default function Landing() {
 								Find various kinds of creative ideas that support your design
 							</p>
 							<Link
-								href="/photos"
+								href="/home"
 								type="button"
 								className="btn btn-neutral rounded-full border-0 text-white font-medium bg-gradient-to-r from-iorange to-ipink px-7 mb-6 lg:mb-16"
 							>
