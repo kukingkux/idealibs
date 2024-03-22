@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
-import bg from "@/public/images/Img-Hero-Photo.png";
+import bg from "@/public/images/Img-Hero-Premium.png";
 
 export default function Premium() {
 	const [open, setOpen] = useState(1);

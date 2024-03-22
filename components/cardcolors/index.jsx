@@ -8,20 +8,20 @@ export default function CardColors({ c1, c2, c3, c4, id }) {
 					pathname: `/colors/${id}`,
 				}}
 			>
-				<div className="w-full h-48 lg:h-96">
+				<div className="w-full">
 					<div
-						className="w-full h-1/4 rounded-t-lg"
+						className="w-full h-20 rounded-t-lg"
 						style={{ backgroundColor: c1 }}
 					></div>
-					<div className="w-full h-1/4" style={{ backgroundColor: c2 }}></div>
-					<div className="w-full h-1/4" style={{ backgroundColor: c3 }}></div>
+					<div className="w-full h-16" style={{ backgroundColor: c2 }}></div>
+					<div className="w-full h-12" style={{ backgroundColor: c3 }}></div>
 					<div
-						className="w-full h-1/4 rounded-b-lg"
+						className="w-full h-10 rounded-b-lg"
 						style={{ backgroundColor: c4 }}
 					></div>
 				</div>
 			</Link>
-			<div className="border-2 border-white rounded-iform py-3 px-7 flex justify-between items-center">
+			<div className="bg-i03 rounded-iform py-3 px-7 flex justify-between items-center">
 				<svg
 					width="24"
 					height="28"

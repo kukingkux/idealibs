@@ -10,8 +10,11 @@ export default function SearchInput() {
 	const submitSearch = (e) => {
 		let searchParse = search.replace(/\s+/g, "%");
 		if (e.key === "Enter") {
-			router.push(pathname + "?search=" + searchParse);
-			// console.log(pathname + "?search=" + searchParse);
+			if (pathname == "/home") {
+				router.push("/photos?search=" + searchParse);
+			} else {
+				router.push(pathname + "?search=" + searchParse);
+			}
 		}
 	};
 
