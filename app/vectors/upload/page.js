@@ -21,16 +21,16 @@ export default function UploadPhotoPage() {
 
     const previewFile = (e) => {
         const reader = new FileReader()
-        
+        const file = document.getElementById("file").files[0];
         const selectedFile = e.target.files[0]
-            console.log(selectedFile)
-            if (selectedFile) {
-                reader.readAsDataURL(selectedFile)
-            }
+        if (selectedFile) {
+            reader.readAsText(selectedFile)
+        }
+        reader.onload = () => {
+            const fileName = selectedFile.name
+            setPreview(fileName)
+        }
 
-            reader.onload = (readerEvent) => {
-                setPreview(readerEvent.target.result)
-            }
         
         setData(selectedFile)
         //setData(selectedFile)
@@ -126,10 +126,12 @@ export default function UploadPhotoPage() {
                                             <div className="flex flex-col gap-2">
                                                 <p>Preview</p>
                                                 <button
-                                                    className="flex flex-col flex-nowrap items-center gap-4 bg-i03 font-semibold text-lg underline rounded-lg cursor-pointer py-24 px-36"
+                                                    className="flex flex-col flex-nowrap items-center gap-4 bg-i03 font-semibold text-lg underline rounded-lg cursor-pointer py-24 w-64"
                                                     onClick={() => filePickerRef.current.click()}
                                                 >
-                                                    {preview != null && <img src={preview} alt="" />}
+                                                    {preview != null && 
+                                                    <div className="truncate">{preview}</div>
+                                                    }
                                                     {preview != null || <><svg width="100" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M13.125 3.5H21C25.8325 3.5 29.75 7.41751 29.75 12.25V16.625C29.75 19.0412 31.7088 21 34.125 21H38.5C43.3325 21 47.25 24.9175 47.25 29.75V48.125C47.25 50.5412 45.2912 52.5 42.875 52.5H13.125C10.7088 52.5 8.75 50.5412 8.75 48.125V7.875C8.75 5.45875 10.7088 3.5 13.125 3.5ZM29.2374 26.7626C28.9092 26.4344 28.4641 26.25 28 26.25C27.5359 26.25 27.0908 26.4344 26.7626 26.7626L19.7626 33.7626C19.0791 34.446 19.0791 35.554 19.7626 36.2374C20.446 36.9209 21.554 36.9209 22.2374 36.2374L26.25 32.2249L26.25 42C26.25 42.9665 27.0335 43.75 28 43.75C28.9665 43.75 29.75 42.9665 29.75 42L29.75 32.2249L33.7626 36.2374C34.446 36.9209 35.554 36.9209 36.2374 36.2374C36.9209 35.554 36.9209 34.446 36.2374 33.7626L29.2374 26.7626Z" fill="url(#paint0_linear_1315_21774)"/>
                                                         <path d="M33.25 12.25C33.25 9.18621 32.1252 6.38512 30.2661 4.23711C38.197 6.30881 44.4412 12.553 46.5129 20.4839C44.3649 18.6248 41.5638 17.5 38.5 17.5H34.125C33.6418 17.5 33.25 17.1082 33.25 16.625V12.25Z" fill="url(#paint1_linear_1315_21774)"/>
@@ -147,15 +149,16 @@ export default function UploadPhotoPage() {
                                                     <p>Select a file</p>
                                                     </>}
                                                     <input
+                                                        id="file"
                                                         ref={filePickerRef}
                                                         type="file"
                                                         onChange={previewFile}
-                                                        accept=".svg,.ai,.cdr,.pdf"
+                                                        accept=".svg,.ai,.cdr,.pdf,.eps"
                                                         hidden
                                                     />
                                                     
                                                 </button>
-                                                <p>Supported filetype: .svg</p>
+                                                <p>Supported filetype: .ai, .eps</p>
                                             </div>
                                             
                                             <div className="flex flex-col gap-6 w-full">
