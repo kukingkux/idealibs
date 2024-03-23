@@ -21,42 +21,29 @@ export default function UploadPhotoPage() {
 
     const previewFile = (e) => {
         const reader = new FileReader()
-        
-        const selectedFile = e.target.files[0]
-            console.log(selectedFile)
-            if (selectedFile) {
-                reader.readAsDataURL(selectedFile)
-            }
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            reader.readAsDataURL(selectedFile)
+        }
 
-            reader.onload = (readerEvent) => {
-                setPreview(readerEvent.target.result)
-            }
-        
-        setData(selectedFile)
-        //setData(selectedFile)
-        console.log(selectedFile)
+        reader.onload = (readerEvent) => {
+            setPreview(readerEvent.target.result)
+        }
     }
 
     const handleSubmit = async (e) => {
 
-        const res = axiosInstance.post("/files/upload-image/7",
+        const res = axiosInstance.post("/files/photos",
             {
                 title: title,
                 description: description,
-                file_path: data,
-                file_type: 'jpg',
-                item_id: 1,
-                tags_id: 1,
-                categories_id: 5,
-            },
-            {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
+                thumbnailpath: preview
             }
         )
 
-        console.log(res)
+        if (res.status == 200) {
+            router.push('/photos')
+        }
         
     }
 
