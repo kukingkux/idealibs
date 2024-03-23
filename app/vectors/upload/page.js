@@ -21,14 +21,20 @@ export default function UploadPhotoPage() {
 
     const previewFile = (e) => {
         const reader = new FileReader()
-        const selectedFile = e.target.files[0];
-        if (selectedFile) {
-            reader.readAsDataURL(selectedFile)
-        }
+        
+        const selectedFile = e.target.files[0]
+            console.log(selectedFile)
+            if (selectedFile) {
+                reader.readAsDataURL(selectedFile)
+            }
 
-        reader.onload = (readerEvent) => {
-            setPreview(readerEvent.target.result)
-        }
+            reader.onload = (readerEvent) => {
+                setPreview(readerEvent.target.result)
+            }
+        
+        setData(selectedFile)
+        //setData(selectedFile)
+        console.log(selectedFile)
     }
 
     const handleSubmit = async (e) => {
