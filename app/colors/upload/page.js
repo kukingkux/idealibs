@@ -17,7 +17,8 @@ export default function UploadPhotoPage() {
         '#FFFFFF',
     ])
 
-	const [data, setData] = useState([]);
+    const hex = colors
+
 	const [isLoading, setLoading] = useState(true);
 
     const filePickerRef = useRef(null);
@@ -52,17 +53,19 @@ export default function UploadPhotoPage() {
     }
 
     const handleSubmit = async (e) => {
-        console.log(colors)
-        const res = axiosInstance.post("/files/colors/1",
+        console.log(hex)
+        const res = axiosInstance.post("/files/colors/7",
             {
-                hex: colors
-            }
+                hex: hex
+            },
         )
 
-        if (res.status == 200) {
-            // router.push('/color')
-            console.log(res)
-        }
+        console.log(res)
+
+        // if (res.status == "success") {
+        //     // router.push('/color')
+        //     console.log(res)
+        // }
         
     }
 
@@ -134,11 +137,11 @@ export default function UploadPhotoPage() {
                                                         <div key={index} className="w-full">
                                                             <p className="mb-2">Color {index + 1}</p>
                                                             <div className="flex items-center justify-between gap-6 w-full bg-i02 focus:outline-none rounded-lg border border-i04 p-6 md:p-5">
-                                                                <button
+                                                                <div
                                                                     onClick={() => handleToggleOpen(index)}
                                                                     className="w-2/3 md:w-7/12 h-12 rounded-sm"
                                                                     style={{backgroundColor: color}}
-                                                                ></button>
+                                                                ></div>
                                                                 <input
                                                                     type="text"
                                                                     value={color}

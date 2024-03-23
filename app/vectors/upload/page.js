@@ -33,17 +33,24 @@ export default function UploadPhotoPage() {
 
     const handleSubmit = async (e) => {
 
-        const res = axiosInstance.post("/files/photos",
+        const res = axiosInstance.post("/files/vector/7",
             {
                 title: title,
                 description: description,
-                thumbnailpath: preview
+                file_path: data,
+                file_type: 'jpg',
+                item_id: 1,
+                tags_id: 1,
+                categories_id: 4,
+            },
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
             }
         )
 
-        if (res.status == 200) {
-            router.push('/photos')
-        }
+        console.log(res)
         
     }
 

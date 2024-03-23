@@ -12,8 +12,7 @@ export default function UploadPhotoPage() {
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [preview, setPreview] = useState(null)
-
-	const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
 	const [isLoading, setLoading] = useState(true);
 
     const filePickerRef = useRef(null);
@@ -21,37 +20,43 @@ export default function UploadPhotoPage() {
 
     const previewFile = (e) => {
         const reader = new FileReader()
-        const selectedFile = e.target.files[0];
-        console.log(selectedFile)
-        if (selectedFile) {
-            reader.readAsDataURL(selectedFile)
-        }
+        
+        const selectedFile = e.target.files[0]
+            console.log(selectedFile)
+            if (selectedFile) {
+                reader.readAsDataURL(selectedFile)
+            }
 
-        reader.onload = (readerEvent) => {
-            setPreview(readerEvent.target.result)
-        }
-
+            reader.onload = (readerEvent) => {
+                setPreview(readerEvent.target.result)
+            }
+        
         setData(selectedFile)
+        //setData(selectedFile)
+        console.log(selectedFile)
     }
 
     const handleSubmit = async (e) => {
 
-        const res = axiosInstance.post("/files/photos/1",
+        const res = axiosInstance.post("/files/upload-image/7",
             {
                 title: title,
                 description: description,
-                thumbnailpath: preview
+                file_path: data,
+                file_type: 'jpg',
+                item_id: 1,
+                tags_id: 1,
+                categories_id: 1,
+            },
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
             }
         )
 
-        if (res.status == 200) {
-            router.push('/photos')
-        }
+        console.log(res)
         
-    }
-
-    const handleSubmitImage = (e) => {
-        //  = e.target.files[0]
     }
 
     useEffect(() => {
