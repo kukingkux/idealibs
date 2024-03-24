@@ -8,8 +8,10 @@ import { useEffect, useRef, useState } from "react";
 import axiosInstance from "../../axios";
 
 export default function UploadPhotoPage() {
-    const user = localStorage.getItem("token")
 
+    const userToken = localStorage.getItem("token")
+    const userData =  JSON.parse(Buffer.from(userToken.split('.')[1], 'base64').toString())
+    const userId = userData.id
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -24,7 +26,23 @@ export default function UploadPhotoPage() {
     const handleDragOver = (e) => {
         e.preventDefault()
     }
-
+    
+    const handleSelect = (e) => {
+        e.preventDefault()
+        const reader = new FileReader()
+        const file = e.target.files[0];
+        setSelectedFile(file)
+        console.log(selectedFile)
+        if (file) {
+            reader.readAsText(file)
+        }
+        reader.onload = () => {
+            const fileName = file.name
+            setPreview(fileName)
+        }
+        
+        
+    }
     const handleDrop = (e) => {
         e.preventDefault()
         const reader = new FileReader()
@@ -41,25 +59,8 @@ export default function UploadPhotoPage() {
         
     }
 
-    const handleSelect = (e) => {
-        e.preventDefault()
-        const reader = new FileReader()
-        const file = e.target.files[0];
-        if (file) {
-            reader.readAsText(file)
-        }
-        reader.onload = () => {
-            const fileName = file.name
-            setPreview(fileName)
-        }
-        setSelectedFile(file)
-
-        
-    }
-    console.log(preview)
     const handleSubmit = async (e) => {
-
-        const res = axiosInstance.post("/files/upload-image/7",
+        const res = axiosInstance.post(`/files/upload-image/${userId}`,
             {
                 title: title,
                 description: description,
@@ -179,7 +180,7 @@ export default function UploadPhotoPage() {
                                                         ref={filePickerRef}
                                                         type="file"
                                                         onChange={handleSelect}
-                                                        accept=".svg,.ai,.cdr,.pdf,.eps"
+                                                        accept=".psd, .ai"
                                                         hidden
                                                     />
                                                 </div>
