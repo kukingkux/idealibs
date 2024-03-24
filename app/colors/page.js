@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import CardColors from "@/components/cardcolors";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Color.png";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import axiosInstance from "../axios";
+
+import Link from "next/link";
 
 export default function ColorsPage() {
 	const [data, setData] = useState([]);
@@ -121,7 +123,7 @@ export default function ColorsPage() {
 									</div>
 								</div>
 								<div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8 hover:opacity-80">
+									<Link href="/colors/upload" className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
 										<svg
 											width="25"
 											height="24"
@@ -143,8 +145,8 @@ export default function ColorsPage() {
 											/>
 										</svg>
 										Upload Color
-									</button>
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold hover:opacity-80">
+									</Link>
+									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold">
 										<svg
 											width="24"
 											height="24"

@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import Card from "@/components/gridmasonry";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Photo.png";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import axiosInstance from "../axios";
 
 export default function PhotosPage() {
@@ -135,7 +135,7 @@ export default function PhotosPage() {
 									</div>
 								</div>
 								<div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8 hover:opacity-80">
+									<Link href="photos/upload" className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
 										<svg
 											width="25"
 											height="24"
@@ -157,8 +157,8 @@ export default function PhotosPage() {
 											/>
 										</svg>
 										Upload Image
-									</button>
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold hover:opacity-80">
+									</Link>
+									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold">
 										<svg
 											width="24"
 											height="24"

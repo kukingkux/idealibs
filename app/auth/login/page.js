@@ -1,10 +1,10 @@
 "use client";
 
+import axiosInstance from "@/app/axios";
 import GoogleAuth from "@/components/google_auth/index";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import axiosInstance from "@/app/axios";
 import bg from "../../../public/images/Img-Login.png";
 
 export default function Login() {
@@ -16,8 +16,7 @@ export default function Login() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const res = await axiosInstance.post(
-			"https://idealibs.cyclic.app/users/signin",
+		const res = await axiosInstance.post("/users/signin",
 			{
 				email: email,
 				password: password,
