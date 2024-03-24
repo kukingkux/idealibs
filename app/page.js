@@ -19,7 +19,7 @@ export default function Landing() {
 				<div className="drawer-content flex flex-col items-center justify-center">
 					<div
 						id="navbar"
-						className="sticky top-0 container bg-i02 py-6 px-7 z-20 lg:px-24"
+						className="sticky top-0 w-full bg-i02 py-6 px-7 z-20 lg:px-24"
 					>
 						<div className="flex justify-between items-center">
 							<label
@@ -131,10 +131,10 @@ export default function Landing() {
 							</div>
 						</div>
 					</div>
-					<div id="content" className="container">
+					<div id="content" className="w-full">
 						<div
 							id="header"
-							className="flex container flex-col items-center mt-12 px-7 lg:px-24 lg:mt-28"
+							className="flex w-full flex-col items-center mt-12 px-7 lg:px-24 lg:mt-28"
 						>
 							<p className="text-center font-medium text-xl mb-2 lg:text-4xl lg:px-72 lg:mb-4">
 								Idea is Key Unlocking the Door to Infinite Creativity at
@@ -144,7 +144,7 @@ export default function Landing() {
 								Find various kinds of creative ideas that support your design
 							</p>
 							<Link
-								href="/photos"
+								href="/home"
 								type="button"
 								className="btn btn-neutral rounded-full border-0 text-white font-medium bg-gradient-to-r from-iorange to-ipink px-7 mb-6 lg:mb-16"
 							>
@@ -175,7 +175,7 @@ export default function Landing() {
 						</div>
 						<div
 							id="about"
-							className="flex container flex-col mt-12 px-7 scroll-mt-32 lg:flex-row lg:px-24 lg:mt-20"
+							className="flex w-full flex-col mt-12 px-7 scroll-mt-32 lg:flex-row lg:px-24 lg:mt-20"
 						>
 							<div className="lg:w-3/5">
 								<p className="text-left font-light text-sm mb-4 lg:text-lg">
@@ -223,7 +223,7 @@ export default function Landing() {
 								</div>
 							</div>
 						</div>
-						<div className="flex container bg-gradient-to-r from-iorange to-ipink items-center mt-12 lg:mt-20">
+						<div className="flex w-full bg-gradient-to-r from-iorange to-ipink items-center mt-12 lg:mt-20">
 							<div className="p-7 lg:px-24 lg:py-20">
 								<p className="text-center font-medium text-sm lg:text-3xl lg:px-10">
 									“By combining innovation, learning, and community, Idealibs
@@ -234,7 +234,7 @@ export default function Landing() {
 								</p>
 							</div>
 						</div>
-						<div className="flex container flex-col px-7 mt-12 lg:px-24 lg:mt-20">
+						<div className="flex w-full flex-col px-7 mt-12 lg:px-24 lg:mt-20">
 							<p className="text-center font-medium text-xl mb-2 lg:text-3xl lg:mb-4">
 								Why choose{" "}
 								<span className="font-bold bg-gradient-to-r from-iorange to-ipink text-transparent bg-clip-text">
@@ -505,7 +505,7 @@ export default function Landing() {
 						</div>
 						<div
 							id="features"
-							className="flex container flex-col mt-12 px-7 scroll-mt-32 lg:px-24 lg:mt-20"
+							className="flex w-full flex-col mt-12 px-7 scroll-mt-32 lg:px-24 lg:mt-20"
 						>
 							<p className="text-left font-light text-sm mb-4 lg:text-lg">
 								Features
@@ -626,7 +626,7 @@ export default function Landing() {
 						</div>
 						<div
 							id="pricing"
-							className="flex container flex-col mt-12 px-7 scroll-mt-32 lg:px-24"
+							className="flex w-full flex-col mt-12 px-7 scroll-mt-32 lg:px-24"
 						>
 							<p className="text-center font-light text-sm mb-4 lg:text-lg">
 								Pricing
@@ -819,7 +819,7 @@ export default function Landing() {
 						</div>
 						<div
 							id="question"
-							className="flex container flex-col mt-12 px-7 scroll-mt-32 lg:px-24 lg:mt-20"
+							className="flex w-full flex-col mt-12 px-7 scroll-mt-32 lg:px-24 lg:mt-20"
 						>
 							<p className="text-center font-light text-sm mb-4 lg:text-lg">
 								Question
@@ -910,7 +910,7 @@ export default function Landing() {
 								</div>
 							</div>
 						</div>
-						<div className="flex container justify-center bg-gradient-to-r from-iorange to-ipink mt-12 lg:mt-20">
+						<div className="flex w-full justify-center bg-gradient-to-r from-iorange to-ipink mt-12 lg:mt-20">
 							<div className="w-1/2 py-7 lg:px-48 lg:py-20">
 								<div>
 									<p className="text-center font-medium text-sm mb-4 px-8 lg:text-3xl lg:mb-8">
@@ -935,7 +935,7 @@ export default function Landing() {
 						</div>
 						<div
 							id="footer"
-							className="flex container justify-between items-center bg-white px-7 py-5 lg:px-24 lg:py-8"
+							className="flex w-full justify-between items-center bg-white px-7 py-5 lg:px-24 lg:py-8"
 						>
 							<div>
 								<img
@@ -954,7 +954,7 @@ export default function Landing() {
 				</div>
 				<div className="drawer-side">
 					<div className="bg-i02 min-h-screen w-1/2 z-10 px-7">
-						<div className="container py-6">
+						<div className="w-full py-6">
 							<button className="btn btn-square bg-i03 h-10">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"

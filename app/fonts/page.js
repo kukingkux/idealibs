@@ -1,22 +1,38 @@
 "use client";
 
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 import CardFont from "@/components/cardfonts";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Font.png";
+import axios from "axios";
+import Link from "next/link";
 
 export default function FontsPage() {
-	const [open, setOpen] = useState(1);
-	const [active, setActive] = useState(null);
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const [data, setData] = useState([]);
+	const [isLoading, setLoading] = useState(true);
 
-	const handleOpen = (value) => setOpen(open === value ? 0 : value);
-	const handleActive = (value) => setActive(value);
-	const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await axios.get(
+					"https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDr9Cvc0NeyqnOJL5G0nDAgTyKEQnV9jQ0&sort=trending"
+				);
+				const limit = res.data.items.slice(0, 12);
+				setData(limit);
+				setLoading(false);
+			} catch (err) {
+				console.error("Error fetching data:", err);
+			}
+		};
+		fetchData();
+	}, []);
 
-	const session = "";
+	// useEffect(() => {
+	// 	if (data.length) {
+	// 		console.log(data);
+	// 	}
+	// });
 
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
@@ -97,22 +113,7 @@ export default function FontsPage() {
 										</svg>
 									</div>
 								</div>
-								{/* <div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
-										<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path fillRule="evenodd" clipRule="evenodd" d="M13.25 10.8303V17.0903H11.75V10.8303H2.75V22.3503H22.25V10.8303H13.25Z" fill="#FEFEFE"/>
-											<path fillRule="evenodd" clipRule="evenodd" d="M13.25 6.0289C14.24 7.0739 15.621 7.7499 17.1 7.7499H17.85V6.2499H17.1C15.085 6.2499 13.25 4.4169 13.25 2.4039V1.6499H11.75V2.4039C11.75 4.4169 9.92003 6.2499 7.91003 6.2499H7.16003V7.7499H7.91003C9.38503 7.7499 10.762 7.0759 11.75 6.0319L11.75 10.8303H13.25L13.25 6.0289Z" fill="#FEFEFE"/>
-										</svg>
-										Upload Color
-									</button>
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold">
-										<svg width="24" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path fillRule="evenodd" clipRule="evenodd" d="M21.9236 11.5315C17.7756 9.9975 14.5116 6.7335 12.9686 2.5765L12.4996 1.3125L12.0306 2.5765C10.4876 6.7335 7.22462 9.9975 3.07562 11.5315L1.80762 12.0005L3.07562 12.4685C7.22462 14.0025 10.4876 17.2665 12.0306 21.4245L12.4996 22.6875L12.9686 21.4245C14.5116 17.2665 17.7756 14.0025 21.9236 12.4685L23.1926 12.0005L21.9236 11.5315Z" fill="#FEFEFE"/>
-										</svg>
-										AI Image
-									</button>
-								</div> */}
-								<div className="flex flex-wrap gap-4 mb-6">
+								{/* <div className="flex flex-wrap gap-4 mb-6">
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
 										Popular
 									</div>
@@ -131,23 +132,25 @@ export default function FontsPage() {
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
 										Handwriting
 									</div>
-								</div>
+								</div> */}
 							</div>
 
 							<div id="mobile-scrollable" className="">
-								<div className="mb-2">
-									<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-7">
-										<CardFont id="1" />
-										<CardFont id="1" />
-										<CardFont id="1" />
-										<CardFont id="1" />
-										<CardFont id="1" />
-										<CardFont id="1" />
-										<CardFont id="1" />
-										<CardFont id="1" />
-										<CardFont id="1" />
+								{isLoading ? (
+									<div className="hidden justify-center mt-4 md:flex">
+										<span className="loading loading-infinity loading-lg"></span>
 									</div>
-								</div>
+								) : (
+									<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-7 mb-2">
+										{data.map((item, index) => (
+											<CardFont
+												family={item.family}
+												file={item.menu}
+												key={index}
+											/>
+										))}
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

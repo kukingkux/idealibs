@@ -1,25 +1,48 @@
 "use client";
 
-import { useState } from "react";
-
 import CardIcon from "@/components/cardicons";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Icon.png";
-
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import axiosInstance from "../axios";
 
 export default function IconsPage() {
-	const [open, setOpen] = useState(1);
-	const [active, setActive] = useState(null);
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const [data, setData] = useState([]);
+	const [isLoading, setLoading] = useState(true);
 
-	const handleOpen = (value) => setOpen(open === value ? 0 : value);
-	const handleActive = (value) => setActive(value);
-	const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+	const searchParams = useSearchParams();
 
-	const session = "";
-
+	useEffect(() => {
+		if (searchParams.get("search") != null) {
+			setLoading(true);
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get(
+						"/files/icons?search=" + searchParams.get("search")
+					);
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		} else {
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get("/files/icons");
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		}
+	}, [searchParams]);
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
 			<div className="drawer" id="sidebar">
@@ -123,7 +146,7 @@ export default function IconsPage() {
 										Upload Icon
 									</Link>
 								</div>
-								<div className="flex flex-wrap gap-4 mb-6">
+								{/* <div className="flex flex-wrap gap-4 mb-6">
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
 										All
 									</div>
@@ -148,21 +171,25 @@ export default function IconsPage() {
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-16 border">
 										See more category
 									</div>
-								</div>
+								</div> */}
 							</div>
 
 							<div id="mobile-scrollable" className="">
-								<div className="md:grid grid-cols-4 gap-4 px-7 hidden">
-									<CardIcon src="/images/Img-Image1.png" id="1" />
-									<CardIcon src="/images/Img-Image2.png" id="2" />
-									<CardIcon src="/images/Img-Image3.png" id="3" />
-									<CardIcon src="/images/Img-Image5.png" id="5" />
-									<CardIcon src="/images/Img-Image6.png" id="6" />
-									<CardIcon src="/images/Img-Image4.png" id="4" />
-									<CardIcon src="/images/Img-Image8.png" id="8" />
-									<CardIcon src="/images/Img-Image7.png" id="7" />
-									<CardIcon src="/images/Img-Image9.png" id="9" />
-								</div>
+								{isLoading ? (
+									<div className="hidden justify-center mt-4 md:flex">
+										<span className="loading loading-infinity loading-lg"></span>
+									</div>
+								) : (
+									<div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-7">
+										{data.map((item) => (
+											<CardIcon
+												src={item.file_path}
+												id={item.id}
+												key={item.id}
+											/>
+										))}
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

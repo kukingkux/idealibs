@@ -5,6 +5,7 @@ import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Mockup.png";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import axiosInstance from "../axios";
 
@@ -12,18 +13,39 @@ export default function MockupsPage() {
 	const [data, setData] = useState([]);
 	const [isLoading, setLoading] = useState(true);
 
+	const searchParams = useSearchParams();
+
+	const [active, setActive] = useState(1);
+	const handleActive = (value) => setActive(value);
+
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const res = await axiosInstance.get("/files?category_id=5");
-				setData(res.data.data);
-				setLoading(false);
-			} catch (err) {
-				console.error("Error fetching data:", err);
-			}
-		};
-		fetchData();
-	}, []);
+		if (searchParams.get("search") != null) {
+			setLoading(true);
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get(
+						"/files?category_id=5&search=" + searchParams.get("search")
+					);
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		} else {
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get("/files?category_id=5");
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		}
+	}, [searchParams]);
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
 			<div className="drawer" id="sidebar">
@@ -126,23 +148,33 @@ export default function MockupsPage() {
 									</Link>
 								</div>
 								<div className="flex flex-wrap gap-4 mb-6">
-									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
+									<div
+										onClick={() => handleActive(1)}
+										aria-selected={active === 1}
+										className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 aria-selected:bg-iblue cursor-pointer hover:opacity-80"
+									>
 										All
 									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
+									<div
+										onClick={() => handleActive(2)}
+										aria-selected={active === 2}
+										className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 aria-selected:bg-iblue cursor-pointer hover:opacity-80"
+									>
 										Paper
 									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
+									<div
+										onClick={() => handleActive(3)}
+										aria-selected={active === 3}
+										className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block aria-selected:bg-iblue cursor-pointer hover:opacity-80"
+									>
 										Device
 									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
+									<div
+										onClick={() => handleActive(4)}
+										aria-selected={active === 4}
+										className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block aria-selected:bg-iblue cursor-pointer hover:opacity-80"
+									>
 										Packaging
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Social media
-									</div>
-									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-16 border">
-										See more category
 									</div>
 								</div>
 							</div>
@@ -161,7 +193,7 @@ export default function MockupsPage() {
 														src="/images/Img-Profile.png"
 														className="rounded-full w-12 h-12"
 													></img>
-													<p>Khananta</p>
+													<p className="font-medium text-lg">{item.username}</p>
 												</div>
 
 												<Link href={`/mockups/${item.id}`}>

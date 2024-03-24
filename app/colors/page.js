@@ -1,25 +1,49 @@
 "use client";
 
-import { useState } from "react";
-
 import CardColors from "@/components/cardcolors";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Color.png";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import axiosInstance from "../axios";
 
 import Link from "next/link";
 
 export default function ColorsPage() {
-	const [open, setOpen] = useState(1);
-	const [active, setActive] = useState(null);
-	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const [data, setData] = useState([]);
+	const [isLoading, setLoading] = useState(true);
 
-	const handleOpen = (value) => setOpen(open === value ? 0 : value);
-	const handleActive = (value) => setActive(value);
-	const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+	const searchParams = useSearchParams();
 
-	const session = "";
-
+	useEffect(() => {
+		if (searchParams.get("search") != null) {
+			setLoading(true);
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get(
+						"/files/colors?search=" + searchParams.get("search")
+					);
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		} else {
+			const fetchData = async () => {
+				try {
+					const res = await axiosInstance.get("/files/colors");
+					setData(res.data.data);
+					setLoading(false);
+				} catch (err) {
+					console.error("Error fetching data:", err);
+				}
+			};
+			fetchData();
+		}
+	}, [searchParams]);
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">
 			<div className="drawer" id="sidebar">
@@ -137,10 +161,10 @@ export default function ColorsPage() {
 												fill="#FEFEFE"
 											/>
 										</svg>
-										AI Image
+										AI Palette
 									</button>
 								</div>
-								<div className="flex flex-wrap gap-4 mb-6">
+								{/* <div className="flex flex-wrap gap-4 mb-6">
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
 										All
 									</div>
@@ -171,98 +195,28 @@ export default function ColorsPage() {
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-16 border">
 										See more category
 									</div>
-								</div>
+								</div> */}
 							</div>
 
 							<div id="mobile-scrollable" className="">
-								<div className="mb-2">
-									<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-7 p-7">
-										<CardColors
-											c1="1f2544"
-											c2="474f7a"
-											c3="81689d"
-											c4="ffd0ec"
-											id="1"
-										/>
-										<CardColors
-											c1="C3E2C2"
-											c2="EAECCC"
-											c3="DBCC95"
-											c4="CD8D7A"
-											id="2"
-										/>
-										<CardColors
-											c1="B4B4B8"
-											c2="C7C8CC"
-											c3="E3E1D9"
-											c4="F2EFE5"
-											id="3"
-										/>
-										<CardColors
-											c1="A94438"
-											c2="D24545"
-											c3="E6BAA3"
-											c4="E4DEBE"
-											id="4"
-										/>
-										<CardColors
-											c1="FAEF9B"
-											c2="F6D776"
-											c3="6DA4AA"
-											c4="647D87"
-											id="5"
-										/>
-										<CardColors
-											c1="F3F8FF"
-											c2="E26EE5"
-											c3="7E30E1"
-											c4="49108B"
-											id="6"
-										/>
-										<CardColors
-											c1="527853"
-											c2="F9E8D9"
-											c3="F7B787"
-											c4="EE7214"
-											id="7"
-										/>
-										<CardColors
-											c1="7ED7C1"
-											c2="F0DBAF"
-											c3="DC8686"
-											c4="B06161"
-											id="8"
-										/>
-										<CardColors
-											c1="FAEF9B"
-											c2="F6D776"
-											c3="6DA4AA"
-											c4="647D87"
-											id="9"
-										/>
-										<CardColors
-											c1="F3F8FF"
-											c2="E26EE5"
-											c3="7E30E1"
-											c4="49108B"
-											id="10"
-										/>
-										<CardColors
-											c1="527853"
-											c2="F9E8D9"
-											c3="F7B787"
-											c4="EE7214"
-											id="11"
-										/>
-										<CardColors
-											c1="7ED7C1"
-											c2="F0DBAF"
-											c3="DC8686"
-											c4="B06161"
-											id="12"
-										/>
+								{isLoading ? (
+									<div className="hidden justify-center mt-4 md:flex">
+										<span className="loading loading-infinity loading-lg"></span>
 									</div>
-								</div>
+								) : (
+									<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-7 p-7 mb-2">
+										{data.map((item) => (
+											<CardColors
+												c1={item.hex[0]}
+												c2={item.hex[1]}
+												c3={item.hex[2]}
+												c4={item.hex[3]}
+												id={item.id}
+												key={item.id}
+											/>
+										))}
+									</div>
+								)}
 							</div>
 						</div>
 					</div>

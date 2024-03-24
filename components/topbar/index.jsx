@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import SearchInput from "../searchInput";
 
 export default function TopNavigation() {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -57,62 +58,74 @@ export default function TopNavigation() {
 					)}
 				</label>
 				<div className="md:hidden">
-					<img
-						className="h-8 md:hidden"
-						src="/images/Logo-Nav-Mobile.png"
-						alt="Idealibs Logo"
-					/>
-				</div>
-				<div className="hidden md:block md:w-1/2 md:mr-48">
-					<label className="input flex items-center gap-2 rounded-full bg-i03 px-5">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							strokeWidth="1.5"
-							stroke="currentColor"
-							className="w-5 h-5"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-							/>
-						</svg>
-						<input
-							type="text"
-							className="grow bg-i03"
-							placeholder="Find all your design needs"
+					{session ? (
+						<img
+							className="ml-8 h-8 md:hidden"
+							src="/images/Logo-Nav-Mobile.png"
+							alt="Idealibs Logo"
 						/>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							strokeWidth="1.5"
-							stroke="currentColor"
-							className="w-5 h-5"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"
-							/>
-						</svg>
-					</label>
+					) : (
+						<img
+							className="ml-16 h-8 md:hidden"
+							src="/images/Logo-Nav-Mobile.png"
+							alt="Idealibs Logo"
+						/>
+					)}
 				</div>
+				<SearchInput />
 				{session ? (
 					<div className="flex items-center">
-						<button
-							type="button"
-							onClick={handleLogout}
-							className="hidden btn btn-outline rounded-full border-2 font-medium border-white text-white px-7 mr-3 hover:border-white hover:bg-white hover:text-i02 md:flex"
-						>
-							Logout
-						</button>
-						<img
-							src="/images/Img-Profile.png"
-							className="rounded-full w-10 h-10"
-						/>
+						<details className="dropdown dropdown-end">
+							<summary className="btn bg-i02 border-0 hover:bg-i02">
+								<img
+									src="/images/Img-Profile.png"
+									className="rounded-full w-12 h-12 hover:opacity-80"
+								/>
+							</summary>
+							<ul className="mt-10 p-4 shadow menu dropdown-content z-[1] bg-i02 rounded-box w-max">
+								<li>
+									<div className="flex items-center gap-4">
+										<img
+											src="/images/Img-Profile.png"
+											className="rounded-full w-12 h-12 hover:opacity-80"
+										/>
+										<div>
+											<p className="mb-1">Free user</p>
+											<p className="text-sm text-i04">khananta@gmail.com</p>
+										</div>
+									</div>
+								</li>
+								{/* <li>
+									<a>Your library</a>
+								</li> */}
+								<div className="pt-2 pb-5">
+									<div className="w-full bg-i03 h-0.5 rounded-lg"></div>
+								</div>
+								<li>
+									<button
+										type="button"
+										onClick={handleLogout}
+										className="btn btn-sm btn-error text-white font-medium"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											strokeWidth="2.5"
+											stroke="currentColor"
+											className="w-4 h-4"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												d="M5.636 5.636a9 9 0 1 0 12.728 0M12 3v9"
+											/>
+										</svg>
+										Sign out
+									</button>
+								</li>
+							</ul>
+						</details>
 					</div>
 				) : (
 					<div className="flex">
