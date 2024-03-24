@@ -10,6 +10,10 @@ import { ChromePicker } from 'react-color';
 
 export default function UploadPhotoPage() {
 
+    const userToken = localStorage.getItem("token")
+    const userData =  JSON.parse(Buffer.from(userToken.split('.')[1], 'base64').toString())
+    const userId = userData.id
+
     const [colors, setColors] = useState([
         '#FFFFFF',
         '#FFFFFF',
@@ -54,7 +58,7 @@ export default function UploadPhotoPage() {
 
     const handleSubmit = async (e) => {
         console.log(hex)
-        const res = axiosInstance.post("/files/colors/7",
+        const res = axiosInstance.post(`/files/colors/${userId}`,
             {
                 hex: hex
             },

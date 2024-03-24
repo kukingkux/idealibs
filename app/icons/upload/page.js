@@ -9,6 +9,10 @@ import axiosInstance from "../../axios";
 
 export default function UploadPhotoPage() {
 
+    const userToken = localStorage.getItem("token")
+    const userData =  JSON.parse(Buffer.from(userToken.split('.')[1], 'base64').toString())
+    const userId = userData.id
+
     const [title, setTitle] = useState("")
     const [iconLink, setIconLink] = useState("")
     const [description, setDescription] = useState("")
@@ -71,7 +75,7 @@ export default function UploadPhotoPage() {
             setIconLink("none")
             console.log(iconLink)
         }
-        const res = axiosInstance.post("/files/upload-icon/5",
+        const res = axiosInstance.post(`/files/upload-icon/${userId}`,
             {
                 title: title,
                 description: description,
