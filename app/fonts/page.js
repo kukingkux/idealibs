@@ -113,7 +113,7 @@ export default function FontsPage() {
 										</svg>
 									</div>
 								</div>
-								<div className="flex flex-wrap gap-4 mb-6">
+								{/* <div className="flex flex-wrap gap-4 mb-6">
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
 										Popular
 									</div>
@@ -132,7 +132,7 @@ export default function FontsPage() {
 									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
 										Handwriting
 									</div>
-								</div>
+								</div> */}
 							</div>
 
 							<div id="mobile-scrollable" className="">
@@ -143,7 +143,11 @@ export default function FontsPage() {
 								) : (
 									<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-7 mb-2">
 										{data.map((item, index) => (
-											<CardFont family={item.family} id={index} key={index} />
+											<CardFont
+												family={item.family}
+												file={item.menu}
+												key={index}
+											/>
 										))}
 									</div>
 								)}

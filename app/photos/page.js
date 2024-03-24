@@ -15,6 +15,9 @@ export default function PhotosPage() {
 
 	const searchParams = useSearchParams();
 
+	const [active, setActive] = useState(1);
+	const handleActive = (value) => setActive(value);
+
 	useEffect(() => {
 		if (searchParams.get("search") != null) {
 			setLoading(true);
@@ -132,7 +135,7 @@ export default function PhotosPage() {
 									</div>
 								</div>
 								<div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
+									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8 hover:opacity-80">
 										<svg
 											width="25"
 											height="24"
@@ -155,7 +158,7 @@ export default function PhotosPage() {
 										</svg>
 										Upload Image
 									</button>
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold">
+									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold hover:opacity-80">
 										<svg
 											width="24"
 											height="24"
@@ -174,38 +177,40 @@ export default function PhotosPage() {
 									</button>
 								</div>
 								<div className="flex flex-wrap gap-4 mb-6">
-									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
+									<div
+										onClick={() => handleActive(1)}
+										aria-selected={active === 1}
+										className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 aria-selected:bg-iblue cursor-pointer hover:opacity-80"
+									>
 										All
 									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
+									<div
+										onClick={() => handleActive(2)}
+										aria-selected={active === 2}
+										className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 aria-selected:bg-iblue cursor-pointer hover:opacity-80"
+									>
 										Nature
 									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
+									<div
+										onClick={() => handleActive(3)}
+										aria-selected={active === 3}
+										className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block aria-selected:bg-iblue cursor-pointer hover:opacity-80"
+									>
 										Technology and Innovation
 									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
+									<div
+										onClick={() => handleActive(4)}
+										aria-selected={active === 4}
+										className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block aria-selected:bg-iblue cursor-pointer hover:opacity-80"
+									>
 										Fashion and Lifestyle
 									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
+									<div
+										onClick={() => handleActive(5)}
+										aria-selected={active === 5}
+										className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block aria-selected:bg-iblue cursor-pointer hover:opacity-80"
+									>
 										Art and Creativity
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-										People
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Food and Beverages
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Health and Fitness
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 hidden lg:block">
-										Travel and Destinations
-									</div>
-									<div className="bg-i02 font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6">
-										Textures
-									</div>
-									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-16 border">
-										See more category
 									</div>
 								</div>
 							</div>

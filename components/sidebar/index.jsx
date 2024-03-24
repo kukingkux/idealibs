@@ -30,7 +30,7 @@ export function SideNavigation() {
 							<Link href="/home">
 								<div
 									aria-selected={pathname.startsWith("/home")}
-									className="flex rounded-lg text-i04 text-sm py-3 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+									className="flex rounded-lg text-i04 text-sm py-3 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 								>
 									<span>
 										<svg
@@ -53,7 +53,7 @@ export function SideNavigation() {
 							<Link href="/photos">
 								<div
 									aria-selected={pathname.startsWith("/photos")}
-									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 								>
 									<span>
 										<svg
@@ -75,7 +75,7 @@ export function SideNavigation() {
 							<Link href="/colors">
 								<div
 									aria-selected={pathname.startsWith("/colors")}
-									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 								>
 									<span>
 										<svg
@@ -93,7 +93,7 @@ export function SideNavigation() {
 							<Link href="/fonts">
 								<div
 									aria-selected={pathname.startsWith("/fonts")}
-									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 								>
 									<span>
 										<svg
@@ -111,7 +111,7 @@ export function SideNavigation() {
 							<Link href="/vectors">
 								<div
 									aria-selected={pathname.startsWith("/vectors")}
-									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 								>
 									<span>
 										<svg
@@ -129,7 +129,7 @@ export function SideNavigation() {
 							<Link href="/mockups">
 								<div
 									aria-selected={pathname.startsWith("/mockups")}
-									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 								>
 									<span>
 										<svg
@@ -147,7 +147,7 @@ export function SideNavigation() {
 							<Link href="/icons">
 								<div
 									aria-selected={pathname.startsWith("/icons")}
-									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+									className="flex rounded-lg text-i04 text-sm py-3 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +225,7 @@ export function SideNavigationMobile() {
 			<Link href="/home">
 				<div
 					aria-selected={pathname.startsWith("/home")}
-					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 items-center pl-4 aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 				>
 					<span>
 						<svg
@@ -248,7 +248,7 @@ export function SideNavigationMobile() {
 			<Link href="/photos">
 				<div
 					aria-selected={pathname.startsWith("/photos")}
-					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 				>
 					<span>
 						<svg
@@ -270,7 +270,7 @@ export function SideNavigationMobile() {
 			<Link href="/colors">
 				<div
 					aria-selected={pathname.startsWith("/colors")}
-					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 				>
 					<span>
 						<svg
@@ -288,7 +288,7 @@ export function SideNavigationMobile() {
 			<Link href="/fonts">
 				<div
 					aria-selected={pathname.startsWith("/fonts")}
-					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 				>
 					<span>
 						<svg
@@ -306,7 +306,7 @@ export function SideNavigationMobile() {
 			<Link href="/vectors">
 				<div
 					aria-selected={pathname.startsWith("/vectors")}
-					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 				>
 					<span>
 						<svg
@@ -324,7 +324,7 @@ export function SideNavigationMobile() {
 			<Link href="/mockups">
 				<div
 					aria-selected={pathname.startsWith("/mockups")}
-					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 				>
 					<span>
 						<svg
@@ -342,7 +342,7 @@ export function SideNavigationMobile() {
 			<Link href="/icons">
 				<div
 					aria-selected={pathname.startsWith("/icons")}
-					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink"
+					className="flex rounded-lg text-i04 text-sm py-2.5 px-0 pl-4 items-center aria-selected:text-white aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

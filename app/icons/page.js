@@ -122,7 +122,7 @@ export default function IconsPage() {
 									</div>
 								</div>
 								<div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
+									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8 hover:opacity-80">
 										<svg
 											width="25"
 											height="24"
@@ -146,7 +146,7 @@ export default function IconsPage() {
 										Upload Icon
 									</button>
 								</div>
-								<div className="flex flex-wrap gap-4 mb-6">
+								{/* <div className="flex flex-wrap gap-4 mb-6">
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-6 bg-iblue">
 										All
 									</div>
@@ -171,7 +171,7 @@ export default function IconsPage() {
 									<div className="font-bold rounded-iform py-4 lg:py-3 px-8 lg:px-16 border">
 										See more category
 									</div>
-								</div>
+								</div> */}
 							</div>
 
 							<div id="mobile-scrollable" className="">

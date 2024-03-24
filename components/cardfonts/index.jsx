@@ -1,13 +1,15 @@
 import Link from "next/link";
 
-export default function CardFont({ family, id }) {
-	let string = family;
-	let familyParse = string.toLowerCase().replace(/\s+/g, "-");
+export default function CardFont({ family, file }) {
+	let familyParse = family.toLowerCase().replace(/\s+/g, "-");
+	let fileParse = file.replace(/\//g, "xx");
+
 	return (
 		<Link
 			href={{
-				pathname: `/fonts/${familyParse}`,
+				pathname: `/fonts/${familyParse}?${fileParse}`,
 			}}
+			className="hover:opacity-80"
 		>
 			<div className="flex flex-col justify-between rounded-lg p-7 lg:aspect-square bg-i03">
 				<div className="flex gap-4 justify-between items-center text-sm">
