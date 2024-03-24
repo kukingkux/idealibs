@@ -177,7 +177,7 @@ export default function VectorsPage() {
 									</div>
 								) : (
 									<div>
-										{data.map((item) => (
+										{data?.map((item) => (
 											<div className="mb-2" key={item.id}>
 												<div className="flex gap-4 items-center p-7">
 													<img
@@ -248,7 +248,7 @@ export default function VectorsPage() {
 								</div>
 							) : (
 								<div className="md:block columns-3 gap-5 px-7 hidden">
-									{data.map((item) => (
+									{data?.map((item) => (
 										<Card
 											src={item.file_path}
 											path={`/vectors/${item.id}`}

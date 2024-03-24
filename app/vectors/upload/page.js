@@ -9,6 +9,10 @@ import axiosInstance from "../../axios";
 
 export default function UploadPhotoPage() {
 
+    const userToken = localStorage.getItem("token")
+    const userData =  JSON.parse(Buffer.from(userToken.split('.')[1], 'base64').toString())
+    const userId = userData.id
+
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [preview, setPreview] = useState(null)
@@ -46,6 +50,7 @@ export default function UploadPhotoPage() {
         e.preventDefault()
         const reader = new FileReader()
         const file = e.target.files[0]
+        const fileType = file.type
         if (file) {
             reader.readAsText(file)
         }
@@ -62,7 +67,7 @@ export default function UploadPhotoPage() {
 
     const handleSubmit = async (e) => {
 
-        const res = axiosInstance.post("/files/upload-image/7",
+        const res = axiosInstance.post(`/files/upload-image/${userId}`,
             {
                 title: title,
                 description: description,

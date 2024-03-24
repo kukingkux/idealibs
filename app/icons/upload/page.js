@@ -10,7 +10,7 @@ import axiosInstance from "../../axios";
 export default function UploadPhotoPage() {
 
     const [title, setTitle] = useState("")
-    const [iconUrl, setIconUrl] = useState("")
+    const [iconLink, setIconLink] = useState("")
     const [description, setDescription] = useState("")
     const [preview, setPreview] = useState(null)
     const [svgPreview, setSvgPreview] = useState(null)
@@ -57,16 +57,21 @@ export default function UploadPhotoPage() {
         console.log(selectedFile)
     }
 
-    const iconUrlHandler = (e) => {
-            setIconUrl(e.target.value)
-    }
+    // const iconLinkHandler = (e) => {
+    //     seticonLink(e.target.value)
+        
+    // }
 
-    if(iconUrl === null) {
-        setIconUrl(title)
-    } 
+    
+
+
 
     const handleSubmit = async (e) => {
-        const res = axiosInstance.post("/files/upload-icon/7",
+        if(iconLink == "") {
+            setIconLink("none")
+            console.log(iconLink)
+        }
+        const res = axiosInstance.post("/files/upload-icon/5",
             {
                 title: title,
                 description: description,
@@ -74,7 +79,7 @@ export default function UploadPhotoPage() {
                 file_type: 'svg',
                 item_id: 1,
                 tags_id: 1,
-                icon_url: iconUrl,
+                icon_url: iconLink,
                 categories_id: 6,
             },
             {
@@ -228,13 +233,15 @@ export default function UploadPhotoPage() {
                                                 <div>
                                                     <p className="mb-2">Icon URL (optional)</p>
                                                     <input
-                                                        name="iconurl"
+                                                        name="iconLink"
                                                         type="text"
-                                                        value={iconUrl}
-                                                        onChange={(iconUrlHandler)}
+                                                        value={iconLink}
+                                                        onChange={(e) =>
+                                                            setIconLink(e.target.value)
+                                                        }
                                                         placeholder="Icon URL (optional)"
                                                         className="w-full bg-i02 focus:outline-none rounded-lg border border-i04 p-4"
-                                                        
+                                                        required
                                                     />
                                                 </div>
                                                 <div>

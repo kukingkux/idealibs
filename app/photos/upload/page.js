@@ -9,6 +9,10 @@ import axiosInstance from "../../axios";
 
 export default function UploadPhotoPage() {
 
+    const userToken = localStorage.getItem("token")
+    const userData =  JSON.parse(Buffer.from(userToken.split('.')[1], 'base64').toString())
+    const userId = userData.id
+
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [preview, setPreview] = useState(null)
@@ -29,6 +33,7 @@ export default function UploadPhotoPage() {
         e.preventDefault();
         const reader = new FileReader()
         const file = e.dataTransfer.files[0];
+        setSelectedFile(file)
         console.log(file)
             if (file) {
                 reader.readAsDataURL(file)
@@ -37,13 +42,14 @@ export default function UploadPhotoPage() {
             reader.onload = (readerEvent) => {
                 setPreview(readerEvent.target.result)
             }
-        setSelectedFile(file)
+        
     }
 
     const handleSelect = (e) => {
         e.preventDefault();
         const reader = new FileReader()
         const file = e.target.files[0]
+        setSelectedFile(file)
             console.log(file)
             if (file) {
                 reader.readAsDataURL(file)
@@ -53,14 +59,14 @@ export default function UploadPhotoPage() {
                 setPreview(readerEvent.target.result)
             }
         
-        setSelectedFile(file)
+        
         //setData(selectedFile)
         console.log(preview)
     }
 
     const handleSubmit = async (e) => {
 
-        const res = axiosInstance.post("/files/upload-image/7",
+        const res = axiosInstance.post(`/files/upload-image/${userId}`,
             {
                 title: title,
                 description: description,
@@ -221,13 +227,13 @@ export default function UploadPhotoPage() {
                                                     <p className="mb-2">Tag</p>
                                                     <select className="w-full bg-i03 focus:outline-none rounded-lg border border-i03 p-4">
                                                         <option selected>
-                                                            Tags
+                                                            Nature
                                                         </option>
                                                         <option>
-                                                            Tags
+                                                            City
                                                         </option>
                                                         <option>
-                                                            Tags
+                                                            Astrology
                                                         </option>
                                                     </select>
                                                 </div>
