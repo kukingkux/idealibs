@@ -261,6 +261,7 @@ export default function VectorsPage() {
 										<Card
 											src={item.file_path}
 											path={`/vectors/${item.id}`}
+											premium={item.item_id}
 											key={item.id}
 										/>
 									))}

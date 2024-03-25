@@ -11,13 +11,15 @@ export default function DownloadButton({ path }) {
 		<button
 			type="button"
 			onClick={() => {
-				downloadURI("data:" + path);
+				if (path != null) {
+					downloadURI("data:" + path);
+				}
 			}}
 		>
-			<div className="flex items-center justify-center bg-i02 w-12 h-12 rounded-full hover:bg-i03">
+			<div className="flex items-center justify-center bg-gradient-to-r from-iorange to-ipink w-12 h-12 rounded-full hover:opacity-80">
 				<svg
-					width="28"
-					height="28"
+					width="24"
+					height="24"
 					viewBox="0 0 24 24"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"

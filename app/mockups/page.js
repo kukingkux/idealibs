@@ -241,6 +241,7 @@ export default function MockupsPage() {
 										<Card
 											src={item.file_path}
 											path={`/mockups/${item.id}`}
+											premium={item.item_id}
 											key={item.id}
 										/>
 									))}

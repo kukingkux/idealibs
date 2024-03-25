@@ -277,6 +277,7 @@ export default function PhotosPage() {
 										<Card
 											src={item.file_path}
 											path={`/photos/${item.id}`}
+											premium={item.item_id}
 											key={item.id}
 										/>
 									))}

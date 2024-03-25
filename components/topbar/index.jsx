@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import SearchInput from "../searchInput";
 
 export default function TopNavigation() {
@@ -9,6 +9,7 @@ export default function TopNavigation() {
 	const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
 	const router = useRouter();
+	const pathname = usePathname();
 	const handleLogout = () => {
 		localStorage.removeItem("user");
 		router.push("/");
@@ -74,9 +75,30 @@ export default function TopNavigation() {
 				</div>
 				<SearchInput />
 				{session ? (
-					<div className="flex items-center">
+					<div className="flex items-center gap-1">
+						<Link
+							href="/collections"
+							aria-selected={pathname.startsWith("/collections")}
+							className="hidden md:flex items-center justify-center bg-i03 w-12 h-12 rounded-full aria-selected:bg-gradient-to-r aria-selected:from-iorange aria-selected:to-ipink hover:opacity-80"
+						>
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 20 20"
+								fill="#FFFFFF"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M14.6611 2.76867C15.5783 2.87511 16.25 3.66583 16.25 4.58916V17.5L10 14.375L3.75 17.5V4.58916C3.75 3.66583 4.42173 2.87511 5.3389 2.76867C6.86797 2.59122 8.42333 2.5 10 2.5C11.5767 2.5 13.132 2.59122 14.6611 2.76867Z"
+									stroke="#FEFEFE"
+									strokeWidth="1"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						</Link>
 						<details className="dropdown dropdown-end">
-							<summary className="btn bg-i02 border-0 hover:bg-i02">
+							<summary className="btn flex items-center bg-i02 border-0 hover:bg-i02">
 								<img
 									src="/images/Img-Profile.png"
 									className="rounded-full w-12 h-12 hover:opacity-80"
@@ -84,7 +106,7 @@ export default function TopNavigation() {
 							</summary>
 							<ul className="mt-10 p-4 shadow menu dropdown-content z-[1] bg-i02 rounded-box w-max">
 								<li>
-									<div className="flex items-center gap-4">
+									<div className="flex items-center gap-4 p-2">
 										<img
 											src="/images/Img-Profile.png"
 											className="rounded-full w-12 h-12 hover:opacity-80"
@@ -97,9 +119,19 @@ export default function TopNavigation() {
 										</div>
 									</div>
 								</li>
-								{/* <li>
-									<a>Your library</a>
-								</li> */}
+								<li className="block md:hidden">
+									<a className="p-2">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											viewBox="0 0 16 16"
+											fill="currentColor"
+											className="w-4 h-4"
+										>
+											<path d="M3.75 2a.75.75 0 0 0-.75.75v10.5a.75.75 0 0 0 1.28.53L8 10.06l3.72 3.72a.75.75 0 0 0 1.28-.53V2.75a.75.75 0 0 0-.75-.75h-8.5Z" />
+										</svg>
+										Your library
+									</a>
+								</li>
 								<div className="pt-2 pb-5">
 									<div className="w-full bg-i03 h-0.5 rounded-lg"></div>
 								</div>
