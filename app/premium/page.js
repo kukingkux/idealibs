@@ -1,14 +1,22 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import bg from "@/public/images/Img-Hero-Premium.png";
 
 export default function Premium() {
 	const [open, setOpen] = useState(1);
 
-	const handleOpen = (value) => setOpen(open === value ? 0 : value);
+	const userData = JSON.parse(localStorage.getItem("user"));
 	const router = useRouter();
+
+	const handleOpen = (value) => setOpen(open === value ? 0 : value);
+
+	useEffect(() => {
+		if (userData.role == 2) {
+			router.push("/home");
+		}
+	});
 
 	return (
 		<main>

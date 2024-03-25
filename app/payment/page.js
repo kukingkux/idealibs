@@ -1,10 +1,18 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Payment() {
 	const [email, setEmail] = useState("");
+
+	const userData = JSON.parse(localStorage.getItem("user"));
 	const router = useRouter();
+
+	useEffect(() => {
+		if (userData.role == 2) {
+			router.push("/home");
+		}
+	});
 
 	return (
 		<div className="grid grid-cols-1 md:grid-cols-2">

@@ -10,13 +10,13 @@ export default function TopNavigation() {
 
 	const router = useRouter();
 	const handleLogout = () => {
-		localStorage.removeItem("token");
+		localStorage.removeItem("user");
 		router.push("/");
 	};
 
 	useEffect(() => {
-		const token = JSON.parse(localStorage.getItem("token"));
-		setSession(token);
+		const userData = JSON.parse(localStorage.getItem("user"));
+		setSession(userData);
 	}, []);
 
 	return (
@@ -90,8 +90,10 @@ export default function TopNavigation() {
 											className="rounded-full w-12 h-12 hover:opacity-80"
 										/>
 										<div>
-											<p className="mb-1">Free user</p>
-											<p className="text-sm text-i04">khananta@gmail.com</p>
+											<p className="mb-1">
+												{session.role == 1 ? "Free user" : "Premium User"}
+											</p>
+											<p className="text-sm text-i04">{session.email}</p>
 										</div>
 									</div>
 								</li>
@@ -139,7 +141,7 @@ export default function TopNavigation() {
 						<Link
 							href="/auth/register"
 							type="button"
-							className="btn btn-neutral rounded-full border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink hover:bg-transparent px-7"
+							className="btn btn-neutral rounded-full border-0 font-medium text-white bg-gradient-to-r from-iorange to-ipink hover:opactity-80 px-7"
 						>
 							Register
 						</Link>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axiosInstance from "@/app/axios";
 import bg from "../../../public/images/Img-Login.png";
 
@@ -12,6 +12,7 @@ export default function Register() {
 	const [password, setPassword] = useState("");
 	const [conpassword, setConpassword] = useState("");
 
+	const userData = JSON.parse(localStorage.getItem("user"));
 	const router = useRouter();
 
 	const handleSubmit = async (e) => {
@@ -24,17 +25,24 @@ export default function Register() {
 					username: username,
 					email: email,
 					password: password,
+					confirmPassword: conpassword,
 				}
 			);
 
 			if (res.status == 200) {
-				localStorage.setItem("token", JSON.stringify(res.data.accessToken));
+				localStorage.setItem("user", JSON.stringify(res.data));
 				router.push("/");
 			}
 		} else {
 			const err = "Confirm password doesn't match";
 		}
 	};
+
+	useEffect(() => {
+		if (userData) {
+			router.push("/home");
+		}
+	});
 
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">

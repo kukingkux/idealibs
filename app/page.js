@@ -1,16 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Landing() {
 	const [open, setOpen] = useState(1);
 	const [active, setActive] = useState(1);
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+	const router = useRouter();
+
 	const handleOpen = (value) => setOpen(open === value ? 0 : value);
 	const handleActive = (value) => setActive(active === value ? 0 : value);
 	const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+
+	useEffect(() => {
+		const userData = JSON.parse(localStorage.getItem("user"));
+		if (userData) {
+			router.push("/home");
+		}
+	});
 
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">

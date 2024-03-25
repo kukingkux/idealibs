@@ -8,8 +8,8 @@ export function SideNavigation() {
 	const pathname = usePathname();
 
 	useEffect(() => {
-		const token = JSON.parse(localStorage.getItem("token"));
-		setSession(token);
+		const userData = JSON.parse(localStorage.getItem("user"));
+		setSession(userData);
 	}, []);
 	return (
 		<div
@@ -181,7 +181,7 @@ export function SideNavigation() {
 										</p>
 										<Link
 											href="/premium"
-											className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm"
+											className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm hover:opacity-80"
 										>
 											Upgrade now
 										</Link>
@@ -203,7 +203,7 @@ export function SideNavigation() {
 									</p>
 									<Link
 										href="/auth/login"
-										className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm"
+										className="flex justify-center items-center gap-2 rounded-iform w-full py-2 bg-white text-black font-semibold text-sm hover:opacity-80"
 									>
 										Upgrade now
 									</Link>

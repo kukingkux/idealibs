@@ -4,30 +4,35 @@ import axiosInstance from "@/app/axios";
 import GoogleAuth from "@/components/google_auth/index";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import bg from "../../../public/images/Img-Login.png";
 
 export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
+	const userData = JSON.parse(localStorage.getItem("user"));
 	const router = useRouter();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const res = await axiosInstance.post("/users/signin",
-			{
-				email: email,
-				password: password,
-			}
-		);
+		const res = await axiosInstance.post("/users/signin", {
+			email: email,
+			password: password,
+		});
 
 		if (res.status == 200) {
-			localStorage.setItem("token", JSON.stringify(res.data));
+			localStorage.setItem("user", JSON.stringify(res.data));
 			router.push("/home");
 		}
 	};
+
+	useEffect(() => {
+		if (userData) {
+			router.push("/home");
+		}
+	});
 
 	return (
 		<main className="flex min-h-screen flex-col bg-i01">

@@ -1,6 +1,7 @@
 "use client";
 
 import Card from "@/components/gridmasonry";
+import UploadButton from "@/components/uploadButton";
 import { SideNavigation, SideNavigationMobile } from "@/components/sidebar";
 import TopNavigation from "@/components/topbar";
 import bg from "@/public/images/Img-Hero-Vector.png";
@@ -12,10 +13,11 @@ import axiosInstance from "../axios";
 export default function VectorsPage() {
 	const [data, setData] = useState([]);
 	const [isLoading, setLoading] = useState(true);
+	const [active, setActive] = useState(1);
 
+	const userData = JSON.parse(localStorage.getItem("user"));
 	const searchParams = useSearchParams();
 
-	const [active, setActive] = useState(1);
 	const handleActive = (value) => setActive(value);
 
 	useEffect(() => {
@@ -126,29 +128,7 @@ export default function VectorsPage() {
 									</div>
 								</div>
 								<div className="bg-i02 lg:bg-inherit rounded-lg mb-6 lg:mb-0 p-8 lg:p-0 lg:flex gap-6">
-									<Link href="/vectors/upload" className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-iblue font-semibold mb-8">
-										<svg
-											width="25"
-											height="24"
-											viewBox="0 0 25 24"
-											fill="none"
-											xmlns="http://www.w3.org/2000/svg"
-										>
-											<path
-												fillRule="evenodd"
-												clipRule="evenodd"
-												d="M13.25 10.8303V17.0903H11.75V10.8303H2.75V22.3503H22.25V10.8303H13.25Z"
-												fill="#FEFEFE"
-											/>
-											<path
-												fillRule="evenodd"
-												clipRule="evenodd"
-												d="M13.25 6.0289C14.24 7.0739 15.621 7.7499 17.1 7.7499H17.85V6.2499H17.1C15.085 6.2499 13.25 4.4169 13.25 2.4039V1.6499H11.75V2.4039C11.75 4.4169 9.92003 6.2499 7.91003 6.2499H7.16003V7.7499H7.91003C9.38503 7.7499 10.762 7.0759 11.75 6.0319L11.75 10.8303H13.25L13.25 6.0289Z"
-												fill="#FEFEFE"
-											/>
-										</svg>
-										Upload Vector
-									</Link>
+									<UploadButton session={userData} path="/vectors/upload" />
 									<button className="flex justify-center items-center gap-2 rounded-iform w-full h-16 lg:h-14 bg-gradient-to-r from-iorange to-ipink font-semibold">
 										<svg
 											width="24"

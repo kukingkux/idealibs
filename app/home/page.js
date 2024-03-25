@@ -17,8 +17,8 @@ export default function HomePage() {
 	const [session, setSession] = useState(null);
 
 	useEffect(() => {
-		const token = JSON.parse(localStorage.getItem("token"));
-		setSession(token);
+		const userData = JSON.parse(localStorage.getItem("user"));
+		setSession(userData);
 	}, []);
 
 	return (
@@ -60,14 +60,14 @@ export default function HomePage() {
 									{session ? (
 										<Link
 											href="/premium"
-											className="flex justify-center items-center gap-2 rounded-iform w-full py-2 px-4 bg-white text-black font-semibold text-sm"
+											className="flex justify-center items-center gap-2 rounded-iform w-full py-2 px-4 bg-white text-black font-semibold text-sm hover:opacity-80"
 										>
 											Upgrade now
 										</Link>
 									) : (
 										<Link
 											href="/auth/login"
-											className="flex justify-center items-center gap-2 rounded-iform w-full py-2 px-4 bg-white text-black font-semibold text-sm"
+											className="flex justify-center items-center gap-2 rounded-iform w-full py-2 px-4 bg-white text-black font-semibold text-sm hover:opacity-80"
 										>
 											Upgrade now
 										</Link>
@@ -577,14 +577,14 @@ export default function HomePage() {
 												{session ? (
 													<Link
 														href="/home"
-														className="flex justify-center items-center gap-2 rounded-iform py-4 bg-white text-black font-semibold text-sm"
+														className="flex justify-center items-center gap-2 rounded-iform py-4 bg-white text-black font-semibold text-sm hover:opacity-80"
 													>
 														Try AI
 													</Link>
 												) : (
 													<Link
 														href="/auth/login"
-														className="flex justify-center items-center gap-2 rounded-iform py-4 bg-white text-black font-semibold text-sm"
+														className="flex justify-center items-center gap-2 rounded-iform py-4 bg-white text-black font-semibold text-sm hover:opacity-80"
 													>
 														Try AI
 													</Link>
