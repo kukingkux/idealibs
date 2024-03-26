@@ -116,7 +116,7 @@ export default function PhotoDetails() {
 													</svg>
 												</div>
 												{data.item_id == 2 ? (
-													userData.role == 2 ? (
+													userData && userData.role == 2 ? (
 														<DownloadButton path={data.file_path} />
 													) : (
 														<Link href={"/premium"}>

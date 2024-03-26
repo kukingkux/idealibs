@@ -58,12 +58,16 @@ export default function HomePage() {
 								</div>
 								<div>
 									{session ? (
-										<Link
-											href="/premium"
-											className="flex justify-center items-center gap-2 rounded-iform w-full py-2 px-4 bg-white text-black font-semibold text-sm hover:opacity-80"
-										>
-											Upgrade now
-										</Link>
+										session.role == 2 ? (
+											<div></div>
+										) : (
+											<Link
+												href="/premium"
+												className="flex justify-center items-center gap-2 rounded-iform w-full py-2 px-4 bg-white text-black font-semibold text-sm hover:opacity-80"
+											>
+												Upgrade now
+											</Link>
+										)
 									) : (
 										<Link
 											href="/auth/login"
